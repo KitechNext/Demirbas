@@ -3965,8 +3965,7 @@ WHEN  ('WindowToolbar')TIMES 0
 
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
-%ButtonAction DEPEND %Control DEFAULT TIMES 28
-WHEN  ('') ('No Special Action')
+%ButtonAction DEPEND %Control DEFAULT TIMES 27
 WHEN  ('?Ay') ('No Special Action')
 WHEN  ('?BAmc') ('No Special Action')
 WHEN  ('?BGrp') ('No Special Action')
@@ -4039,8 +4038,7 @@ WHEN  ('?CallLookup:5') (0)
 WHEN  ('?CallLookup:6') (0)
 WHEN  ('?Close') (0)
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 28
-WHEN  ('') ('25000')
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 27
 WHEN  ('?Ay') ('25000')
 WHEN  ('?BAmc') ('25000')
 WHEN  ('?BGrp') ('25000')
@@ -4102,8 +4100,7 @@ WHEN  ('?CallLookup:5') (0)
 WHEN  ('?CallLookup:6') (0)
 WHEN  ('?Close') (0)
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 28
-WHEN  ('') ('None')
+%ButtonRequest DEPEND %Control DEFAULT TIMES 27
 WHEN  ('?Ay') ('None')
 WHEN  ('?BAmc') ('None')
 WHEN  ('?BGrp') ('None')
@@ -4212,8 +4209,7 @@ WHEN  ('?STrh') ()
 WHEN  ('?Yil') ()
 WHEN  ('?YtlYil') ()
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 28
-WHEN  ('') (1)
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 27
 WHEN  ('?Ay') (1)
 WHEN  ('?BAmc') (1)
 WHEN  ('?BGrp') (1)
@@ -4267,8 +4263,7 @@ WHEN  (1) ('False')
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 28
-WHEN  ('')TIMES 0
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 27
 WHEN  ('?Ay')TIMES 0
 WHEN  ('?BAmc')TIMES 0
 WHEN  ('?BGrp')TIMES 0
@@ -4304,8 +4299,7 @@ WHEN  ('?Loc:BitmisleriDegerle') (1)
 WHEN  ('?Loc:BitmisleriDegerle')TIMES 1
 WHEN  (1) ('?Loc:BinalaridaDegerle')
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 28
-WHEN  ('')TIMES 0
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 27
 WHEN  ('?Ay')TIMES 0
 WHEN  ('?BAmc')TIMES 0
 WHEN  ('?BGrp')TIMES 0
@@ -4350,8 +4344,7 @@ WHEN  (1) ('False')
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 28
-WHEN  ('')TIMES 0
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 27
 WHEN  ('?Ay')TIMES 0
 WHEN  ('?BAmc')TIMES 0
 WHEN  ('?BGrp')TIMES 0
@@ -4387,8 +4380,7 @@ WHEN  ('?Loc:BitmisleriDegerle') (1)
 WHEN  ('?Loc:BitmisleriDegerle')TIMES 1
 WHEN  (1) ('?Loc:BinalaridaDegerle')
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 28
-WHEN  ('')TIMES 0
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 27
 WHEN  ('?Ay')TIMES 0
 WHEN  ('?BAmc')TIMES 0
 WHEN  ('?BGrp')TIMES 0
@@ -4523,47 +4515,39 @@ WHEN  ('WindowToolbar') ('NO')
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 3
-WHEN  ('') ('Default')
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 2
 WHEN  ('?DegYap:Radio2') ('Default')
 WHEN  ('?Loc:BitmisleriDegerle') ('Default')
 
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 3
-WHEN  ('') ('Off')
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 2
 WHEN  ('?DegYap:Radio2') ('Off')
 WHEN  ('?Loc:BitmisleriDegerle') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 3
-WHEN  ('') ('')
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 2
 WHEN  ('?DegYap:Radio2') ('')
 WHEN  ('?Loc:BitmisleriDegerle') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 3
-WHEN  ('') (0)
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (0)
 WHEN  ('?Loc:BitmisleriDegerle') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 3
-WHEN  ('') (-1)
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (-1)
 WHEN  ('?Loc:BitmisleriDegerle') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 3
-WHEN  ('') (0)
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (0)
 WHEN  ('?Loc:BitmisleriDegerle') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 3
-WHEN  ('') (-1)
+%FieldGradientColorTo DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (-1)
 WHEN  ('?Loc:BitmisleriDegerle') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 3
-WHEN  ('') (0)
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (0)
 WHEN  ('?Loc:BitmisleriDegerle') (0)
 
@@ -4578,8 +4562,7 @@ WHEN  ('?DegYap:Radio2') (1)
 WHEN  ('?DegYap:Radio2')TIMES 1
 WHEN  (1) ('?Loc:BitmisleriDegerle')
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 3
-WHEN  ('')TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 2
 WHEN  ('?DegYap:Radio2')TIMES 1
 WHEN  (1) ('Disable')
 WHEN  ('?Loc:BitmisleriDegerle')TIMES 0
@@ -4591,26 +4574,22 @@ WHEN  ('?DegYap:Radio2') (1)
 WHEN  ('?DegYap:Radio2')TIMES 1
 WHEN  (1) ('?Loc:BitmisleriDegerle')
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 3
-WHEN  ('')TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 2
 WHEN  ('?DegYap:Radio2')TIMES 1
 WHEN  (1) ('Enable')
 WHEN  ('?Loc:BitmisleriDegerle')TIMES 0
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 3
-WHEN  ('') ('AIBtn0')
+%AIObjectName DEPEND %Control DEFAULT TIMES 2
 WHEN  ('?DegYap:Radio2') ('AIBtn27')
 WHEN  ('?Loc:BitmisleriDegerle') ('AIBtn41')
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 3
-WHEN  ('') (1)
+%AIEnableMimicControl DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (1)
 WHEN  ('?Loc:BitmisleriDegerle') (1)
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 3
-WHEN  ('') ('?String1')
+%AIMimicControl DEPEND %Control DEFAULT TIMES 2
 WHEN  ('?DegYap:Radio2') ('?String1')
 WHEN  ('?Loc:BitmisleriDegerle') ('?String1')
 
@@ -4620,8 +4599,7 @@ WHEN  ('?Loc:BitmisleriDegerle') ('?String1')
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 3
-WHEN  ('') (0)
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (0)
 WHEN  ('?Loc:BitmisleriDegerle') (0)
 
@@ -4629,8 +4607,7 @@ WHEN  ('?Loc:BitmisleriDegerle') (0)
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 3
-WHEN  ('') (0)
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (0)
 WHEN  ('?Loc:BitmisleriDegerle') (0)
 
@@ -4638,8 +4615,7 @@ WHEN  ('?Loc:BitmisleriDegerle') (0)
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 3
-WHEN  ('') (0)
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (0)
 WHEN  ('?Loc:BitmisleriDegerle') (0)
 
@@ -4647,8 +4623,7 @@ WHEN  ('?Loc:BitmisleriDegerle') (0)
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 3
-WHEN  ('') (0)
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('?DegYap:Radio2') (0)
 WHEN  ('?Loc:BitmisleriDegerle') (0)
 
@@ -4706,8 +4681,7 @@ DEG:DegerlemeYili=Yas:CalisilanYil; Access:Degerleme.Fetch(DEG:KeyYil)
 [ADDITION]
 NAME AnyScreen AnyScreenProcedure
 [FIELDPROMPT]
-%HideOnClient DEPEND %Control LONG TIMES 44
-WHEN  ('') (0)
+%HideOnClient DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (0)
 WHEN  ('?BAmc') (0)
 WHEN  ('?BAmc:Prompt') (0)
@@ -4752,8 +4726,7 @@ WHEN  ('?Yil') (0)
 WHEN  ('?Yil:Prompt') (0)
 WHEN  ('?YtlYil') (0)
 
-%SynOnAccept DEPEND %Control LONG TIMES 44
-WHEN  ('') (1)
+%SynOnAccept DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (1)
 WHEN  ('?BAmc') (1)
 WHEN  ('?BAmc:Prompt') (1)
@@ -4798,8 +4771,7 @@ WHEN  ('?Yil') (1)
 WHEN  ('?Yil:Prompt') (1)
 WHEN  ('?YtlYil') (1)
 
-%SynOnSelect DEPEND %Control LONG TIMES 44
-WHEN  ('') (1)
+%SynOnSelect DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (1)
 WHEN  ('?BAmc') (1)
 WHEN  ('?BAmc:Prompt') (1)
@@ -4844,8 +4816,7 @@ WHEN  ('?Yil') (1)
 WHEN  ('?Yil:Prompt') (1)
 WHEN  ('?YtlYil') (1)
 
-%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 44
-WHEN  ('') ('250000')
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 43
 WHEN  ('?Ay') ('250000')
 WHEN  ('?BAmc') ('250000')
 WHEN  ('?BAmc:Prompt') ('250000')
@@ -4890,8 +4861,7 @@ WHEN  ('?Yil') ('250000')
 WHEN  ('?Yil:Prompt') ('250000')
 WHEN  ('?YtlYil') ('250000')
 
-%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 44
-WHEN  ('') ('32000')
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 43
 WHEN  ('?Ay') ('32000')
 WHEN  ('?BAmc') ('32000')
 WHEN  ('?BAmc:Prompt') ('32000')
@@ -4936,8 +4906,7 @@ WHEN  ('?Yil') ('32000')
 WHEN  ('?Yil:Prompt') ('32000')
 WHEN  ('?YtlYil') ('32000')
 
-%ThinControlListboxPipes DEPEND %Control LONG TIMES 44
-WHEN  ('') (0)
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (0)
 WHEN  ('?BAmc') (0)
 WHEN  ('?BAmc:Prompt') (0)
@@ -4982,8 +4951,7 @@ WHEN  ('?Yil') (0)
 WHEN  ('?Yil:Prompt') (0)
 WHEN  ('?YtlYil') (0)
 
-%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 44
-WHEN  ('') ('')
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 43
 WHEN  ('?Ay') ('')
 WHEN  ('?BAmc') ('')
 WHEN  ('?BAmc:Prompt') ('')
@@ -5028,8 +4996,7 @@ WHEN  ('?Yil') ('')
 WHEN  ('?Yil:Prompt') ('')
 WHEN  ('?YtlYil') ('')
 
-%EnableWithoutThinet DEPEND %Control LONG TIMES 44
-WHEN  ('') (0)
+%EnableWithoutThinet DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (0)
 WHEN  ('?BAmc') (0)
 WHEN  ('?BAmc:Prompt') (0)
@@ -5074,8 +5041,7 @@ WHEN  ('?Yil') (0)
 WHEN  ('?Yil:Prompt') (0)
 WHEN  ('?YtlYil') (0)
 
-%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 44
-WHEN  ('') (0)
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (0)
 WHEN  ('?BAmc') (0)
 WHEN  ('?BAmc:Prompt') (0)
@@ -5120,8 +5086,7 @@ WHEN  ('?Yil') (0)
 WHEN  ('?Yil:Prompt') (0)
 WHEN  ('?YtlYil') (0)
 
-%cNormal DEPEND %Control LONG TIMES 44
-WHEN  ('') (-1)
+%cNormal DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (-1)
 WHEN  ('?BAmc') (-1)
 WHEN  ('?BAmc:Prompt') (-1)
@@ -5166,8 +5131,7 @@ WHEN  ('?Yil') (-1)
 WHEN  ('?Yil:Prompt') (-1)
 WHEN  ('?YtlYil') (-1)
 
-%cAccentTxt DEPEND %Control LONG TIMES 44
-WHEN  ('') (14342874)
+%cAccentTxt DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (14342874)
 WHEN  ('?BAmc') (14342874)
 WHEN  ('?BAmc:Prompt') (14342874)
@@ -5212,8 +5176,7 @@ WHEN  ('?Yil') (14342874)
 WHEN  ('?Yil:Prompt') (14342874)
 WHEN  ('?YtlYil') (14342874)
 
-%cListHeaderBack DEPEND %Control LONG TIMES 44
-WHEN  ('') (14342874)
+%cListHeaderBack DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (14342874)
 WHEN  ('?BAmc') (14342874)
 WHEN  ('?BAmc:Prompt') (14342874)
@@ -5258,8 +5221,7 @@ WHEN  ('?Yil') (14342874)
 WHEN  ('?Yil:Prompt') (14342874)
 WHEN  ('?YtlYil') (14342874)
 
-%cListHeaderFore DEPEND %Control LONG TIMES 44
-WHEN  ('') (0)
+%cListHeaderFore DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (0)
 WHEN  ('?BAmc') (0)
 WHEN  ('?BAmc:Prompt') (0)
@@ -5304,8 +5266,7 @@ WHEN  ('?Yil') (0)
 WHEN  ('?Yil:Prompt') (0)
 WHEN  ('?YtlYil') (0)
 
-%cListHeaderGRBack DEPEND %Control LONG TIMES 44
-WHEN  ('') (14342874)
+%cListHeaderGRBack DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (14342874)
 WHEN  ('?BAmc') (14342874)
 WHEN  ('?BAmc:Prompt') (14342874)
@@ -5350,8 +5311,7 @@ WHEN  ('?Yil') (14342874)
 WHEN  ('?Yil:Prompt') (14342874)
 WHEN  ('?YtlYil') (14342874)
 
-%cListHeaderGrFore DEPEND %Control LONG TIMES 44
-WHEN  ('') (0)
+%cListHeaderGrFore DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (0)
 WHEN  ('?BAmc') (0)
 WHEN  ('?BAmc:Prompt') (0)
@@ -5396,8 +5356,7 @@ WHEN  ('?Yil') (0)
 WHEN  ('?Yil:Prompt') (0)
 WHEN  ('?YtlYil') (0)
 
-%cListHeaderArrow DEPEND %Control LONG TIMES 44
-WHEN  ('') (8421504)
+%cListHeaderArrow DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (8421504)
 WHEN  ('?BAmc') (8421504)
 WHEN  ('?BAmc:Prompt') (8421504)
@@ -5442,8 +5401,7 @@ WHEN  ('?Yil') (8421504)
 WHEN  ('?Yil:Prompt') (8421504)
 WHEN  ('?YtlYil') (8421504)
 
-%cListHeaderArrow3D DEPEND %Control LONG TIMES 44
-WHEN  ('') (16777215)
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 43
 WHEN  ('?Ay') (16777215)
 WHEN  ('?BAmc') (16777215)
 WHEN  ('?BAmc:Prompt') (16777215)
@@ -5539,8 +5497,8 @@ OWNER 5
 DemHesabi
 DovizDemHesabi
 [WINDOW]
-Window  WINDOW('Toplu Demirbaþ Hesaplama Ekraný'),AT(,,246,197),FONT('Microsoft Sans Serif', |
-          9,,,CHARSET:DEFAULT),DOUBLE,CENTER,GRAY,IMM,MDI,MODAL,SYSTEM
+Window  WINDOW('Toplu Demirbaþ Hesaplama'),AT(,,246,197),FONT('Microsoft Sans Serif',9,,,CHARSET:DEFAULT), |
+          DOUBLE,CENTER,GRAY,IMM,MDI,MODAL,SYSTEM
           STRING('Baþý'),AT(63,2),USE(?String1),FONT(,,,FONT:bold),TRN,#ORIG(?String1),#ORDINAL(1)
           STRING('Sonu'),AT(158,2),USE(?String2),FONT(,,,FONT:bold),TRN,#ORIG(?String2),#ORDINAL(2)
           ENTRY(@s2),AT(63,12,20,10),USE(BAmc),#LINK(?BAmc:Prompt),#ORIG(BAmc),#ORDINAL(3)
@@ -5607,7 +5565,7 @@ Window  WINDOW('Toplu Demirbaþ Hesaplama Ekraný'),AT(,,246,197),FONT('Microsoft 
             MSG('Faydalý ömrü bitmiþ sabit kýymete deðerleme uygulanýr'),TIP('Faydalý öm' & |
             'rü bitmiþ sabit kýymete deðerleme uygulanýr'),#ORDINAL(41)
           CHECK('Binalarý da Deðerle'),AT(22,163),USE(Loc:BinalaridaDegerle),#ORDINAL(42)
-          CHECK('Ceyo'),AT(187,163),USE(Glo:Ceyo),#ORDINAL(10000)
+          CHECK('Ceyo'),AT(187,163),USE(Glo:Ceyo),#ORDINAL(43)
         END
 
 [PROCEDURE]
