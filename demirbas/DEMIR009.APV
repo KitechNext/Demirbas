@@ -1,0 +1,1165 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+[PROCEDURE]
+NAME PrintDrv::Initialise
+PROTOTYPE '(<<String>),Byte'
+PARAMETERS '(P:PrinterName)'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+hPrinter            HANDLE
+szPrinterName       LPSTR(80)
+dwJob               DWORD
+DocInfo             LIKE(DOC_INFO_1)
+DocDefaults         LIKE(PRINTER_DEFAULTS)
+lpDocInfo           BYTE,DIM(SIZE(DocDefaults)),OVER(DocDefaults)
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!   PROCEDURE   : PRINTDRV::Initialise
+!   DESCRIPTION : Initialises the Driver and Settings for Writing TEXT ONLY to the Printer
+!   ------------------------------------------------------------------------------------------------------------------------
+!   PROTOTYPE   : PRINTDRV::Initialise (<STRING p:PrinterName>), BYTE
+!   PARAMETERS  : p:PrinterName - Name of the Printer to Connect to. If Ommitted, system will use the Default Printer
+!   RETURNS     : TRUE if a Handle was obtained, False if otherwise (failed)
+!   ========================================================================================================================
+!
+!   First, check that we are not already connect to the printer and return OK if we are.
+!   ------------------------------------------------------------------------------------------------------------------------
+    IF PRINTDRV::GetPrinterHandle() THEN RETURN(TRUE).
+
+!   Create a Connection to the printer using OpenPrinterA which will return a handle to the printer
+!   ------------------------------------------------------------------------------------------------------------------------
+    IF NOT OMITTED(1) THEN
+       szPrinterName   = p:PrinterName                          ! Move String Value to CString Type
+    ELSE
+       szPrinterName   = PRINTDRV::GetDefaultPrinter()
+    END
+
+    PRINTDRV::SetStructNull(DocDefaults,SIZE(DocDefaults))      ! Make sure this structure is all 0's
+    IF NOT OpenPrinterA( szPrinterName, hPrinter, DocDefaults ) THEN
+       RETURN(FALSE)
+    END
+
+!   Setup and Startup a Document for the Printer
+!   ------------------------------------------------------------------------------------------------------------------------
+    PRINTDRV::SetStructNull(DocInfo,SIZE(DocInfo))
+    DocInfo.pDocName    = 'Receipt Printer'
+    DocInfo.pDataType   = 'RAW'
+    DocInfo.pOutputFile = NULL
+    dwJob = StartDocPrinterA ( hPrinter, 1, lpDocInfo[1])
+
+    IF NOT dwJob THEN
+       ClosePrinter(hPrinter)
+       RETURN (FALSE)
+    END
+
+!   Start a Page on the Printer
+!   ------------------------------------------------------------------------------------------------------------------------
+    IF NOT StartPagePrinter ( hPrinter ) THEN
+       EndDocPrinter( hPrinter )
+       ClosePrinter ( hPrinter )
+       RETURN (FALSE)
+    END
+    PRINTDRV::SetPrinterHandle(hPrinter)                        ! Save the handle for other modules to use
+    RETURN(TRUE)
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[CALLS]
+PrintDrv::Finalise
+PrintDrv::GetDefaultPrinter
+PrintDrv::GetPrinterHandle
+PrintDrv::GetStringElement
+PrintDrv::Initialise
+PrintDrv::SetPrinterHandle
+PrintDrv::SetStructNull
+PrintDrv::WriteText
+[PROCEDURE]
+NAME PrintDrv::GetDefaultPrinter
+PROTOTYPE '(),String'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+PrinterName     STRING(80)
+PrinterDriver   STRING(32)
+PrinterPort     STRING(32)
+PrinterDevice   STRING(132)
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!   PROCEDURE   : PRINTDRV::GetDefaultPrinter
+!   DESCRIPTION : Returns the Name of the Default Printer
+!   ------------------------------------------------------------------------------------------------------------------------
+!   PROTOTYPE   : PRINTDRV::GetDefaultPrinter
+!   PARAMETERS  : None
+!   RETURNS     : The Name of the Default Printer
+!   ========================================================================================================================
+!
+    PrinterDevice   = GETINI('windows','device')
+    PrinterName     = PRINTDRV::GetStringElement(1,',',PrinterDevice)
+    PrinterDriver   = PRINTDRV::GetStringElement(2,',',PrinterDevice)
+    PrinterPort     = PRINTDRV::GetStringElement(3,',',PrinterDevice)
+    RETURN(CLIP(PrinterName))
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME PrintDrv::GetPrinterHandle
+PROTOTYPE '(),Handle'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+   Return(Mod:PrinterHandle)
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME PrintDrv::GetStringElement
+PROTOTYPE '(Byte,String,String),String'
+PARAMETERS '(P:Element,P:Seperator,P:StringToSeperate)'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+LOC:Position1        LONG
+LOC:Position2        LONG
+LOC:Element          STRING(40)
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!   PROCEDURE   :   PRINTDRV::GetStringElement
+!   DESCRIPTION :   Returns a Portion of a Element of a String
+!   =======================================================================================================================
+!
+    LOC:Position1   = 1
+    LOC:Position2   = 0
+    LOOP p:Element TIMES
+      LOC:Position2 = INSTRING(CLIP(p:Seperator),p:StringToSeperate,1,LOC:Position1)
+      IF NOT LOC:Position2 THEN LOC:Position2 = LEN(p:StringToSeperate)+1.
+      LOC:Element   = p:StringToSeperate[LOC:Position1 : LOC:Position2-1]
+      LOC:Position1 = LOC:Position2 + 1
+    END
+    RETURN(LOC:Element)
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME PrintDrv::SetPrinterHandle
+PROTOTYPE '(Handle)'
+PARAMETERS '(P:PrinterHandle)'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  Mod:PrinterHandle=P:PrinterHandle
+  Return
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME PrintDrv::SetStructNull
+PROTOTYPE '(*String,Long)'
+PARAMETERS '(P:Structure,P:Size)'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+lLoopPointer    LONG(0)
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!   PROCEDURE   : WINPRINT::SetStructNull
+!   DESCRIPTION : Ensures that a Structure is filled with all NULLS as required by some API Calls
+!   ------------------------------------------------------------------------------------------------------------------------
+!   PROTOTYPE   : WINPRINT::SetStructNull ( *? p:Structure, LONG p:Size)
+!   PARAMETERS  : p:Structure   - A Pointer to a Structure of any data type
+!                 p:Size        - The Size in Bytes of the Structure to set
+!   RETURNS     : none
+!   ========================================================================================================================
+!
+    LOOP lLoopPointer = 1 TO p:Size
+      p:Structure[lLoopPointer] = '<00>'
+    END
+    RETURN
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME PrintDrv::WriteText
+PROTOTYPE '(String,Byte,<<LONG>),Byte'
+PARAMETERS '(P:TextToWrite,P:AppendCrLf, P:Size)'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+szBuffer        LPSTR(255)
+lpBuffer        LPVOID
+dwCount         DWORD
+dwBytesWritten  DWORD
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!   PROCEDURE   : PRINTDRV::WriteText
+!   DESCRIPTION : Outputs Text to the Printer as Specified in the Parameters
+!   ------------------------------------------------------------------------------------------------------------------------
+!   PROTOTYPE   : PRINTDRV::WriteText ( STRING p:TextToWrite ), BYTE
+!   PARAMETERS  : p:TextToWrite     - A String up to 132 Characters of Text to write to the Printer
+!   RETURNS     : TRUE if Writing was Sucessful, False otherwise
+!   ========================================================================================================================
+!
+!   Check that the printer has been initialised. Cause if it hasn't then we cannot write to it
+!   -----------------------------------------------------------------------------------------------------------------------
+    IF NOT PRINTDRV::GetPrinterHandle() THEN RETURN(FALSE).
+
+!   IF AppendCRLF is set true or is Ommited (Default True) then append a CRLF to the end of the line to print
+!   -----------------------------------------------------------------------------------------------------------------------
+
+    IF P:Size>0 THEN
+        LOOP i#=1 TO P:Size
+            szBuffer[1]=P:TextToWrite[i#]
+            lpBuffer        = ADDRESS(szBuffer[1])
+            dwCount         = 1
+            dwBytesWritten  = 0
+            IF NOT WritePrinter (PRINTDRV::GetPrinterHandle(), lpBuffer, dwCount, dwBytesWritten) THEN
+                RETURN(FALSE)
+            END
+        END
+        RETURN(TRUE)
+    END
+
+    szBuffer        = P:TextToWrite
+
+    XReplace(szBuffer,'<<0>','<0>')
+    XReplace(szBuffer,'<<1>','<1>')
+    XReplace(szBuffer,'<<2>','<2>')
+    XReplace(szBuffer,'<<00>','<0>')
+    XReplace(szBuffer,'<<01>','<1>')
+    XReplace(szBuffer,'<<02>','<2>')
+    XReplace(szBuffer,'<<10>','<10>')
+    XReplace(szBuffer,'<<12>','<12>')
+    XReplace(szBuffer,'<<13>','<13>')
+    XReplace(szBuffer,'<<15>','<15>')
+    XReplace(szBuffer,'<<16>','<16>')
+    XReplace(szBuffer,'<<18>','<18>')
+    XReplace(szBuffer,'<<27>','<27>')
+    XReplace(szBuffer,'<<13,10>','<13,10>')
+
+    IF P:AppendCRLF THEN szBuffer = CLIP(szBuffer) & '<13,10>'.
+
+!   Set up the parameters for the write to the printer
+!   -----------------------------------------------------------------------------------------------------------------------
+    lpBuffer        = ADDRESS(szBuffer)
+    dwCount         = LEN(szBuffer)
+    dwBytesWritten  = 0
+
+    IF NOT WritePrinter (PRINTDRV::GetPrinterHandle(), lpBuffer, dwCount, dwBytesWritten) THEN
+       RETURN(FALSE)
+    END
+    RETURN(TRUE)
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME RapQDoldur
+PROTOTYPE '(String,String)'
+PARAMETERS '(RKod,RNo)'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[FILES]
+[OTHERS]
+Rapor
+DRapor
+[PROMPTS]
+%GenerateOpenClose LONG  (1)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+    DO OpenFiles
+  ! Rapor Dosyasýndan Rapor Desenini Oku
+    Free(RapQ); ! Uzunluk#=0
+! MuRap Set Et
+    RAP:RapKod=RKod;RAP:RapNo=Rno;Get(Rapor,RAP:RapKodKey); RaporText=RAP:RaporText
+!MuDrap Set Et
+    Clear(Drp:Record); DRP:RapKod=Rap:RapKod; Drp:RapNo=Rap:RapNo; Set(DRP:RapNoKey,DRP:RapNoKey)
+    Loop Until Access:DRapor.Next() OR RKod<>Drp:RapKod OR RNo<>Drp:RapNo
+  !!!  Loop Until Eof(DRapor)
+  !!!    Next(DRapor); Err('Next(DRapor)'); If Error() Then Break.
+  !!!    If RKod<>Drp:RapKod Or RNo<>Drp:RapNo Then Break.
+        Clear(RapQ)
+        Rpq:FieldKod=DRP:FieldKod
+        Rpq:Uzunluk=Drp:Uzunluk !; If DRP:Yaz='E' Then Uzunluk#+=Drp:Uzunluk.
+        Rpq:Ntlk=DRP:Ntlk
+        Rpq:Ad[1]=DRP:Ad[1]
+        Rpq:Ad[2]=DRP:Ad[2]
+        Rpq:Ad[3]=All('=')
+        Rpq:Frml=DRP:Frml
+        Rpq:SiraNo=DRP:SiraNo
+        Rpq:Yaz=Drp:Yaz
+        Rpq:Formul=Drp:Formul
+        Rpq:Baglanti=Drp:Baglanti
+        Rpq:Filtre=Drp:Filtre
+        Rpq:SonYilYaz=DRP:SonYilYaz
+        RPq:Topla=DRP:Topla
+        Add(RapQ,+Rpq:Sirano)
+    End !DRapor
+    !Rap:Uzunluk=Uzunluk#; Put(Rapor)
+
+  ! Detay Satýr Adet Bilgisi Ýçin
+    Clear(RpqAdet)
+    DO CloseFiles
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME RapDiz
+PROTOTYPE '(String,*String,Short)'
+PARAMETERS '(Cins,Satir,QNo)'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  Uzunluk#=0;  Satir=''; Free(ExcelQ)
+  LOOP Q# = 1 To RECORDS(RapQ)
+    Get(RapQ,Q#); If Error() Then Break.
+    Case Cins
+    Of 'B' ! Baþlýk Satýrlar
+      If Rpq:Yaz = 'E'
+        Case Rpq:Ntlk
+          Of 'S'; Satir=Sub(Satir,1,Uzunluk#)&Left(Rpq:Ad[QNo],Rpq:Uzunluk)
+          Of 'D'; OrOf 'F'; Satir=Sub(Satir,1,Uzunluk#)&Right(Rpq:Ad[QNo],Rpq:Uzunluk)
+        End
+        If QNo=3 Then ExcQ:SDeger=Rpq:Ad[QNo] Else ExcQ:SDeger=Rpq:Ad[QNo].
+        ExcQ:Ntlk='S';ExcQ:Frml='@s'&Rpq:Uzunluk; Add(ExcelQ)
+      End
+    Of 'D' ! Detay Satýrlar
+      If Rpq:Yaz='E'
+        Case Rpq:Ntlk
+          Of 'S';
+            If Qno=1 Then Satir=Sub(Satir,1,Uzunluk#)&Format(Rpq:SDeger,Rpq:Frml)
+              ExcQ:Ntlk='S'; ExcQ:SDeger=Rpq:SDeger; ExcQ:Frml=Rpq:Frml; Add(ExcelQ)
+            Else ExcQ:Ntlk=Rpq:Ntlk; ExcQ:SDeger=''; ExcQ:Frml='@s1'; Add(ExcelQ).
+          Of 'D'; OrOf 'F'
+            If Qno=1 Then Satir=Sub(Satir,1,Uzunluk#)&Format(Rpq:Deger[QNo],Rpq:Frml)
+              ExcQ:Ntlk='D'; ExcQ:Deger=Rpq:Deger[QNo]; ExcQ:Frml=Rpq:Frml; Add(ExcelQ)
+            Else
+              If Rpq:Topla='E' Then Satir=Sub(Satir,1,Uzunluk#)&Format(Rpq:Deger[QNo],Rpq:Frml)
+                ExcQ:Ntlk='D'; ExcQ:Deger=Rpq:Deger[QNo]; ExcQ:Frml=Rpq:Frml; Add(ExcelQ)
+              Else ExcQ:Ntlk='D'; ExcQ:Deger=0; ExcQ:Frml='@n1b'; Add(ExcelQ).
+            End
+            If QNo<>10 And Rpq:Topla='E' Then Rpq:Deger[QNo+1]+=Rpq:Deger[Qno]; Rpq:Deger[Qno]=0; Put(Rapq).
+          Of 'T'
+            If Qno=1 Then Satir=Sub(Satir,1,Uzunluk#)&Format(Rpq:Deger[QNo],Rpq:Frml)
+              ExcQ:Ntlk='T'; ExcQ:Deger=Rpq:Deger[QNo]; ExcQ:Frml=Rpq:Frml; Add(ExcelQ)
+            Else ExcQ:Ntlk='S'; ExcQ:SDeger=''; ExcQ:Frml='@s1'; Add(ExcelQ).
+        End
+      End
+
+    Of 'S' ! Satir Sonu Satýrlar
+      If Rpq:Yaz = 'E' Then If Rpq:Topla='E' Then Satir=Sub(Satir,1,Uzunluk#)&Right(Rpq:Ad[QNo],Rpq:Uzunluk)..
+    End
+    If Rpq:Yaz='E' Then Uzunluk#+=Rpq:Uzunluk+1.
+  End
+  !Detay Satýrlarýnýn Adedini Bulur.(Personel Sayýsý Anlamýna Gelir)
+  RpqAdet[1]=1; RpqAdet[Qno+1]+=RpqAdet[Qno]; RpqAdet[1]=RpqAdet[Qno] ;RpqAdet[Qno]=0
+
+
+
+
+
+ Omit('***NK***')
+  Uzunluk#=0;  Satir=''; Free(ExcelQ)
+  LOOP Q# = 1 To RECORDS(RapQ)
+    Get(RapQ,Q#); If Error() Then Break.
+    Case Cins
+    Of 'B' ! Baþlýk Satýrlar
+      If Rpq:Yaz = 'E'
+        Case Rpq:Ntlk
+          Of 'S'; Satir=Sub(Satir,1,Uzunluk#)&Left(Rpq:Ad[QNo],Rpq:Uzunluk)
+          Of 'D'; OrOf 'F'; Satir=Sub(Satir,1,Uzunluk#)&Right(Rpq:Ad[QNo],Rpq:Uzunluk)
+        End
+        If QNo=3 Then ExcQ:SDeger=''''&Rpq:Ad[QNo] Else ExcQ:SDeger=''''&Rpq:Ad[QNo].
+        ExcQ:Ntlk='S';ExcQ:Frml='@s'&Rpq:Uzunluk; Add(ExcelQ)
+      End
+    Of 'D' ! Detay Satýrlar
+      If Rpq:Yaz='E'
+        Case Rpq:Ntlk
+          Of 'S';
+            If Qno=1 Then Satir=Sub(Satir,1,Uzunluk#)&Format(Rpq:SDeger,Rpq:Frml)
+              ExcQ:Ntlk='S'; ExcQ:SDeger=Rpq:SDeger; ExcQ:Frml=Rpq:Frml; Add(ExcelQ)
+            Else ExcQ:Ntlk=Rpq:Ntlk; ExcQ:SDeger=''; ExcQ:Frml='@s1'; Add(ExcelQ).
+          Of 'D'; OrOf 'F';
+            If Qno=1 Then Satir=Sub(Satir,1,Uzunluk#)&Format(Rpq:Deger[QNo],Rpq:Frml)
+              ExcQ:Ntlk='D'; ExcQ:Deger=Rpq:Deger[QNo]; ExcQ:Frml=Rpq:Frml; Add(ExcelQ)
+            Else
+              If Rpq:Topla='E' Then Satir=Sub(Satir,1,Uzunluk#)&Format(Rpq:Deger[QNo],Rpq:Frml)
+                ExcQ:Ntlk='D'; ExcQ:Deger=Rpq:Deger[QNo]; ExcQ:Frml=Rpq:Frml; Add(ExcelQ)
+              Else ExcQ:Ntlk='D'; ExcQ:Deger=0; ExcQ:Frml='@n1b'; Add(ExcelQ).
+            End
+            If QNo<>10 And Rpq:Topla='E' Then Rpq:Deger[QNo+1]+=Rpq:Deger[Qno]; Rpq:Deger[Qno]=0; Put(Rapq).
+        End
+      End
+    Of 'S' ! Satir Sonu Satýrlar
+      If Rpq:Yaz='E' And (Rpq:Topla='E') Then Satir=Sub(Satir,1,Uzunluk#)&Right(Rpq:Ad[QNo],Rpq:Uzunluk).
+
+    End
+    If Rpq:Yaz='E' Then Uzunluk#+=Rpq:Uzunluk+1.
+  End
+  !Detay Satýrlarýnýn Adedini Bulur.(Personel Sayýsý Anlamýna Gelir)
+  RpqAdet[1]=1; RpqAdet[Qno+1]+=RpqAdet[Qno]; RpqAdet[1]=RpqAdet[Qno] ;RpqAdet[Qno]=0
+
+ ***NK***
+
+
+
+
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME Zip
+PROTOTYPE '(String,String,*Long)'
+PARAMETERS '(ZipName,DataName,Sonuc)'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ZipArchiveName  STRING( 255 )
+
+Zip             ZipClassType
+ZipFilesQ       ZipResultType
+
+lFlag   ulong
+
+Window WINDOW('Zip - Dosya Sýkýþtýr'),AT(,,256,238),FONT('MS Sans Serif',8,,FONT:regular,CHARSET:TURKISH), |
+         CENTER,SYSTEM,GRAY,DOUBLE
+       STRING('Zip Dosyasý'),AT(5,2),USE(?String1)
+       ENTRY(@s255),AT(6,13,245,11),USE(ZipArchiveName),READONLY
+       PROGRESS,USE(?Progress1),AT(5,33,245,8),RANGE(0,100)
+       PROGRESS,USE(?Progress2),AT(5,54,245,8),RANGE(0,100)
+       LIST,AT(5,70,245,164),USE(?List1),VSCROLL,FROM(ZipFilesQ)
+       STRING(''),AT(5,43,246,10),USE(?Progress3)
+     END
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+    OPEN(Window)
+
+    Zip.Init( Window, ?Progress1, ?Progress2, ?Progress3, ?List1, ZipFilesQ, LIC:UserName, LIC:UserPin )
+    ZipArchiveName=ZipName
+    Zip.DefineFileSpec(DataName)
+    !Zip.SetArchiveComment('')
+    Zip.SetArchiveName( ZipArchiveName )
+    Zip.AddFlag( ZIP_QUIET_FLAG )
+    Zip.AddFlag( ZIP_AUTOMATICSPAN_FLAG )
+    !Zip.AddFlag( ZIP_STOREPATH_FLAG )
+    If Zip.SetCompressionLevel(9)=9.
+
+    Sonuc = Zip.LSZExecute( zm_ADD )
+    Zip.Kill(); CLOSE(Window)
+    If Sonuc Then Message('Hata Oluþtu: ' & Sonuc).
+
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[END]

@@ -1,0 +1,4851 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+[PROCEDURE]
+NAME Yasal
+[COMMON]
+FROM ABC Window
+CATEGORY 'Form'
+[DATA]
+[SCREENCONTROLS]
+! ENTRY(@s80),USE(CurrentTab)
+[REPORTCONTROLS]
+! STRING(@s80),USE(CurrentTab)
+CurrentTab               STRING(80)
+!!> GUID('6f7602f8-8b30-4fdd-adc8-016cf27c9387'),PICTURE(@s80)
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('38eb52cf-f3df-4f19-999d-1a20996c2310'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+ActionMessage            CSTRING(40)
+!!> GUID('144a044b-d680-49c9-b3dc-cb9c744a92e2')
+[SCREENCONTROLS]
+! PROMPT('Donem Basi Yil:'),USE(?DonemBasiYil:Prompt)
+! ENTRY(@d17),USE(DonemBasiYil)
+[REPORTCONTROLS]
+! STRING(@d17),USE(DonemBasiYil)
+DonemBasiYil             DATE
+!!> GUID('17b266fa-65ae-4daa-84c3-23ec4a485b50'),PROMPT('Donem Basi Yil:'),HEADER('Donem Basi Yil'),PICTURE(@d17)
+[SCREENCONTROLS]
+! PROMPT('Donem Sonu Yil:'),USE(?DonemSonuYil:Prompt)
+! ENTRY(@d17),USE(DonemSonuYil)
+[REPORTCONTROLS]
+! STRING(@d17),USE(DonemSonuYil)
+DonemSonuYil             DATE
+!!> GUID('9314a96a-b7d0-496e-94db-23bc7ace699e'),PROMPT('Donem Sonu Yil:'),HEADER('Donem Sonu Yil'),PICTURE(@d17)
+[FILES]
+[PRIMARY]
+Yasal
+[INSTANCE]
+2
+[OTHERS]
+Demirbas
+Tahakkuk
+[PROMPTS]
+%ButtonAction DEPEND %Control DEFAULT TIMES 7
+WHEN  ('') ('No Special Action')
+WHEN  ('?Button3') ('No Special Action')
+WHEN  ('?Cancel') ('No Special Action')
+WHEN  ('?OK') ('No Special Action')
+WHEN  ('?Yas:CalisilanYil') ('No Special Action')
+WHEN  ('?Yas:DonemBasiAy') ('No Special Action')
+WHEN  ('?Yas:DonemSonuAy') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Button3') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Button3') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('?Button3') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 1
+WHEN  ('?Button3') (0)
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 7
+WHEN  ('') ('25000')
+WHEN  ('?Button3') ('25000')
+WHEN  ('?Cancel') ('25000')
+WHEN  ('?OK') ('25000')
+WHEN  ('?Yas:CalisilanYil') ('25000')
+WHEN  ('?Yas:DonemBasiAy') ('25000')
+WHEN  ('?Yas:DonemSonuAy') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Button3') ('')
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 7
+WHEN  ('') ('None')
+WHEN  ('?Button3') ('None')
+WHEN  ('?Cancel') ('None')
+WHEN  ('?OK') ('None')
+WHEN  ('?Yas:CalisilanYil') ('None')
+WHEN  ('?Yas:DonemBasiAy') ('None')
+WHEN  ('?Yas:DonemSonuAy') ('None')
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 1
+WHEN  ('?Yas:CalisilanYil') ()
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('?Yas:CalisilanYil') ()
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 1
+WHEN  ('?Yas:CalisilanYil') ()
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('?Yas:CalisilanYil') ()
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%ClassItem UNIQUE DEFAULT  ('WindowToolbar', 'Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'Init {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('APIPrinterClass')
+WHEN  ('WindowToolbar') ('APIPrinterClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 1
+WHEN  ('?Button3') ()
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 1
+WHEN  ('?Button3') (0)
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Button3') ('')
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 1
+WHEN  ('?Button3') ()
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 7
+WHEN  ('') (1)
+WHEN  ('?Button3') (1)
+WHEN  ('?Cancel') (1)
+WHEN  ('?Yas:CalisilanYil') (1)
+WHEN  ('?Yas:DonemBasiAy') (1)
+WHEN  ('?Yas:DonemSonuAy') (1)
+WHEN  ('?Yas:SirketUnvani') (1)
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 6
+WHEN  ('')TIMES 0
+WHEN  ('?Button3')TIMES 0
+WHEN  ('?Cancel')TIMES 0
+WHEN  ('?Yas:CalisilanYil')TIMES 0
+WHEN  ('?Yas:DonemBasiAy')TIMES 0
+WHEN  ('?Yas:DonemSonuAy')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 6
+WHEN  ('')TIMES 0
+WHEN  ('?Button3')TIMES 0
+WHEN  ('?Cancel')TIMES 0
+WHEN  ('?Yas:CalisilanYil')TIMES 0
+WHEN  ('?Yas:DonemBasiAy')TIMES 0
+WHEN  ('?Yas:DonemSonuAy')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 6
+WHEN  ('')TIMES 0
+WHEN  ('?Button3')TIMES 0
+WHEN  ('?Cancel')TIMES 0
+WHEN  ('?Yas:CalisilanYil')TIMES 0
+WHEN  ('?Yas:DonemBasiAy')TIMES 0
+WHEN  ('?Yas:DonemSonuAy')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 6
+WHEN  ('')TIMES 0
+WHEN  ('?Button3')TIMES 0
+WHEN  ('?Cancel')TIMES 0
+WHEN  ('?Yas:CalisilanYil')TIMES 0
+WHEN  ('?Yas:DonemBasiAy')TIMES 0
+WHEN  ('?Yas:DonemSonuAy')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('Default')
+WHEN  ('?Cancel') ('Default')
+
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('Off')
+WHEN  ('?Cancel') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('')
+WHEN  ('?Cancel') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Cancel') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 2
+WHEN  ('') (-1)
+WHEN  ('?Cancel') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Cancel') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 2
+WHEN  ('') (-1)
+WHEN  ('?Cancel') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Cancel') (0)
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Cancel')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Cancel')TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('AIBtn0')
+WHEN  ('?Cancel') ('AIBtn12')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 2
+WHEN  ('') (1)
+WHEN  ('?Cancel') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('?Yas:SirketUnvani:Prompt')
+WHEN  ('?Cancel') ('?Yas:SirketUnvani:Prompt')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Cancel') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Cancel') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Cancel') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Cancel') (0)
+
+[EMBED]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?OK'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+Put(Yasal)
+[GROUP]
+PRIORITY 5000
+INSTANCE 4
+[END]
+[END]
+WHEN '?Yas:DonemBasiAy'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+If Yas:DonemBasiAy=1 Then Yas:DonemSonuAy=12
+Else Yas:DonemSonuAy=Yas:DonemBasiAy-1.; Display
+[END]
+[END]
+WHEN '?Button3'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+Clear(Dem:Record); Set(DEM:keykod,DEM:keykod)
+Loop
+  Next(Demirbas); If ErrorCode() Then Break.
+  DonemBasiYil=Date(Yas:DonemBasiAy,1,Year(DEM:AlimTarih));
+  DonemSonuYil=Date(Yas:DonemBasiAy,1,Year(DEM:AlimTarih)+1)-1
+  Tah:DemirbasKodu=DEM:DemirbasKodu; Access:Tahakkuk.Fetch(Tah:keykod)
+
+  If (DonemBasiYil>DEM:AlimTarih) Then If ~Tah:BuYilBirikmisAmortisman[1]>0 Then DEM:DonemYili=Year(DEM:AlimTarih)-1.
+     Dem:DonemAy=(12-Yas:DonemSonuAy)+Month(Dem:AlimTarih)
+  Else If ~Tah:BuYilBirikmisAmortisman[1]>0 Then DEM:DonemYili=Year(DEM:AlimTarih).
+      Dem:DonemAy=Month(Dem:AlimTarih)-Yas:DonemBasiAy+1.
+
+  ?Button3{Prop:Text}=Clip(DEM:DemirbasKodu)&' '&Clip(DEM:DemirbasAdi);Display
+  If Int(DEM:AmortismanEritmeYili)<DEM:AmortismanEritmeYili Then
+    DEM:AmortismanEritmeYili=Int(DEM:AmortismanEritmeYili)+1.
+   Put(Demirbas)
+End
+
+?Button3{Prop:Text}='Hepsine Uygulandý'; Display
+[END]
+[END]
+[END]
+EMBED %WindowManagerMethodCodeSection
+[INSTANCES]
+WHEN 'Init'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 8001
+PROPERTY:END
+Set(Yasal); Next(Yasal)
+[END]
+[END]
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 13
+WHEN  ('') (0)
+WHEN  ('?Button3') (0)
+WHEN  ('?Cancel') (0)
+WHEN  ('?OK') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?Yas:CalisilanYil') (0)
+WHEN  ('?Yas:CalisilanYil:Prompt') (0)
+WHEN  ('?Yas:DonemBasiAy') (0)
+WHEN  ('?Yas:DonemSonuAy') (0)
+WHEN  ('?Yas:SirketUnvani') (0)
+WHEN  ('?Yas:SirketUnvani:Prompt') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 13
+WHEN  ('') (1)
+WHEN  ('?Button3') (1)
+WHEN  ('?Cancel') (1)
+WHEN  ('?OK') (1)
+WHEN  ('?String1') (1)
+WHEN  ('?String2') (1)
+WHEN  ('?String3') (1)
+WHEN  ('?Yas:CalisilanYil') (1)
+WHEN  ('?Yas:CalisilanYil:Prompt') (1)
+WHEN  ('?Yas:DonemBasiAy') (1)
+WHEN  ('?Yas:DonemSonuAy') (1)
+WHEN  ('?Yas:SirketUnvani') (1)
+WHEN  ('?Yas:SirketUnvani:Prompt') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 13
+WHEN  ('') (1)
+WHEN  ('?Button3') (1)
+WHEN  ('?Cancel') (1)
+WHEN  ('?OK') (1)
+WHEN  ('?String1') (1)
+WHEN  ('?String2') (1)
+WHEN  ('?String3') (1)
+WHEN  ('?Yas:CalisilanYil') (1)
+WHEN  ('?Yas:CalisilanYil:Prompt') (1)
+WHEN  ('?Yas:DonemBasiAy') (1)
+WHEN  ('?Yas:DonemSonuAy') (1)
+WHEN  ('?Yas:SirketUnvani') (1)
+WHEN  ('?Yas:SirketUnvani:Prompt') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 13
+WHEN  ('') ('250000')
+WHEN  ('?Button3') ('250000')
+WHEN  ('?Cancel') ('250000')
+WHEN  ('?OK') ('250000')
+WHEN  ('?String1') ('250000')
+WHEN  ('?String2') ('250000')
+WHEN  ('?String3') ('250000')
+WHEN  ('?Yas:CalisilanYil') ('250000')
+WHEN  ('?Yas:CalisilanYil:Prompt') ('250000')
+WHEN  ('?Yas:DonemBasiAy') ('250000')
+WHEN  ('?Yas:DonemSonuAy') ('250000')
+WHEN  ('?Yas:SirketUnvani') ('250000')
+WHEN  ('?Yas:SirketUnvani:Prompt') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 13
+WHEN  ('') ('32000')
+WHEN  ('?Button3') ('32000')
+WHEN  ('?Cancel') ('32000')
+WHEN  ('?OK') ('32000')
+WHEN  ('?String1') ('32000')
+WHEN  ('?String2') ('32000')
+WHEN  ('?String3') ('32000')
+WHEN  ('?Yas:CalisilanYil') ('32000')
+WHEN  ('?Yas:CalisilanYil:Prompt') ('32000')
+WHEN  ('?Yas:DonemBasiAy') ('32000')
+WHEN  ('?Yas:DonemSonuAy') ('32000')
+WHEN  ('?Yas:SirketUnvani') ('32000')
+WHEN  ('?Yas:SirketUnvani:Prompt') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 13
+WHEN  ('') (0)
+WHEN  ('?Button3') (0)
+WHEN  ('?Cancel') (0)
+WHEN  ('?OK') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?Yas:CalisilanYil') (0)
+WHEN  ('?Yas:CalisilanYil:Prompt') (0)
+WHEN  ('?Yas:DonemBasiAy') (0)
+WHEN  ('?Yas:DonemSonuAy') (0)
+WHEN  ('?Yas:SirketUnvani') (0)
+WHEN  ('?Yas:SirketUnvani:Prompt') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 13
+WHEN  ('') ('')
+WHEN  ('?Button3') ('')
+WHEN  ('?Cancel') ('')
+WHEN  ('?OK') ('')
+WHEN  ('?String1') ('')
+WHEN  ('?String2') ('')
+WHEN  ('?String3') ('')
+WHEN  ('?Yas:CalisilanYil') ('')
+WHEN  ('?Yas:CalisilanYil:Prompt') ('')
+WHEN  ('?Yas:DonemBasiAy') ('')
+WHEN  ('?Yas:DonemSonuAy') ('')
+WHEN  ('?Yas:SirketUnvani') ('')
+WHEN  ('?Yas:SirketUnvani:Prompt') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 13
+WHEN  ('') (0)
+WHEN  ('?Button3') (0)
+WHEN  ('?Cancel') (0)
+WHEN  ('?OK') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?Yas:CalisilanYil') (0)
+WHEN  ('?Yas:CalisilanYil:Prompt') (0)
+WHEN  ('?Yas:DonemBasiAy') (0)
+WHEN  ('?Yas:DonemSonuAy') (0)
+WHEN  ('?Yas:SirketUnvani') (0)
+WHEN  ('?Yas:SirketUnvani:Prompt') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 13
+WHEN  ('') (0)
+WHEN  ('?Button3') (0)
+WHEN  ('?Cancel') (0)
+WHEN  ('?OK') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?Yas:CalisilanYil') (0)
+WHEN  ('?Yas:CalisilanYil:Prompt') (0)
+WHEN  ('?Yas:DonemBasiAy') (0)
+WHEN  ('?Yas:DonemSonuAy') (0)
+WHEN  ('?Yas:SirketUnvani') (0)
+WHEN  ('?Yas:SirketUnvani:Prompt') (0)
+
+%cNormal DEPEND %Control LONG TIMES 13
+WHEN  ('') (-1)
+WHEN  ('?Button3') (-1)
+WHEN  ('?Cancel') (-1)
+WHEN  ('?OK') (-1)
+WHEN  ('?String1') (-1)
+WHEN  ('?String2') (-1)
+WHEN  ('?String3') (-1)
+WHEN  ('?Yas:CalisilanYil') (-1)
+WHEN  ('?Yas:CalisilanYil:Prompt') (-1)
+WHEN  ('?Yas:DonemBasiAy') (-1)
+WHEN  ('?Yas:DonemSonuAy') (-1)
+WHEN  ('?Yas:SirketUnvani') (-1)
+WHEN  ('?Yas:SirketUnvani:Prompt') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 13
+WHEN  ('') (14342874)
+WHEN  ('?Button3') (14342874)
+WHEN  ('?Cancel') (14342874)
+WHEN  ('?OK') (14342874)
+WHEN  ('?String1') (14342874)
+WHEN  ('?String2') (14342874)
+WHEN  ('?String3') (14342874)
+WHEN  ('?Yas:CalisilanYil') (14342874)
+WHEN  ('?Yas:CalisilanYil:Prompt') (14342874)
+WHEN  ('?Yas:DonemBasiAy') (14342874)
+WHEN  ('?Yas:DonemSonuAy') (14342874)
+WHEN  ('?Yas:SirketUnvani') (14342874)
+WHEN  ('?Yas:SirketUnvani:Prompt') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 13
+WHEN  ('') (14342874)
+WHEN  ('?Button3') (14342874)
+WHEN  ('?Cancel') (14342874)
+WHEN  ('?OK') (14342874)
+WHEN  ('?String1') (14342874)
+WHEN  ('?String2') (14342874)
+WHEN  ('?String3') (14342874)
+WHEN  ('?Yas:CalisilanYil') (14342874)
+WHEN  ('?Yas:CalisilanYil:Prompt') (14342874)
+WHEN  ('?Yas:DonemBasiAy') (14342874)
+WHEN  ('?Yas:DonemSonuAy') (14342874)
+WHEN  ('?Yas:SirketUnvani') (14342874)
+WHEN  ('?Yas:SirketUnvani:Prompt') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 13
+WHEN  ('') (0)
+WHEN  ('?Button3') (0)
+WHEN  ('?Cancel') (0)
+WHEN  ('?OK') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?Yas:CalisilanYil') (0)
+WHEN  ('?Yas:CalisilanYil:Prompt') (0)
+WHEN  ('?Yas:DonemBasiAy') (0)
+WHEN  ('?Yas:DonemSonuAy') (0)
+WHEN  ('?Yas:SirketUnvani') (0)
+WHEN  ('?Yas:SirketUnvani:Prompt') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 13
+WHEN  ('') (14342874)
+WHEN  ('?Button3') (14342874)
+WHEN  ('?Cancel') (14342874)
+WHEN  ('?OK') (14342874)
+WHEN  ('?String1') (14342874)
+WHEN  ('?String2') (14342874)
+WHEN  ('?String3') (14342874)
+WHEN  ('?Yas:CalisilanYil') (14342874)
+WHEN  ('?Yas:CalisilanYil:Prompt') (14342874)
+WHEN  ('?Yas:DonemBasiAy') (14342874)
+WHEN  ('?Yas:DonemSonuAy') (14342874)
+WHEN  ('?Yas:SirketUnvani') (14342874)
+WHEN  ('?Yas:SirketUnvani:Prompt') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 13
+WHEN  ('') (0)
+WHEN  ('?Button3') (0)
+WHEN  ('?Cancel') (0)
+WHEN  ('?OK') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?Yas:CalisilanYil') (0)
+WHEN  ('?Yas:CalisilanYil:Prompt') (0)
+WHEN  ('?Yas:DonemBasiAy') (0)
+WHEN  ('?Yas:DonemSonuAy') (0)
+WHEN  ('?Yas:SirketUnvani') (0)
+WHEN  ('?Yas:SirketUnvani:Prompt') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 13
+WHEN  ('') (8421504)
+WHEN  ('?Button3') (8421504)
+WHEN  ('?Cancel') (8421504)
+WHEN  ('?OK') (8421504)
+WHEN  ('?String1') (8421504)
+WHEN  ('?String2') (8421504)
+WHEN  ('?String3') (8421504)
+WHEN  ('?Yas:CalisilanYil') (8421504)
+WHEN  ('?Yas:CalisilanYil:Prompt') (8421504)
+WHEN  ('?Yas:DonemBasiAy') (8421504)
+WHEN  ('?Yas:DonemSonuAy') (8421504)
+WHEN  ('?Yas:SirketUnvani') (8421504)
+WHEN  ('?Yas:SirketUnvani:Prompt') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 13
+WHEN  ('') (16777215)
+WHEN  ('?Button3') (16777215)
+WHEN  ('?Cancel') (16777215)
+WHEN  ('?OK') (16777215)
+WHEN  ('?String1') (16777215)
+WHEN  ('?String2') (16777215)
+WHEN  ('?String3') (16777215)
+WHEN  ('?Yas:CalisilanYil') (16777215)
+WHEN  ('?Yas:CalisilanYil:Prompt') (16777215)
+WHEN  ('?Yas:DonemBasiAy') (16777215)
+WHEN  ('?Yas:DonemSonuAy') (16777215)
+WHEN  ('?Yas:SirketUnvani') (16777215)
+WHEN  ('?Yas:SirketUnvani:Prompt') (16777215)
+
+[INSTANCE]
+INSTANCE 8
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[ADDITION]
+NAME ABC CleanCloseDownLocal
+[INSTANCE]
+INSTANCE 7
+OWNER 6
+[ADDITION]
+NAME ABC RecordValidation
+[INSTANCE]
+INSTANCE 1
+PROCPROP
+[PROMPTS]
+%ValidateOnAccept LONG  (1)
+%ValidateOnNonStopSelect LONG  (1)
+%ControlsExcluded MULTI LONG  ()
+%ControlToExclude DEPEND %ControlsExcluded DEFAULT TIMES 0
+
+%ValidateUsingColoration LONG  (0)
+%InvalidFieldColor LONG  (255)
+%InvalidPromptColor LONG  (255)
+%UseValidateMessage LONG  (0)
+%ValidationMessage DEFAULT  ('The values of Colored Fields are invalid, Please correct this information.')
+%MessageControl FIELD  ()
+[ADDITION]
+NAME ABC SaveButton
+[INSTANCE]
+INSTANCE 2
+PROCPROP
+[PROMPTS]
+%InsertAllowed LONG  (0)
+%InsertMessage DEFAULT  ('Record Will Be Added')
+%ChangeAllowed LONG  (1)
+%ChangeMessage DEFAULT  ('Record Will Be Changed')
+%DeleteAllowed LONG  (0)
+%DeleteMessage DEFAULT  ('Record Will Be Deleted')
+%MessageHeader LONG  (0)
+%ActionOnDelete DEFAULT  ('Standard Warning')
+%PrimingFields MULTI LONG  ()
+%PrimedField DEPEND %PrimingFields FIELD TIMES 0
+
+%PrimedValue DEPEND %PrimingFields DEFAULT TIMES 0
+
+%ActionOnCancel DEFAULT  ('Confirm Cancel')
+%MessageLocation DEFAULT  ('Status Bar')
+%MessageStatusSection DEFAULT  ('0')
+%HistoryKey DEFAULT  ('734')
+%AppendToTitle LONG  (1)
+%AppendToTitleID DEFAULT  ('!Yas:SirketUnvani')
+%AfterGoodInsert DEFAULT  ('Return to caller')
+%AskAfterAdd LONG  (0)
+%ViewMessage DEFAULT  ('View Record')
+[ADDITION]
+NAME ABC CancelButton
+[INSTANCE]
+INSTANCE 3
+[ADDITION]
+NAME ABC WindowResize
+[FIELDPROMPT]
+%ResizeAnchorTop DEPEND %Control LONG TIMES 0
+
+%ResizeAnchorLeft DEPEND %Control LONG TIMES 0
+
+%ResizeAnchorRight DEPEND %Control LONG TIMES 0
+
+%ResizeAnchorBottom DEPEND %Control LONG TIMES 0
+
+%ResizeAnchorGrowTop DEPEND %Control LONG TIMES 0
+
+%ResizeAnchorGrowLeft DEPEND %Control LONG TIMES 0
+
+%ResizeAnchorGrowRight DEPEND %Control LONG TIMES 0
+
+%ResizeAnchorGrowBottom DEPEND %Control LONG TIMES 0
+
+[INSTANCE]
+INSTANCE 5
+[PROMPTS]
+%UseAppStrategy DEFAULT  ('1')
+%AppStrategy DEFAULT  ('Surface')
+%RestrictMinSize LONG  (1)
+%WindowMinWidth DEFAULT  ('0')
+%WindowMaxWidth DEFAULT  ('0')
+%ClassItem UNIQUE DEFAULT  ('Default')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('WindowResizeClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(BYTE AppStrategy=AppStrategy:Resize,BYTE SetWindowMinSize=False,BYTE SetWindowMaxSize=False)')
+
+%WindowMinHeight DEFAULT  ('')
+%RestrictMaxSize LONG  (0)
+%WindowMaxHeight DEFAULT  ('')
+%OverrideControls MULTI LONG  ()
+%OverrideControl DEPEND %OverrideControls DEFAULT TIMES 0
+
+%HorizResize DEPEND %OverrideControls DEFAULT TIMES 0
+
+%VertResize DEPEND %OverrideControls DEFAULT TIMES 0
+
+%HorizPositional DEPEND %OverrideControls DEFAULT TIMES 0
+
+%VertPositional DEPEND %OverrideControls DEFAULT TIMES 0
+
+%AutoFindParents DEFAULT  ('Default')
+%DeferMoves DEFAULT  ('Default')
+%AutoTransparent DEFAULT  ('Default')
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('Resizer')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 1
+WHEN  ('Default') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 1
+WHEN  ('Default') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('APIPrinterClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 1
+WHEN  ('Default') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('Default')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('Default')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%DisableResize DEPEND %OverrideControls LONG TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('NO')
+
+[ADDITION]
+NAME ABC CloseCurrentWindow
+[INSTANCE]
+INSTANCE 4
+[ADDITION]
+NAME SmartZoom pSmartZoom
+[INSTANCE]
+INSTANCE 6
+OWNER 5
+[PROMPTS]
+%szDisableProc LONG  (0)
+[WINDOW]
+QuickWindow WINDOW('Yasal Tanýmlar'),AT(,,240,79),FONT('Microsoft Sans Serif',9,,,CHARSET:DEFAULT), |
+          RESIZE,GRAY,IMM,MDI,HLP('Yasal'),SYSTEM
+          PROMPT('Þirket Ünvaný'),AT(7,8),USE(?Yas:SirketUnvani:Prompt),#LINK(?Yas:SirketUnvani), |
+            #ORIG(?Yas:SirketUnvani:Prompt),#ORDINAL(1)
+          ENTRY(@s40),AT(67,8,164,10),USE(Yas:SirketUnvani),#LINK(?Yas:SirketUnvani:Prompt), |
+            #ORIG(Yas:SirketUnvani),#ORDINAL(2)
+          COMBO(@s2),AT(67,33,27,10),USE(Yas:DonemBasiAy),DROP(12,10),FORMAT('8L~Ay~@s2@'), |
+            FROM('1|2|3|4|5|6|7|8|9|10|11|12'),#FIELDS(Yas:DonemBasiAy),#ORIG(?Combo1),#ORDINAL(3)
+          COMBO(@s2),AT(97,33,27,10),USE(Yas:DonemSonuAy),DROP(12,10),FORMAT('8L~Ay~@s2@'), |
+            FROM('1|2|3|4|5|6|7|8|9|10|11|12'),#FIELDS(Yas:DonemSonuAy),#ORIG(?Combo2),#ORDINAL(4)
+          BUTTON('Dönemi Uygula'),AT(58,63,126,14),USE(?Button3),#ORIG(?Button3),#ORDINAL(5)
+          STRING('Çalýþýlan Dönem'),AT(7,33),USE(?String1),#ORIG(?String1),#ORDINAL(6)
+          STRING('Baþý'),AT(67,21),USE(?String2),#ORIG(?String2),#ORDINAL(7)
+          STRING('Sonu'),AT(97,21),USE(?String3),#ORIG(?String3),#ORDINAL(8)
+          PROMPT('Çalýþýlan Yýl'),AT(7,48),USE(?Yas:CalisilanYil:Prompt),#LINK(?Yas:CalisilanYil), |
+            #ORIG(?Yas:CalisilanYil:Prompt),#ORDINAL(9)
+          SPIN(@s4),AT(67,47,,10),USE(Yas:CalisilanYil),CENTER(1),RANGE(1900,2070),#LINK(?Yas:CalisilanYil:Prompt), |
+            #ORIG(Yas:CalisilanYil),#ORDINAL(10)
+          BUTTON('Tamam'),AT(7,63,45,14),USE(?OK),DEFAULT,#ORIG(?OK),#SEQ(2),#ORDINAL(11)
+          BUTTON('Ýptal'),AT(188,63,45,14),USE(?Cancel),#ORIG(?Cancel),#SEQ(3),#ORDINAL(12)
+        END
+
+[PROCEDURE]
+NAME Demirbasyyyy
+[COMMON]
+FROM ABC Process
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('47e6b700-c449-4a1a-acd0-d5a9f9b139b7'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+Progress:Thermometer     BYTE
+!!> GUID('0caee86a-619b-42d0-bbc4-d07d7f27a926')
+[FILES]
+[PRIMARY]
+Demirbas
+[INSTANCE]
+0
+[PROMPTS]
+%RangeLimitType DEFAULT  ('Current Value')
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar', 'Default', 'Process', 'ProgressMgr', |
+  'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('ReportManager')
+WHEN  ('Process') ('ProcessClass')
+WHEN  ('ProgressMgr') ('StepClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('')
+WHEN  ('Process') ('')
+WHEN  ('ProgressMgr') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 2
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+WHEN  ('Process') ('TakeRecord {13}PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('Process') ('ThisProcess')
+WHEN  ('ProgressMgr') ('ProgressMgr')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 4
+WHEN  ('Default') (1)
+WHEN  ('Process') (1)
+WHEN  ('ProgressMgr') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 4
+WHEN  ('Default') (1)
+WHEN  ('Process') (1)
+WHEN  ('ProgressMgr') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 4
+WHEN  ('Default') ('APIPrinterClass')
+WHEN  ('Process') ('APIPrinterClass')
+WHEN  ('ProgressMgr') ('APIPrinterClass')
+WHEN  ('WindowToolbar') ('APIPrinterClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 4
+WHEN  ('Default') (0)
+WHEN  ('Process') (0)
+WHEN  ('ProgressMgr') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Process')TIMES 0
+WHEN  ('ProgressMgr')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Process')TIMES 0
+WHEN  ('ProgressMgr')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%WindowMessage DEFAULT  ('')
+%ProcessAction DEFAULT  ('No record action')
+%RIProcessAction LONG  (0)
+%QueryDelete LONG  (0)
+%EnableQuickScan LONG  (1)
+%RecordFilter DEFAULT  ('')
+%AddSortFields DEFAULT  ('')
+%ApproxRecordCount DEFAULT  ('')
+%ManuallySetProgressLimits LONG  (0)
+%LowLimit DEFAULT  ('')
+%HighLimit DEFAULT  ('')
+%RangeField COMPONENT  ()
+%RangeLimit FIELD  ()
+%RangeLow FIELD  ()
+%RangeHigh FIELD  ()
+%RangeFile FILE  ()
+%HotFields MULTI LONG  ()
+%HotField DEPEND %HotFields FIELD TIMES 0
+
+%HotFieldBound DEPEND %HotFields LONG TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('No Special Action')
+WHEN  ('?Progress:Cancel') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 0
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%ButtonThread DEPEND %Control LONG TIMES 0
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('25000')
+WHEN  ('?Progress:Cancel') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('None')
+WHEN  ('?Progress:Cancel') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 2
+WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 4
+WHEN  ('Default') ('NO')
+WHEN  ('Process') ('NO')
+WHEN  ('ProgressMgr') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ReportDataSource DEFAULT  ('File')
+%UseProcessActionToTitle LONG  (1)
+%UseMRP LONG  (1)
+%MDIProgressWindow LONG  (0)
+%ProgressInterval DEFAULT  ('10')
+%AdditionalSortType DEFAULT  ('Manual')
+%AddSortFieldsAssisted MULTI LONG  ()
+%AddSortFieldAssisted DEPEND %AddSortFieldsAssisted FIELD TIMES 0
+
+%AddSortFieldAssistedOrder DEPEND %AddSortFieldsAssisted DEFAULT TIMES 0
+
+%AddConditionalSort MULTI LONG  ()
+%AddConditionalSortCondition DEPEND %AddConditionalSort DEFAULT TIMES 0
+
+%AddConditionalSortFieldsAssisted DEPEND %AddConditionalSort MULTI LONG TIMES 0
+
+%AddConditionalSortFieldAssisted DEPEND %AddConditionalSortFieldsAssisted FIELD TIMES 0
+
+%AddConditionalSortFieldAssistedOrder DEPEND %AddConditionalSortFieldsAssisted DEFAULT TIMES 0
+
+%AddSortDynamicNamed MULTI LONG  ()
+%AddSortFieldDinNameDescription DEPEND %AddSortDynamicNamed DEFAULT TIMES 0
+
+%AddSortFieldsDinName DEPEND %AddSortDynamicNamed MULTI LONG TIMES 0
+
+%AddSortFieldDinName DEPEND %AddSortFieldsDinName FIELD TIMES 0
+
+%AddSortFieldDinNameOrder DEPEND %AddSortFieldsDinName DEFAULT TIMES 0
+
+%AddSortFieldsDinSort MULTI LONG  ()
+%AddSortFieldDinSortDescription DEPEND %AddSortFieldsDinSort DEFAULT TIMES 0
+
+%AddSortFieldDinSort DEPEND %AddSortFieldsDinSort FIELD TIMES 0
+
+%AddSortFieldDinSortOrder DEPEND %AddSortFieldsDinSort DEFAULT TIMES 0
+
+%AdditionalSortWindowTitle DEFAULT  ('Select the Order')
+%AdditionalSortWindowMessage DEFAULT  ('Select the order to process the data.')
+%AdditionalSortWindowOkButtonText DEFAULT  ('&OK')
+%AdditionalSortWindowOkButtonIcon DEFAULT  ('SOK.ICO')
+%AdditionalSortWindowOkButtonCursor DEFAULT  ('')
+%AdditionalSortWindowOkButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowOkButtonMsg DEFAULT  ('Accept data and close the window')
+%AdditionalSortWindowOkButtonTip DEFAULT  ('Accept data and close the window')
+%AdditionalSortWindowOkButtonFlat LONG  (1)
+%AdditionalSortWindowOkButtonSkip LONG  (0)
+%AdditionalSortWindowOkButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowCancelButtonText DEFAULT  ('&Cancel')
+%AdditionalSortWindowCancelButtonIcon DEFAULT  ('SCANCEL.ICO')
+%AdditionalSortWindowCancelButtonCursor DEFAULT  ('')
+%AdditionalSortWindowCancelButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowCancelButtonMsg DEFAULT  ('Cancel operation')
+%AdditionalSortWindowCancelButtonTip DEFAULT  ('Cancel operation')
+%AdditionalSortWindowCancelButtonFlat LONG  (1)
+%AdditionalSortWindowCancelButtonSkip LONG  (0)
+%AdditionalSortWindowCancelButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowUpButtonText DEFAULT  ('')
+%AdditionalSortWindowUpButtonIcon DEFAULT  ('SUP.ICO')
+%AdditionalSortWindowUpButtonCursor DEFAULT  ('')
+%AdditionalSortWindowUpButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowUpButtonMsg DEFAULT  ('Move field up')
+%AdditionalSortWindowUpButtonTip DEFAULT  ('Move field up')
+%AdditionalSortWindowUpButtonFlat LONG  (1)
+%AdditionalSortWindowUpButtonSkip LONG  (0)
+%AdditionalSortWindowUpButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowDownButtonText DEFAULT  ('')
+%AdditionalSortWindowDownButtonIcon DEFAULT  ('SDOWN.ICO')
+%AdditionalSortWindowDownButtonCursor DEFAULT  ('')
+%AdditionalSortWindowDownButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowDownButtonMsg DEFAULT  ('Move field down')
+%AdditionalSortWindowDownButtonTip DEFAULT  ('Move field down')
+%AdditionalSortWindowDownButtonFlat LONG  (1)
+%AdditionalSortWindowDownButtonSkip LONG  (0)
+%AdditionalSortWindowDownButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowChOrdButtonText DEFAULT  ('')
+%AdditionalSortWindowChOrdButtonIcon DEFAULT  ('SCH-ORD.ICO')
+%AdditionalSortWindowChOrdButtonCursor DEFAULT  ('')
+%AdditionalSortWindowChOrdButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowChOrdButtonMsg DEFAULT  ('Change Order')
+%AdditionalSortWindowChOrdButtonTip DEFAULT  ('Change Order')
+%AdditionalSortWindowChOrdButtonFlat LONG  (1)
+%AdditionalSortWindowChOrdButtonSkip LONG  (0)
+%AdditionalSortWindowChOrdButtonJustification DEFAULT  ('Left')
+%HigherKeys MULTI LONG  ()
+%HigherKey DEPEND %HigherKeys COMPONENT TIMES 0
+
+%HigherKeyField DEPEND %HigherKeys FIELD TIMES 0
+
+%HigherKeyValueType DEPEND %HigherKeys DEFAULT TIMES 0
+
+%HigherKeyValueVariable DEPEND %HigherKeys FIELD TIMES 0
+
+%HigherKeyValueFixed DEPEND %HigherKeys DEFAULT TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
+
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?Progress:Thermometer')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AddSortFieldAssistedNoCase DEPEND %AddSortFieldsAssisted LONG TIMES 0
+
+%AddConditionalSortFieldAssistedNoCase DEPEND %AddConditionalSortFieldsAssisted LONG TIMES 0
+
+[EMBED]
+EMBED %ProcessActivity
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+DEM:YAmortismanEritmeYili=DEM:AmortismanEritmeYili
+DEM:YAmortismanAyirmaOrani=DEM:AmortismanAyirmaOrani
+DEM:AmortimanOranElleGir=False
+Put(Demirbas)
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
+WHEN  ('?Progress:PctText') (1)
+WHEN  ('?Progress:Thermometer') (1)
+WHEN  ('?Progress:UserString') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
+WHEN  ('?Progress:PctText') (1)
+WHEN  ('?Progress:Thermometer') (1)
+WHEN  ('?Progress:UserString') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('250000')
+WHEN  ('?Progress:Cancel') ('250000')
+WHEN  ('?Progress:PctText') ('250000')
+WHEN  ('?Progress:Thermometer') ('250000')
+WHEN  ('?Progress:UserString') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('32000')
+WHEN  ('?Progress:Cancel') ('32000')
+WHEN  ('?Progress:PctText') ('32000')
+WHEN  ('?Progress:Thermometer') ('32000')
+WHEN  ('?Progress:UserString') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('')
+WHEN  ('?Progress:Cancel') ('')
+WHEN  ('?Progress:PctText') ('')
+WHEN  ('?Progress:Thermometer') ('')
+WHEN  ('?Progress:UserString') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%cNormal DEPEND %Control LONG TIMES 5
+WHEN  ('') (-1)
+WHEN  ('?Progress:Cancel') (-1)
+WHEN  ('?Progress:PctText') (-1)
+WHEN  ('?Progress:Thermometer') (-1)
+WHEN  ('?Progress:UserString') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Progress:Cancel') (14342874)
+WHEN  ('?Progress:PctText') (14342874)
+WHEN  ('?Progress:Thermometer') (14342874)
+WHEN  ('?Progress:UserString') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Progress:Cancel') (14342874)
+WHEN  ('?Progress:PctText') (14342874)
+WHEN  ('?Progress:Thermometer') (14342874)
+WHEN  ('?Progress:UserString') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Progress:Cancel') (14342874)
+WHEN  ('?Progress:PctText') (14342874)
+WHEN  ('?Progress:Thermometer') (14342874)
+WHEN  ('?Progress:UserString') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 5
+WHEN  ('') (8421504)
+WHEN  ('?Progress:Cancel') (8421504)
+WHEN  ('?Progress:PctText') (8421504)
+WHEN  ('?Progress:Thermometer') (8421504)
+WHEN  ('?Progress:UserString') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 5
+WHEN  ('') (16777215)
+WHEN  ('?Progress:Cancel') (16777215)
+WHEN  ('?Progress:PctText') (16777215)
+WHEN  ('?Progress:Thermometer') (16777215)
+WHEN  ('?Progress:UserString') (16777215)
+
+[INSTANCE]
+INSTANCE 3
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[ADDITION]
+NAME ABC CleanCloseDownLocal
+[INSTANCE]
+INSTANCE 2
+OWNER 6
+[ADDITION]
+NAME SmartZoom pSmartZoom
+[INSTANCE]
+INSTANCE 1
+OWNER 5
+[PROMPTS]
+%szDisableProc LONG  (0)
+[WINDOW]
+ProgressWindow WINDOW('Progress...'),AT(,,142,59),DOUBLE,CENTER,GRAY,TIMER(1)
+          PROGRESS,AT(15,15,111,12),USE(Progress:Thermometer),RANGE(0,100),#ORIG(Progress:Thermometer)
+          STRING(''),AT(0,3,141,10),USE(?Progress:UserString),CENTER,#ORIG(?Progress:UserString)
+          STRING(''),AT(0,30,141,10),USE(?Progress:PctText),CENTER,#ORIG(?Progress:PctText)
+          BUTTON('Cancel'),AT(45,42,50,15),USE(?Progress:Cancel),#ORIG(?Progress:Cancel)
+        END
+
+[PROCEDURE]
+NAME Demirbasxxxx
+[COMMON]
+FROM ABC Process
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('cc518fc4-4d4d-4e05-acd7-e2218538cda3'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+Progress:Thermometer     BYTE
+!!> GUID('43e35022-ec47-4de2-9c1d-2fe791111d95')
+[FILES]
+[PRIMARY]
+Demirbas
+[INSTANCE]
+0
+[PROMPTS]
+%RangeLimitType DEFAULT  ('Current Value')
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar', 'Default', 'Process', 'ProgressMgr', |
+  'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('ReportManager')
+WHEN  ('Process') ('ProcessClass')
+WHEN  ('ProgressMgr') ('StepClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('')
+WHEN  ('Process') ('')
+WHEN  ('ProgressMgr') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 2
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+WHEN  ('Process') ('TakeRecord {13}PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('Process') ('ThisProcess')
+WHEN  ('ProgressMgr') ('ProgressMgr')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 4
+WHEN  ('Default') (1)
+WHEN  ('Process') (1)
+WHEN  ('ProgressMgr') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 4
+WHEN  ('Default') (1)
+WHEN  ('Process') (1)
+WHEN  ('ProgressMgr') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 4
+WHEN  ('Default') ('APIPrinterClass')
+WHEN  ('Process') ('APIPrinterClass')
+WHEN  ('ProgressMgr') ('APIPrinterClass')
+WHEN  ('WindowToolbar') ('APIPrinterClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 4
+WHEN  ('Default') (0)
+WHEN  ('Process') (0)
+WHEN  ('ProgressMgr') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Process')TIMES 0
+WHEN  ('ProgressMgr')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Process')TIMES 0
+WHEN  ('ProgressMgr')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%WindowMessage DEFAULT  ('')
+%ProcessAction DEFAULT  ('No record action')
+%RIProcessAction LONG  (0)
+%QueryDelete LONG  (0)
+%EnableQuickScan LONG  (1)
+%RecordFilter DEFAULT  ('')
+%AddSortFields DEFAULT  ('')
+%ApproxRecordCount DEFAULT  ('')
+%ManuallySetProgressLimits LONG  (0)
+%LowLimit DEFAULT  ('')
+%HighLimit DEFAULT  ('')
+%RangeField COMPONENT  ()
+%RangeLimit FIELD  ()
+%RangeLow FIELD  ()
+%RangeHigh FIELD  ()
+%RangeFile FILE  ()
+%HotFields MULTI LONG  ()
+%HotField DEPEND %HotFields FIELD TIMES 0
+
+%HotFieldBound DEPEND %HotFields LONG TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('No Special Action')
+WHEN  ('?Progress:Cancel') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 0
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%ButtonThread DEPEND %Control LONG TIMES 0
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('25000')
+WHEN  ('?Progress:Cancel') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('None')
+WHEN  ('?Progress:Cancel') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 2
+WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 4
+WHEN  ('Default') ('NO')
+WHEN  ('Process') ('NO')
+WHEN  ('ProgressMgr') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ReportDataSource DEFAULT  ('File')
+%UseProcessActionToTitle LONG  (1)
+%UseMRP LONG  (1)
+%MDIProgressWindow LONG  (0)
+%ProgressInterval DEFAULT  ('10')
+%AdditionalSortType DEFAULT  ('Manual')
+%AddSortFieldsAssisted MULTI LONG  ()
+%AddSortFieldAssisted DEPEND %AddSortFieldsAssisted FIELD TIMES 0
+
+%AddSortFieldAssistedOrder DEPEND %AddSortFieldsAssisted DEFAULT TIMES 0
+
+%AddConditionalSort MULTI LONG  ()
+%AddConditionalSortCondition DEPEND %AddConditionalSort DEFAULT TIMES 0
+
+%AddConditionalSortFieldsAssisted DEPEND %AddConditionalSort MULTI LONG TIMES 0
+
+%AddConditionalSortFieldAssisted DEPEND %AddConditionalSortFieldsAssisted FIELD TIMES 0
+
+%AddConditionalSortFieldAssistedOrder DEPEND %AddConditionalSortFieldsAssisted DEFAULT TIMES 0
+
+%AddSortDynamicNamed MULTI LONG  ()
+%AddSortFieldDinNameDescription DEPEND %AddSortDynamicNamed DEFAULT TIMES 0
+
+%AddSortFieldsDinName DEPEND %AddSortDynamicNamed MULTI LONG TIMES 0
+
+%AddSortFieldDinName DEPEND %AddSortFieldsDinName FIELD TIMES 0
+
+%AddSortFieldDinNameOrder DEPEND %AddSortFieldsDinName DEFAULT TIMES 0
+
+%AddSortFieldsDinSort MULTI LONG  ()
+%AddSortFieldDinSortDescription DEPEND %AddSortFieldsDinSort DEFAULT TIMES 0
+
+%AddSortFieldDinSort DEPEND %AddSortFieldsDinSort FIELD TIMES 0
+
+%AddSortFieldDinSortOrder DEPEND %AddSortFieldsDinSort DEFAULT TIMES 0
+
+%AdditionalSortWindowTitle DEFAULT  ('Select the Order')
+%AdditionalSortWindowMessage DEFAULT  ('Select the order to process the data.')
+%AdditionalSortWindowOkButtonText DEFAULT  ('&OK')
+%AdditionalSortWindowOkButtonIcon DEFAULT  ('SOK.ICO')
+%AdditionalSortWindowOkButtonCursor DEFAULT  ('')
+%AdditionalSortWindowOkButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowOkButtonMsg DEFAULT  ('Accept data and close the window')
+%AdditionalSortWindowOkButtonTip DEFAULT  ('Accept data and close the window')
+%AdditionalSortWindowOkButtonFlat LONG  (1)
+%AdditionalSortWindowOkButtonSkip LONG  (0)
+%AdditionalSortWindowOkButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowCancelButtonText DEFAULT  ('&Cancel')
+%AdditionalSortWindowCancelButtonIcon DEFAULT  ('SCANCEL.ICO')
+%AdditionalSortWindowCancelButtonCursor DEFAULT  ('')
+%AdditionalSortWindowCancelButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowCancelButtonMsg DEFAULT  ('Cancel operation')
+%AdditionalSortWindowCancelButtonTip DEFAULT  ('Cancel operation')
+%AdditionalSortWindowCancelButtonFlat LONG  (1)
+%AdditionalSortWindowCancelButtonSkip LONG  (0)
+%AdditionalSortWindowCancelButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowUpButtonText DEFAULT  ('')
+%AdditionalSortWindowUpButtonIcon DEFAULT  ('SUP.ICO')
+%AdditionalSortWindowUpButtonCursor DEFAULT  ('')
+%AdditionalSortWindowUpButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowUpButtonMsg DEFAULT  ('Move field up')
+%AdditionalSortWindowUpButtonTip DEFAULT  ('Move field up')
+%AdditionalSortWindowUpButtonFlat LONG  (1)
+%AdditionalSortWindowUpButtonSkip LONG  (0)
+%AdditionalSortWindowUpButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowDownButtonText DEFAULT  ('')
+%AdditionalSortWindowDownButtonIcon DEFAULT  ('SDOWN.ICO')
+%AdditionalSortWindowDownButtonCursor DEFAULT  ('')
+%AdditionalSortWindowDownButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowDownButtonMsg DEFAULT  ('Move field down')
+%AdditionalSortWindowDownButtonTip DEFAULT  ('Move field down')
+%AdditionalSortWindowDownButtonFlat LONG  (1)
+%AdditionalSortWindowDownButtonSkip LONG  (0)
+%AdditionalSortWindowDownButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowChOrdButtonText DEFAULT  ('')
+%AdditionalSortWindowChOrdButtonIcon DEFAULT  ('SCH-ORD.ICO')
+%AdditionalSortWindowChOrdButtonCursor DEFAULT  ('')
+%AdditionalSortWindowChOrdButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowChOrdButtonMsg DEFAULT  ('Change Order')
+%AdditionalSortWindowChOrdButtonTip DEFAULT  ('Change Order')
+%AdditionalSortWindowChOrdButtonFlat LONG  (1)
+%AdditionalSortWindowChOrdButtonSkip LONG  (0)
+%AdditionalSortWindowChOrdButtonJustification DEFAULT  ('Left')
+%HigherKeys MULTI LONG  ()
+%HigherKey DEPEND %HigherKeys COMPONENT TIMES 0
+
+%HigherKeyField DEPEND %HigherKeys FIELD TIMES 0
+
+%HigherKeyValueType DEPEND %HigherKeys DEFAULT TIMES 0
+
+%HigherKeyValueVariable DEPEND %HigherKeys FIELD TIMES 0
+
+%HigherKeyValueFixed DEPEND %HigherKeys DEFAULT TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
+
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?Progress:Thermometer')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AddSortFieldAssistedNoCase DEPEND %AddSortFieldsAssisted LONG TIMES 0
+
+%AddConditionalSortFieldAssistedNoCase DEPEND %AddConditionalSortFieldsAssisted LONG TIMES 0
+
+[EMBED]
+EMBED %ProcessActivity
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  If 2004 > DEM:DonemYili
+    No#=(2003-DEM:DonemYili)+1
+    DEM:YAmortismanEritmeYili=DEM:AmortismanEritmeYili-No#
+!    If DEM:YAmortismanEritmeYili<=0 Then DEM:YAmortismanEritmeYili=DEM:AmortismanEritmeYili
+!    Else
+!      i$=0
+!      Loop i#=1 To DEM:YAmortismanEritmeYili-1
+!        DEM:YAmortismanAyirmaOrani[i#]=Round(100/DEM:YAmortismanEritmeYili,0.01)
+!        i$+=DEM:YAmortismanAyirmaOrani[i#]
+!      End
+!      DEM:YAmortismanAyirmaOrani[DEM:YAmortismanEritmeYili]=100-i$
+!
+!    End
+    Put(Demirbas)
+  End
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
+WHEN  ('?Progress:PctText') (1)
+WHEN  ('?Progress:Thermometer') (1)
+WHEN  ('?Progress:UserString') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
+WHEN  ('?Progress:PctText') (1)
+WHEN  ('?Progress:Thermometer') (1)
+WHEN  ('?Progress:UserString') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('250000')
+WHEN  ('?Progress:Cancel') ('250000')
+WHEN  ('?Progress:PctText') ('250000')
+WHEN  ('?Progress:Thermometer') ('250000')
+WHEN  ('?Progress:UserString') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('32000')
+WHEN  ('?Progress:Cancel') ('32000')
+WHEN  ('?Progress:PctText') ('32000')
+WHEN  ('?Progress:Thermometer') ('32000')
+WHEN  ('?Progress:UserString') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('')
+WHEN  ('?Progress:Cancel') ('')
+WHEN  ('?Progress:PctText') ('')
+WHEN  ('?Progress:Thermometer') ('')
+WHEN  ('?Progress:UserString') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%cNormal DEPEND %Control LONG TIMES 5
+WHEN  ('') (-1)
+WHEN  ('?Progress:Cancel') (-1)
+WHEN  ('?Progress:PctText') (-1)
+WHEN  ('?Progress:Thermometer') (-1)
+WHEN  ('?Progress:UserString') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Progress:Cancel') (14342874)
+WHEN  ('?Progress:PctText') (14342874)
+WHEN  ('?Progress:Thermometer') (14342874)
+WHEN  ('?Progress:UserString') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Progress:Cancel') (14342874)
+WHEN  ('?Progress:PctText') (14342874)
+WHEN  ('?Progress:Thermometer') (14342874)
+WHEN  ('?Progress:UserString') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Progress:Cancel') (14342874)
+WHEN  ('?Progress:PctText') (14342874)
+WHEN  ('?Progress:Thermometer') (14342874)
+WHEN  ('?Progress:UserString') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 5
+WHEN  ('') (8421504)
+WHEN  ('?Progress:Cancel') (8421504)
+WHEN  ('?Progress:PctText') (8421504)
+WHEN  ('?Progress:Thermometer') (8421504)
+WHEN  ('?Progress:UserString') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 5
+WHEN  ('') (16777215)
+WHEN  ('?Progress:Cancel') (16777215)
+WHEN  ('?Progress:PctText') (16777215)
+WHEN  ('?Progress:Thermometer') (16777215)
+WHEN  ('?Progress:UserString') (16777215)
+
+[INSTANCE]
+INSTANCE 3
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[ADDITION]
+NAME ABC CleanCloseDownLocal
+[INSTANCE]
+INSTANCE 2
+OWNER 6
+[ADDITION]
+NAME SmartZoom pSmartZoom
+[INSTANCE]
+INSTANCE 1
+OWNER 5
+[PROMPTS]
+%szDisableProc LONG  (0)
+[WINDOW]
+ProgressWindow WINDOW('Progress...'),AT(,,142,59),DOUBLE,CENTER,GRAY,TIMER(1)
+          PROGRESS,AT(15,15,111,12),USE(Progress:Thermometer),RANGE(0,100),#ORIG(Progress:Thermometer)
+          STRING(''),AT(0,3,141,10),USE(?Progress:UserString),CENTER,#ORIG(?Progress:UserString)
+          STRING(''),AT(0,30,141,10),USE(?Progress:PctText),CENTER,#ORIG(?Progress:PctText)
+          BUTTON('Cancel'),AT(45,42,50,15),USE(?Progress:Cancel),#ORIG(?Progress:Cancel)
+        END
+
+[PROCEDURE]
+NAME ExcelDemAlimTarihOku
+[COMMON]
+DESCRIPTION 'Demirbaþ Bilgileri '
+FROM ABC Window
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('d37931ef-6966-4313-8dcb-c89011647e5d'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+[SCREENCONTROLS]
+! PROMPT('Line 1:'),USE(?Line1:Prompt)
+! ENTRY(@s64),USE(Line1)
+[REPORTCONTROLS]
+! STRING(@s64),USE(Line1)
+Line1                    STRING(64)
+!!> GUID('1ce03dfa-58fb-48d6-a4c1-050c0e4c2228'),PROMPT('Line 1:'),HEADER('Line 1'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Line 2:'),USE(?Line2:Prompt)
+! ENTRY(@s64),USE(Line2)
+[REPORTCONTROLS]
+! STRING(@s64),USE(Line2)
+Line2                    STRING(64)
+!!> GUID('72c16a22-f2e0-4fb3-a0aa-76fc53305fe7'),PROMPT('Line 2:'),HEADER('Line 2'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Dde Channel:'),USE(?DdeChannel:Prompt)
+! ENTRY(@n-14),USE(DdeChannel),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(DdeChannel),RIGHT(1)
+DdeChannel               LONG
+!!> GUID('6a2629e4-49e1-455a-8136-16e6e6d9bc1f'),PROMPT('Dde Channel:'),HEADER('Dde Channel'),PICTURE(@n-14),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Dep Kod:'),USE(?DepKod:Prompt)
+! ENTRY(@s19),USE(DepKod)
+[REPORTCONTROLS]
+! STRING(@s19),USE(DepKod)
+DepKod                   CSTRING(20)
+!!> GUID('a4379997-e13b-4401-9af6-b5dd30e06623'),PROMPT('Dep Kod:'),HEADER('Dep Kod'),PICTURE(@s19)
+[SCREENCONTROLS]
+! PROMPT('Per Kod:'),USE(?PerKod:Prompt)
+! ENTRY(@s19),USE(PerKod)
+[REPORTCONTROLS]
+! STRING(@s19),USE(PerKod)
+PerKod                   CSTRING(20)
+!!> GUID('64b899c3-702d-4af0-8e3a-42d60fd33a1a'),PROMPT('Per Kod:'),HEADER('Per Kod'),PICTURE(@s19)
+[SCREENCONTROLS]
+! PROMPT('XR ow:'),USE(?XRow:Prompt)
+! ENTRY(@n-7),USE(XRow),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(XRow),RIGHT(1)
+XRow                     SHORT
+!!> GUID('c88bfaab-26d3-4f7b-90a6-53c4acd77ef6'),PROMPT('XR ow:'),HEADER('XR ow'),PICTURE(@n-7),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Ad:'),USE(?Ad:Prompt)
+! ENTRY(@s255),USE(Ad)
+[REPORTCONTROLS]
+! STRING(@s255),USE(Ad)
+Ad                       STRING(255)
+!!> GUID('80b9c35f-eaef-4718-add5-81814551ffaa'),PROMPT('Ad:'),HEADER('Ad'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Sayi:'),USE(?Sayi:Prompt)
+! ENTRY(@n10.2),USE(Sayi),DECIMAL(14)
+[REPORTCONTROLS]
+! STRING(@n10.2),USE(Sayi),DECIMAL(14)
+Sayi                     REAL
+!!> GUID('14de3cd5-e8bb-4dca-acda-1d640bbe7289'),PROMPT('Sayi:'),HEADER('Sayi'),PICTURE(@n10.2),JUSTIFY(DECIMAL,14)
+[FILES]
+[OTHERS]
+Demirbas
+Yasal
+[PROMPTS]
+%ClassItem UNIQUE DEFAULT  ('WindowToolbar', 'Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('AsciiFileClass')
+WHEN  ('WindowToolbar') ('AsciiFileClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('No Special Action')
+WHEN  ('?Button2') ('No Special Action')
+WHEN  ('?Close') ('No Special Action')
+WHEN  ('?Line1') ('No Special Action')
+WHEN  ('?Line2') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Button2') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Button2') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('?Button2') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 1
+WHEN  ('?Button2') (0)
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('25000')
+WHEN  ('?Button2') ('25000')
+WHEN  ('?Close') ('25000')
+WHEN  ('?Line1') ('25000')
+WHEN  ('?Line2') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Button2') ('')
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 1
+WHEN  ('?Button2') ()
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 1
+WHEN  ('?Button2') (0)
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('None')
+WHEN  ('?Button2') ('None')
+WHEN  ('?Close') ('None')
+WHEN  ('?Line1') ('None')
+WHEN  ('?Line2') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Button2') ('')
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 1
+WHEN  ('?Button2') ()
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('?Button2') (1)
+WHEN  ('?Close') (1)
+WHEN  ('?Line1') (1)
+WHEN  ('?Line2') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 5
+WHEN  ('')TIMES 0
+WHEN  ('?Button2')TIMES 0
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Line1')TIMES 0
+WHEN  ('?Line2')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 5
+WHEN  ('')TIMES 0
+WHEN  ('?Button2')TIMES 0
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Line1')TIMES 0
+WHEN  ('?Line2')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 5
+WHEN  ('')TIMES 0
+WHEN  ('?Button2')TIMES 0
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Line1')TIMES 0
+WHEN  ('?Line2')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 5
+WHEN  ('')TIMES 0
+WHEN  ('?Button2')TIMES 0
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Line1')TIMES 0
+WHEN  ('?Line2')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
+
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?Line1')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+[EMBED]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?Button2'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+Set(Yasal);Next(Yasal)
+If Clip(PrgPath)='' Then ExcelFile=Clip(Path())&'\Dat\OMaliyet.xls' Else ExcelFile=Clip(PrgPath)&'\OMaliyet.xls'.
+If ~Exists(ExcelFile) Then Message(ExcelFile&'<10>Dosyasý Bulunamýyor.!');Return Level:Fatal.
+
+OleObj=Create(0,Create:ole); OleObj{Prop:Create}='Excel.Sheet'; OleObj{'Application.Visible'}=True
+if OleObj{'Application.Name'}='No ole automation interface' Then Destroy(OleObj); Return level:fatal.
+OleObj{'Application.WorkBooks.Open("'&ExcelFile&'")'}
+TShtName=OleObj{'Application.ActiveWorkBook.ActiveSheet.Name'}; TWrkbName=OleObj{'Application.ActiveWorkBook.Name'}
+
+Line1='Özel Maliyet Excel Demirbaþ Bilgileri Aktarýlýyor'
+XRow=5;
+loop
+  Clear(Dem:Record)
+  DEM:DemirbasKodu=OleObj{'Application.WorkBooks("'&TWrkbName&'").WorkSheets("'&TShtName&'").Cells('&XRow&','&1&').Value'}
+  If DEM:DemirbasKodu='' Then Break.;
+  DEM:DemirbasAdi=OleObj{'Application.WorkBooks("'&TWrkbName&'").WorkSheets("'&TShtName&'").Cells('&XRow&','&2&').Value'}
+  DEM:AlimTarih=OleObj{'Application.WorkBooks("'&TWrkbName&'").WorkSheets("'&TShtName&'").Cells('&XRow&','&3&').Value'}+36161
+  DEM:BirimTutar=OleObj{'Application.WorkBooks("'&TWrkbName&'").WorkSheets("'&TShtName&'").Cells('&XRow&','&4&').Value'}
+  DEM:Miktar=OleObj{'Application.WorkBooks("'&TWrkbName&'").WorkSheets("'&TShtName&'").Cells('&XRow&','&5&').Value'}
+  DEM:Tutar=OleObj{'Application.WorkBooks("'&TWrkbName&'").WorkSheets("'&TShtName&'").Cells('&XRow&','&6&').Value'}
+  DEM:AmortismanEritmeYili=OleObj{'Application.WorkBooks("'&TWrkbName&'").WorkSheets("'&TShtName&'").Cells('&XRow&','&7&').Value'}
+  DEM:DonemYili=OleObj{'Application.WorkBooks("'&TWrkbName&'").WorkSheets("'&TShtName&'").Cells('&XRow&','&8&').Value'}
+  DEM:DonemAy=OleObj{'Application.WorkBooks("'&TWrkbName&'").WorkSheets("'&TShtName&'").Cells('&XRow&','&9&').Value'}
+  DEM:AmortismanAyirmaSekli='D'
+  DEM:HesapSekli='N'
+  DEM:DemirbasGrubu='O'
+  DEM:KalanMiktar=DEM:Miktar
+  Loop i#=1 To DEM:AmortismanEritmeYili-1
+    DEM:AmortismanAyirmaOrani[i#]=(Int((100/DEM:AmortismanEritmeYili)*100))/100
+    i$+=DEM:AmortismanAyirmaOrani[i#]
+  End
+  If i$=100 Then DEM:AmortismanAyirmaOrani[DEM:AmortismanEritmeYili]=100
+  Else DEM:AmortismanAyirmaOrani[DEM:AmortismanEritmeYili]=100-i$.
+
+  Add(Demirbas); XRow+=1; Line2=DEM:DemirbasKodu&'/'&DEM:DemirbasAdi; Display
+End
+OleObj{Prop:DeActivate}; Destroy(OleObj)
+Post(Event:CloseWindow)
+[END]
+[END]
+[END]
+EMBED %LocalDataAfterClasses
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+OleObj  Long
+TShtName    CString(64)
+TWrkbName   CString(64)
+ExcelFile   CString(200)
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?Line1') (0)
+WHEN  ('?Line2') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('?Button2') (1)
+WHEN  ('?Close') (1)
+WHEN  ('?Line1') (1)
+WHEN  ('?Line2') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('?Button2') (1)
+WHEN  ('?Close') (1)
+WHEN  ('?Line1') (1)
+WHEN  ('?Line2') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('250000')
+WHEN  ('?Button2') ('250000')
+WHEN  ('?Close') ('250000')
+WHEN  ('?Line1') ('250000')
+WHEN  ('?Line2') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('32000')
+WHEN  ('?Button2') ('32000')
+WHEN  ('?Close') ('32000')
+WHEN  ('?Line1') ('32000')
+WHEN  ('?Line2') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?Line1') (0)
+WHEN  ('?Line2') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('')
+WHEN  ('?Button2') ('')
+WHEN  ('?Close') ('')
+WHEN  ('?Line1') ('')
+WHEN  ('?Line2') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?Line1') (0)
+WHEN  ('?Line2') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?Line1') (0)
+WHEN  ('?Line2') (0)
+
+%cNormal DEPEND %Control LONG TIMES 5
+WHEN  ('') (-1)
+WHEN  ('?Button2') (-1)
+WHEN  ('?Close') (-1)
+WHEN  ('?Line1') (-1)
+WHEN  ('?Line2') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Button2') (14342874)
+WHEN  ('?Close') (14342874)
+WHEN  ('?Line1') (14342874)
+WHEN  ('?Line2') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Button2') (14342874)
+WHEN  ('?Close') (14342874)
+WHEN  ('?Line1') (14342874)
+WHEN  ('?Line2') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?Line1') (0)
+WHEN  ('?Line2') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Button2') (14342874)
+WHEN  ('?Close') (14342874)
+WHEN  ('?Line1') (14342874)
+WHEN  ('?Line2') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?Line1') (0)
+WHEN  ('?Line2') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 5
+WHEN  ('') (8421504)
+WHEN  ('?Button2') (8421504)
+WHEN  ('?Close') (8421504)
+WHEN  ('?Line1') (8421504)
+WHEN  ('?Line2') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 5
+WHEN  ('') (16777215)
+WHEN  ('?Button2') (16777215)
+WHEN  ('?Close') (16777215)
+WHEN  ('?Line1') (16777215)
+WHEN  ('?Line2') (16777215)
+
+[INSTANCE]
+INSTANCE 4
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[ADDITION]
+NAME ABC CleanCloseDownLocal
+[INSTANCE]
+INSTANCE 3
+OWNER 6
+[ADDITION]
+NAME ABC CloseButton
+[INSTANCE]
+INSTANCE 1
+[ADDITION]
+NAME SmartZoom pSmartZoom
+[INSTANCE]
+INSTANCE 2
+OWNER 5
+[PROMPTS]
+%szDisableProc LONG  (0)
+[WINDOW]
+Window  WINDOW('Exel Sicil Bilgisi Transfer Ekraný'),AT(,,239,45),FONT('MS Sans Serif',8,, |
+          FONT:regular),DOUBLE,CENTER,GRAY,IMM,MDI,MODAL,SYSTEM
+          STRING(@s64),AT(4,6,233,10),USE(Line1),#ORIG(?String1)
+          STRING(@s64),AT(4,17,233,10),USE(Line2),#ORIG(?String2)
+          BUTTON('Excel Oku'),AT(3,30,45,14),USE(?Button2),FONT(,,,FONT:bold),#ORIG(?Button2)
+          BUTTON('Çý&kýþ'),AT(192,30,45,14),USE(?Close),FONT(,,,FONT:bold),#ORIG(?Close),#SEQ(1)
+        END
+
+[PROCEDURE]
+NAME TumTahhakkuklariGeriCek
+[COMMON]
+FROM ABC Process
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('302c24a2-4b60-42ee-ae4f-09120fa14d14'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+Progress:Thermometer     BYTE
+!!> GUID('7914b63c-01b7-40f2-b8b4-b7823b0fff2b')
+[SCREENCONTROLS]
+! PROMPT('No:'),USE(?No:Prompt)
+! ENTRY(@n-7),USE(No),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(No),RIGHT(1)
+No                       SHORT
+!!> GUID('bedb30ca-5993-4e1c-b782-192e982d4c00'),PROMPT('No:'),HEADER('No'),PICTURE(@n-7),JUSTIFY(RIGHT,1)
+[FILES]
+[PRIMARY]
+Demirbas
+[INSTANCE]
+0
+[OTHERS]
+Tahakkuk
+[PROMPTS]
+%RangeLimitType DEFAULT  ('Current Value')
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar', 'Default', 'Process', 'ProgressMgr', |
+  'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('ReportManager')
+WHEN  ('Process') ('ProcessClass')
+WHEN  ('ProgressMgr') ('StepClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('')
+WHEN  ('Process') ('')
+WHEN  ('ProgressMgr') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 2
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+WHEN  ('Process') ('TakeRecord {13}PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('Process') ('ThisProcess')
+WHEN  ('ProgressMgr') ('ProgressMgr')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 4
+WHEN  ('Default') (1)
+WHEN  ('Process') (1)
+WHEN  ('ProgressMgr') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 4
+WHEN  ('Default') (1)
+WHEN  ('Process') (1)
+WHEN  ('ProgressMgr') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 4
+WHEN  ('Default') ('APIPrinterClass')
+WHEN  ('Process') ('APIPrinterClass')
+WHEN  ('ProgressMgr') ('APIPrinterClass')
+WHEN  ('WindowToolbar') ('APIPrinterClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 4
+WHEN  ('Default') (0)
+WHEN  ('Process') (0)
+WHEN  ('ProgressMgr') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Process')TIMES 0
+WHEN  ('ProgressMgr')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Process')TIMES 0
+WHEN  ('ProgressMgr')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%WindowMessage DEFAULT  ('')
+%ProcessAction DEFAULT  ('No record action')
+%RIProcessAction LONG  (0)
+%QueryDelete LONG  (0)
+%EnableQuickScan LONG  (1)
+%RecordFilter DEFAULT  ('')
+%AddSortFields DEFAULT  ('')
+%ApproxRecordCount DEFAULT  ('')
+%ManuallySetProgressLimits LONG  (0)
+%LowLimit DEFAULT  ('')
+%HighLimit DEFAULT  ('')
+%RangeField COMPONENT  ()
+%RangeLimit FIELD  ()
+%RangeLow FIELD  ()
+%RangeHigh FIELD  ()
+%RangeFile FILE  ()
+%HotFields MULTI LONG  ()
+%HotField DEPEND %HotFields FIELD TIMES 0
+
+%HotFieldBound DEPEND %HotFields LONG TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('No Special Action')
+WHEN  ('?Progress:Cancel') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 0
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%ButtonThread DEPEND %Control LONG TIMES 0
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('25000')
+WHEN  ('?Progress:Cancel') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('None')
+WHEN  ('?Progress:Cancel') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 2
+WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 4
+WHEN  ('Default') ('NO')
+WHEN  ('Process') ('NO')
+WHEN  ('ProgressMgr') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ReportDataSource DEFAULT  ('File')
+%UseProcessActionToTitle LONG  (1)
+%UseMRP LONG  (1)
+%MDIProgressWindow LONG  (0)
+%ProgressInterval DEFAULT  ('10')
+%AdditionalSortType DEFAULT  ('Manual')
+%AddSortFieldsAssisted MULTI LONG  ()
+%AddSortFieldAssisted DEPEND %AddSortFieldsAssisted FIELD TIMES 0
+
+%AddSortFieldAssistedOrder DEPEND %AddSortFieldsAssisted DEFAULT TIMES 0
+
+%AddConditionalSort MULTI LONG  ()
+%AddConditionalSortCondition DEPEND %AddConditionalSort DEFAULT TIMES 0
+
+%AddConditionalSortFieldsAssisted DEPEND %AddConditionalSort MULTI LONG TIMES 0
+
+%AddConditionalSortFieldAssisted DEPEND %AddConditionalSortFieldsAssisted FIELD TIMES 0
+
+%AddConditionalSortFieldAssistedOrder DEPEND %AddConditionalSortFieldsAssisted DEFAULT TIMES 0
+
+%AddSortDynamicNamed MULTI LONG  ()
+%AddSortFieldDinNameDescription DEPEND %AddSortDynamicNamed DEFAULT TIMES 0
+
+%AddSortFieldsDinName DEPEND %AddSortDynamicNamed MULTI LONG TIMES 0
+
+%AddSortFieldDinName DEPEND %AddSortFieldsDinName FIELD TIMES 0
+
+%AddSortFieldDinNameOrder DEPEND %AddSortFieldsDinName DEFAULT TIMES 0
+
+%AddSortFieldsDinSort MULTI LONG  ()
+%AddSortFieldDinSortDescription DEPEND %AddSortFieldsDinSort DEFAULT TIMES 0
+
+%AddSortFieldDinSort DEPEND %AddSortFieldsDinSort FIELD TIMES 0
+
+%AddSortFieldDinSortOrder DEPEND %AddSortFieldsDinSort DEFAULT TIMES 0
+
+%AdditionalSortWindowTitle DEFAULT  ('Select the Order')
+%AdditionalSortWindowMessage DEFAULT  ('Select the order to process the data.')
+%AdditionalSortWindowOkButtonText DEFAULT  ('&OK')
+%AdditionalSortWindowOkButtonIcon DEFAULT  ('SOK.ICO')
+%AdditionalSortWindowOkButtonCursor DEFAULT  ('')
+%AdditionalSortWindowOkButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowOkButtonMsg DEFAULT  ('Accept data and close the window')
+%AdditionalSortWindowOkButtonTip DEFAULT  ('Accept data and close the window')
+%AdditionalSortWindowOkButtonFlat LONG  (1)
+%AdditionalSortWindowOkButtonSkip LONG  (0)
+%AdditionalSortWindowOkButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowCancelButtonText DEFAULT  ('&Cancel')
+%AdditionalSortWindowCancelButtonIcon DEFAULT  ('SCANCEL.ICO')
+%AdditionalSortWindowCancelButtonCursor DEFAULT  ('')
+%AdditionalSortWindowCancelButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowCancelButtonMsg DEFAULT  ('Cancel operation')
+%AdditionalSortWindowCancelButtonTip DEFAULT  ('Cancel operation')
+%AdditionalSortWindowCancelButtonFlat LONG  (1)
+%AdditionalSortWindowCancelButtonSkip LONG  (0)
+%AdditionalSortWindowCancelButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowUpButtonText DEFAULT  ('')
+%AdditionalSortWindowUpButtonIcon DEFAULT  ('SUP.ICO')
+%AdditionalSortWindowUpButtonCursor DEFAULT  ('')
+%AdditionalSortWindowUpButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowUpButtonMsg DEFAULT  ('Move field up')
+%AdditionalSortWindowUpButtonTip DEFAULT  ('Move field up')
+%AdditionalSortWindowUpButtonFlat LONG  (1)
+%AdditionalSortWindowUpButtonSkip LONG  (0)
+%AdditionalSortWindowUpButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowDownButtonText DEFAULT  ('')
+%AdditionalSortWindowDownButtonIcon DEFAULT  ('SDOWN.ICO')
+%AdditionalSortWindowDownButtonCursor DEFAULT  ('')
+%AdditionalSortWindowDownButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowDownButtonMsg DEFAULT  ('Move field down')
+%AdditionalSortWindowDownButtonTip DEFAULT  ('Move field down')
+%AdditionalSortWindowDownButtonFlat LONG  (1)
+%AdditionalSortWindowDownButtonSkip LONG  (0)
+%AdditionalSortWindowDownButtonJustification DEFAULT  ('Left')
+%AdditionalSortWindowChOrdButtonText DEFAULT  ('')
+%AdditionalSortWindowChOrdButtonIcon DEFAULT  ('SCH-ORD.ICO')
+%AdditionalSortWindowChOrdButtonCursor DEFAULT  ('')
+%AdditionalSortWindowChOrdButtonKeyCode DEFAULT  ('')
+%AdditionalSortWindowChOrdButtonMsg DEFAULT  ('Change Order')
+%AdditionalSortWindowChOrdButtonTip DEFAULT  ('Change Order')
+%AdditionalSortWindowChOrdButtonFlat LONG  (1)
+%AdditionalSortWindowChOrdButtonSkip LONG  (0)
+%AdditionalSortWindowChOrdButtonJustification DEFAULT  ('Left')
+%HigherKeys MULTI LONG  ()
+%HigherKey DEPEND %HigherKeys COMPONENT TIMES 0
+
+%HigherKeyField DEPEND %HigherKeys FIELD TIMES 0
+
+%HigherKeyValueType DEPEND %HigherKeys DEFAULT TIMES 0
+
+%HigherKeyValueVariable DEPEND %HigherKeys FIELD TIMES 0
+
+%HigherKeyValueFixed DEPEND %HigherKeys DEFAULT TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
+
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?Progress:Thermometer')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AddSortFieldAssistedNoCase DEPEND %AddSortFieldsAssisted LONG TIMES 0
+
+%AddConditionalSortFieldAssistedNoCase DEPEND %AddConditionalSortFieldsAssisted LONG TIMES 0
+
+[EMBED]
+EMBED %ProcessActivity
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+If DEM:AlimTarih<=Date(3,31,2002)
+    DEM:DonemYili+=1; Put(Demirbas)
+    Clear(Tah:Record); Tah:DemirbasKodu=DEM:DemirbasKodu; Access:Tahakkuk.Fetch(Tah:keykod)
+    If ~ErrorCode()
+        Loop No=2 to 75
+            Tah:YDOSabitKiymetDegeri[No-1]=Tah:YDOSabitKiymetDegeri[No]
+            Tah:YDOAmortismanDegeri[No-1]=Tah:YDOAmortismanDegeri[No]
+            Tah:YDSSabitKiymetDegeri[No-1]=Tah:YDSSabitKiymetDegeri[No]
+            Tah:YDSAmortismanDegeri[No-1]=Tah:YDSAmortismanDegeri[No]
+            Tah:AmortismanFarki[No-1]=Tah:AmortismanFarki[No]
+            Tah:EskiNetDeger[No-1]=Tah:EskiNetDeger[No]
+            Tah:YeniNetDeger[NO-1]=Tah:YeniNetDeger[No]
+            Tah:DegerlemeFonu[No-1]=Tah:DegerlemeFonu[No]
+            Tah:SabitKiymetNetArtisi[No-1]=Tah:SabitKiymetNetArtisi[No]
+            Tah:BuYilAyrilanAmortisman[No-1]=Tah:BuYilAyrilanAmortisman[No]
+            Tah:BuYilBirikmisAmortisman[No-1]=Tah:BuYilBirikmisAmortisman[No]
+            Tah:KalanNetDeger[No-1]=Tah:KalanNetDeger[No]
+        End
+        Put(Tahakkuk)
+    End
+End
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
+WHEN  ('?Progress:PctText') (1)
+WHEN  ('?Progress:Thermometer') (1)
+WHEN  ('?Progress:UserString') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
+WHEN  ('?Progress:PctText') (1)
+WHEN  ('?Progress:Thermometer') (1)
+WHEN  ('?Progress:UserString') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('250000')
+WHEN  ('?Progress:Cancel') ('250000')
+WHEN  ('?Progress:PctText') ('250000')
+WHEN  ('?Progress:Thermometer') ('250000')
+WHEN  ('?Progress:UserString') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('250000')
+WHEN  ('?Progress:Cancel') ('32000')
+WHEN  ('?Progress:PctText') ('32000')
+WHEN  ('?Progress:Thermometer') ('32000')
+WHEN  ('?Progress:UserString') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 5
+WHEN  ('') ('')
+WHEN  ('?Progress:Cancel') ('')
+WHEN  ('?Progress:PctText') ('')
+WHEN  ('?Progress:Thermometer') ('')
+WHEN  ('?Progress:UserString') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%cNormal DEPEND %Control LONG TIMES 5
+WHEN  ('') (-1)
+WHEN  ('?Progress:Cancel') (-1)
+WHEN  ('?Progress:PctText') (-1)
+WHEN  ('?Progress:Thermometer') (-1)
+WHEN  ('?Progress:UserString') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Progress:Cancel') (14342874)
+WHEN  ('?Progress:PctText') (14342874)
+WHEN  ('?Progress:Thermometer') (14342874)
+WHEN  ('?Progress:UserString') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Progress:Cancel') (14342874)
+WHEN  ('?Progress:PctText') (14342874)
+WHEN  ('?Progress:Thermometer') (14342874)
+WHEN  ('?Progress:UserString') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 5
+WHEN  ('') (14342874)
+WHEN  ('?Progress:Cancel') (14342874)
+WHEN  ('?Progress:PctText') (14342874)
+WHEN  ('?Progress:Thermometer') (14342874)
+WHEN  ('?Progress:UserString') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 5
+WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
+WHEN  ('?Progress:PctText') (0)
+WHEN  ('?Progress:Thermometer') (0)
+WHEN  ('?Progress:UserString') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 5
+WHEN  ('') (8421504)
+WHEN  ('?Progress:Cancel') (8421504)
+WHEN  ('?Progress:PctText') (8421504)
+WHEN  ('?Progress:Thermometer') (8421504)
+WHEN  ('?Progress:UserString') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 5
+WHEN  ('') (16777215)
+WHEN  ('?Progress:Cancel') (16777215)
+WHEN  ('?Progress:PctText') (16777215)
+WHEN  ('?Progress:Thermometer') (16777215)
+WHEN  ('?Progress:UserString') (16777215)
+
+[INSTANCE]
+INSTANCE 3
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[ADDITION]
+NAME ABC CleanCloseDownLocal
+[INSTANCE]
+INSTANCE 2
+OWNER 6
+[ADDITION]
+NAME SmartZoom pSmartZoom
+[INSTANCE]
+INSTANCE 1
+OWNER 5
+[PROMPTS]
+%szDisableProc LONG  (0)
+[WINDOW]
+ProgressWindow WINDOW('Progress...'),AT(,,142,59),DOUBLE,CENTER,GRAY,TIMER(1)
+          PROGRESS,AT(15,15,111,12),USE(Progress:Thermometer),RANGE(0,100),#ORIG(Progress:Thermometer)
+          STRING(''),AT(0,3,141,10),USE(?Progress:UserString),CENTER,#ORIG(?Progress:UserString)
+          STRING(''),AT(0,30,141,10),USE(?Progress:PctText),CENTER,#ORIG(?Progress:PctText)
+          BUTTON('Cancel'),AT(45,42,50,15),USE(?Progress:Cancel),#ORIG(?Progress:Cancel)
+        END
+
+[PROCEDURE]
+NAME Cnv201002To202001
+PROTOTYPE '(*Long)'
+PARAMETERS '(LocalResponse)'
+[COMMON]
+DESCRIPTION 'Tahakkuk     29/07/04'
+FROM ABC Source
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Dosya Adi:'),USE(?DosyaAdi:Prompt)
+! ENTRY(@s8),USE(DosyaAdi)
+[REPORTCONTROLS]
+! STRING(@s8),USE(DosyaAdi)
+DosyaAdi                 STRING(8)
+!!> GUID('30c81f12-80cc-47db-9e2b-69afd330c6bb'),PROMPT('Dosya Adi:'),HEADER('Dosya Adi'),PICTURE(@s8)
+[SCREENCONTROLS]
+! PROMPT('Ext:'),USE(?Ext:Prompt)
+! ENTRY(@s4),USE(Ext)
+[REPORTCONTROLS]
+! STRING(@s4),USE(Ext)
+Ext                      STRING(4)
+!!> GUID('65656282-9d3b-4cdb-95a9-605dc30a8d51'),PROMPT('Ext:'),HEADER('Ext'),PICTURE(@s4)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Cnv             FILE,DRIVER('Btrieve'),NAME(FNCnv),PRE(Cnv),CREATE,BINDABLE,THREAD
+keykod                   KEY(Cnv:DemirbasKodu),NOCASE,OPT,PRIMARY
+Record                   RECORD,PRE()
+DemirbasKodu                STRING(15)
+Miktar                      REAL,DIM(75)
+YDOSabitKiymetDegeri        REAL,DIM(75)
+YDOAmortismanDegeri         REAL,DIM(75)
+YDSSabitKiymetDegeri        REAL,DIM(75)
+YDSAmortismanDegeri         REAL,DIM(75)
+AmortismanFarki             REAL,DIM(75)
+EskiNetDeger                REAL,DIM(75)
+YeniNetDeger                REAL,DIM(75)
+DegerlemeFonu               REAL,DIM(75)
+SabitKiymetNetArtisi        REAL,DIM(75)
+BuYilAyrilanAmortisman      REAL,DIM(75)
+DovizBuYilAyrilanAmortisman      REAL,DIM(75)
+BuYilBirikmisAmortisman     REAL,DIM(75)
+DovizBuYilBirikmisAmortisman     REAL,DIM(75)
+KalanNetDeger               REAL,DIM(75)
+KalanDovizDeger               REAL,DIM(75)
+KistSonYilGidereAtilan      Real
+DuzKistSonYilGidereAtilan     Real
+DuzeltmeyeEsasTutar           REAL
+DuzeltilmisBirikmisAmortisman REAL
+HesaplananAy                  Short,DIM(75)
+                         END
+                     END
+
+Cnv1             FILE,DRIVER('Btrieve'),NAME(FNCnv1),PRE(Cnv1),CREATE,BINDABLE,THREAD
+keykod                   KEY(Cnv1:DemirbasKodu),NOCASE,OPT,PRIMARY
+Record                   RECORD,PRE()
+DemirbasKodu                STRING(15)
+Miktar                      REAL,DIM(75)
+YDOSabitKiymetDegeri        REAL,DIM(75)
+YDOAmortismanDegeri         REAL,DIM(75)
+YDSSabitKiymetDegeri        REAL,DIM(75)
+YDSAmortismanDegeri         REAL,DIM(75)
+AmortismanFarki             REAL,DIM(75)
+EskiNetDeger                REAL,DIM(75)
+YeniNetDeger                REAL,DIM(75)
+DegerlemeFonu               REAL,DIM(75)
+SabitKiymetNetArtisi        REAL,DIM(75)
+BuYilAyrilanAmortisman      REAL,DIM(75)
+DovizBuYilAyrilanAmortisman      REAL,DIM(75)
+BuYilBirikmisAmortisman     REAL,DIM(75)
+DovizBuYilBirikmisAmortisman     REAL,DIM(75)
+KalanNetDeger               REAL,DIM(75)
+KalanDovizDeger               REAL,DIM(75)
+KistSonYilGidereAtilan      Real
+DuzKistSonYilGidereAtilan     Real
+BinaDuzDegerlenmemisBirAmort  Real
+DuzeltmeyeEsasTutar           REAL
+DuzeltilmisBirikmisAmortisman REAL
+HesaplananAy                  Short,DIM(75)
+                         END
+                     END
+
+
+Baslik            String(50)
+Count             ULONG
+TopKayit          ULOng
+Ekran WINDOW('Dosya Aktarýmý'),AT(,,230,33),FONT('MS Sans Serif',8,,),CENTER,GRAY,DOUBLE
+       STRING(@s50),AT(8,7,213,10),USE(Baslik),CENTER
+       STRING('Aktarýlan Kayýt :'),AT(39,20)
+       STRING(@n8),AT(101,20,34,9),USE(Count)
+       STRING('/'),AT(139,20),USE(?String4)
+       STRING(@n10),AT(151,20),USE(TopKayit)
+     END
+
+
+
+
+
+
+
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  DosyaAdi='Tahakkuk';  Ext='.db';
+
+  Baslik=Clip(DosyaAdi)&' Dosyasý Aktarýlýyor. Bekleyiniz !'; Display
+  If PrgPath<>'' Then FNCnv1=Clip(PrgPath)&'\'&Clip(DosyaAdi)&'.Tmp'; FNCNV=Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext)
+  Else FNCnv1='Dat\'&Clip(DosyaAdi)&'.Tmp' ;FNCNV='Dat\'&Clip(DosyaAdi)&Clip(Ext).
+  Loop
+    Open(Cnv,18); If ErrorCode() Then Break.
+    Create(Cnv1); Close(Cnv1); Open(Cnv1,18); If ErrorCode() Then Message(Error()); Break.
+    Clear(Cnv:Record);Set(Cnv); Open(Ekran); Count=1; TopKayit=Records(Cnv); Display
+    If Records(Cnv)<>0 ! Kayýt Varsa Aktar.
+      Loop Until Eof(Cnv)
+        Next(Cnv); If ErrorCode() Then Break.
+        Clear(Cnv1:Record); Cnv1:Record :=: Cnv:Record; Add(Cnv1); Count+=1; DISPLAY(?Count)
+      End
+    End
+    Close(Cnv1); Close(Cnv); Close(Ekran)
+    If PrgPath<>'' Then Copy(Clip(FnCnv),Clip(PrgPath)&'\'&Clip(DosyaAdi)&'.Esk')
+                        Copy(Clip(FNCnv1),Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext))
+    Else Copy(Clip(FnCnv),'Dat\'&Clip(DosyaAdi)&'.ESK'); Copy(Clip(FNCnv1),'Dat\'&Clip(DosyaAdi)&Clip(Ext)).
+    Break
+  End
+  If PrgPath<>'' Then FNCnv1=Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext); FNCNV=''
+  Else FNCnv1='Dat\'&Clip(DosyaAdi)&Clip(Ext); FNCNV=''.
+  LocalResponse=1;
+
+
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME ConvertKontrol
+[COMMON]
+FROM ABC Source
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Local Response:'),USE(?LocalResponse:Prompt)
+! ENTRY(@n-14),USE(LocalResponse),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(LocalResponse),RIGHT(1)
+LocalResponse            LONG
+!!> GUID('8bd3654e-60ec-42a7-9e63-710b22a668bf'),PROMPT('Local Response:'),HEADER('Local Response'),PICTURE(@n-14),JUSTIFY(RIGHT,1)
+[FILES]
+[OTHERS]
+PVersion
+[PROMPTS]
+%GenerateOpenClose LONG  (1)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+! Dosya Convert Kontrolu
+    LocalResponse=0;
+    DO OpenFiles
+    Set(PVersion); Next(PVersion)
+    !PVer:Version='301003'   ! Geçici
+    If ~ErrorCode() And Clip(PVer:Version)<>Clip(Version)
+        If PVer:Version>Version Then Relate:PVersion.Close; Halt('Programýn Yeni Versionu Yüklenmelidir.').
+        If Message('Demirbaþ veritabaný güncellenecek.|Bilgilerinizin yedeðini MUTLAKA ALINIZ.!|Bilgi Kaybýndan DELTA Bilgisayar Sorumlu Tutulamaz.','Sürüm Güncelleme',Icon:Question,'&Convert Yap|Convert Ý&ptal',2,0)=1
+            Loop
+                !Message(Clip(PVer:Version)&' '&Clip(Version))
+                If Clip(PVer:Version)<>Clip(Version)
+                    Case Clip(PVer:Version)
+                    Of '206001'; PVer:Version='301001'; Put(PVersion); Remove(FnDataList); !Remove(Degerleme)
+                    Of '301001';
+                      Cnv301001To301002(LocalResponse); If LocalResponse<>1 Then Halt('Convert Yapýlamadý Çalýþan Olabilir').!Tahakkuk   09/05/2007
+                      PVer:Version='301002'; Put(PVersion); Remove(FnDataList);
+                    Of '301002';
+                      Cnv301002To301003(LocalResponse); If LocalResponse<>1 Then Halt('Convert Yapýlamadý Çalýþan Olabilir').!OTahakkuk  09/05/2007
+                      PVer:Version='301003'; Put(PVersion); Remove(FnDataList);
+                    Of '301003';
+                      Cnv301003To301004(LocalResponse); If LocalResponse<>1 Then Halt('Convert Yapýlamadý Çalýþan Olabilir').!SatDemir   09/05/2007
+                      PVer:Version='301004'; Put(PVersion); Remove(FnDataList);
+                    Of '301004';
+                      Cnv301004To301005(LocalResponse); If LocalResponse<>1 Then Halt('Convert Yapýlamadý Çalýþan Olabilir').!Demirbaþ   14/04/2009
+                      PVer:Version='301005'; Put(PVersion); Remove(FnDataList);
+                    Of '301005';
+                      Cnv301005To301006(LocalResponse); If LocalResponse<>1 Then Halt('Convert Yapýlamadý Çalýþan Olabilir').!Demirbaþ   11/05/2009
+                      PVer:Version='301006'; Put(PVersion); Remove(FnDataList);
+                    Of '301006';
+                      Cnv301006To301007(LocalResponse); If LocalResponse<>1 Then Halt('Convert Yapýlamadý Çalýþan Olabilir').!Demirbaþ   08/10/2019
+                      PVer:Version='301007'; Put(PVersion); Remove(FnDataList);
+                    Of '301007';
+                      Cnv301007To301008(LocalResponse); If LocalResponse<>1 Then Halt('Convert Yapýlamadý Çalýþan Olabilir').!Demirbaþ   09/03/2021
+                      PVer:Version='301008'; Put(PVersion); Remove(FnDataList);
+                    Of '301008';
+                      Cnv301008To301009(LocalResponse); If LocalResponse<>1 Then Halt('Convert Yapýlamadý Çalýþan Olabilir').!Demirbaþ   14/12/2021
+                      PVer:Version='301009'; Put(PVersion); Remove(FnDataList);
+                    Of '301009';
+                      Cnv301009To301010(LocalResponse); If LocalResponse<>1 Then Halt('Convert Yapýlamadý Çalýþan Olabilir').!Demirbaþ   27/01/2022
+                      PVer:Version='301010'; Put(PVersion); Remove(FnDataList);
+                    Else Message('Hatalý Versiyon Convert Yapýlamadý.!'); Halt()
+                    End !Case
+                Else Break.  !Versiyonlar Eþitlendi
+            End !End Loop
+        Else Halt().
+    End
+    DO CloseFiles
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[CALLS]
+Cnv201002To202001
+Cnv301001To301002
+Cnv301002To301003
+Cnv301003To301004
+Cnv301004To301005
+Cnv301005To301006
+Cnv301006To301007
+Cnv301007To301008
+Cnv301008To301009
+Cnv301009To301010
+[PROCEDURE]
+NAME Cnv301001To301002
+PROTOTYPE '(*Long)'
+PARAMETERS '(LocalResponse)'
+[COMMON]
+DESCRIPTION 'Tahakkuk     09/05/07'
+FROM ABC Source
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Dosya Adi:'),USE(?DosyaAdi:Prompt)
+! ENTRY(@s8),USE(DosyaAdi)
+[REPORTCONTROLS]
+! STRING(@s8),USE(DosyaAdi)
+DosyaAdi                 STRING(8)
+!!> GUID('40ca10f9-1f7c-41b6-89a6-fa7eb5e046ff'),PROMPT('Dosya Adi:'),HEADER('Dosya Adi'),PICTURE(@s8)
+[SCREENCONTROLS]
+! PROMPT('Ext:'),USE(?Ext:Prompt)
+! ENTRY(@s4),USE(Ext)
+[REPORTCONTROLS]
+! STRING(@s4),USE(Ext)
+Ext                      STRING(4)
+!!> GUID('19faa17b-3063-4afc-9de3-729353d7bb77'),PROMPT('Ext:'),HEADER('Ext'),PICTURE(@s4)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Cnv             FILE,DRIVER('Btrieve'),NAME(FNCnv),PRE(Cnv),CREATE,BINDABLE,THREAD
+keykod                   KEY(Cnv:DemirbasKodu),NOCASE,OPT,PRIMARY
+Record                   RECORD,PRE()
+DemirbasKodu                STRING(15)
+Miktar                      REAL,DIM(75)
+YDOSabitKiymetDegeri        REAL,DIM(75)
+YDOAmortismanDegeri         REAL,DIM(75)
+YDSSabitKiymetDegeri        REAL,DIM(75)
+YDSAmortismanDegeri         REAL,DIM(75)
+AmortismanFarki             REAL,DIM(75)
+EskiNetDeger                REAL,DIM(75)
+YeniNetDeger                REAL,DIM(75)
+DegerlemeFonu               REAL,DIM(75)
+SabitKiymetNetArtisi        REAL,DIM(75)
+BuYilAyrilanAmortisman      REAL,DIM(75)
+DovizBuYilAyrilanAmortisman REAL,DIM(75)
+BuYilBirikmisAmortisman     REAL,DIM(75)
+DovizBuYilBirikmisAmortisman REAL,DIM(75)
+KalanNetDeger               REAL,DIM(75)
+KalanDovizDeger             REAL,DIM(75)
+KistSonYilGidereAtilan      REAL,DIM(75)
+DuzKistSonYilGidereAtilan   REAL
+BinaDuzDegerlenmemisBirAmort REAL
+DuzeltmeyeEsasTutar         REAL
+DuzeltilmisBirikmisAmortisman REAL
+HesaplananAy                SHORT,DIM(75)
+                         END
+                     END
+
+
+Cnv1             FILE,DRIVER('Btrieve'),NAME(FNCnv1),PRE(Cnv1),CREATE,BINDABLE,THREAD
+keykod                   KEY(Cnv1:DemirbasKodu),NOCASE,OPT,PRIMARY
+Record                   RECORD,PRE()
+DemirbasKodu                STRING(15)
+Miktar                      REAL,DIM(75)
+YDOSabitKiymetDegeri        REAL,DIM(75)
+YDOAmortismanDegeri         REAL,DIM(75)
+YDSSabitKiymetDegeri        REAL,DIM(75)
+YDSAmortismanDegeri         REAL,DIM(75)
+AmortismanFarki             REAL,DIM(75)
+EskiNetDeger                REAL,DIM(75)
+YeniNetDeger                REAL,DIM(75)
+DegerlemeFonu               REAL,DIM(75)
+SabitKiymetNetArtisi        REAL,DIM(75)
+BuYilAyrilanAmortisman      REAL,DIM(75)
+DovizBuYilAyrilanAmortisman REAL,DIM(75)
+BuYilBirikmisAmortisman     REAL,DIM(75)
+DovizBuYilBirikmisAmortisman REAL,DIM(75)
+KalanNetDeger               REAL,DIM(75)
+KalanDovizDeger             REAL,DIM(75)
+KistSonYilGidereAtilan      REAL,DIM(75)
+DuzKistSonYilGidereAtilan   REAL
+BinaDuzDegerlenmemisBirAmort REAL
+DuzeltmeyeEsasTutar         REAL
+DuzeltilmisBirikmisAmortisman REAL
+HesaplananAy                SHORT,DIM(75)
+BuYilGidereAtilmayanAmortisman REAL,DIM(75)
+                         END
+                     END
+
+
+Baslik            String(50)
+Count             ULONG
+TopKayit          ULOng
+Ekran WINDOW('Dosya Aktarýmý'),AT(,,230,33),FONT('MS Sans Serif',8,,),CENTER,GRAY,DOUBLE
+       STRING(@s50),AT(8,7,213,10),USE(Baslik),CENTER
+       STRING('Aktarýlan Kayýt :'),AT(39,20)
+       STRING(@n8),AT(101,20,34,9),USE(Count)
+       STRING('/'),AT(139,20),USE(?String4)
+       STRING(@n10),AT(151,20),USE(TopKayit)
+     END
+
+
+
+
+
+
+
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  DosyaAdi='Tahakkuk';  Ext='.db';
+
+  Baslik=Clip(DosyaAdi)&' Dosyasý Aktarýlýyor. Bekleyiniz !'; Display
+  If PrgPath<>'' Then FNCnv1=Clip(PrgPath)&'\'&Clip(DosyaAdi)&'.Tmp'; FNCNV=Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext)
+  Else FNCnv1='Dat\'&Clip(DosyaAdi)&'.Tmp' ;FNCNV='Dat\'&Clip(DosyaAdi)&Clip(Ext).
+  Loop
+    Open(Cnv,18); If ErrorCode() Then Break.
+    Create(Cnv1); Close(Cnv1); Open(Cnv1,18); If ErrorCode() Then Message(Error()); Break.
+    Clear(Cnv:Record);Set(Cnv); Open(Ekran); Count=1; TopKayit=Records(Cnv); Display
+    If Records(Cnv)<>0 ! Kayýt Varsa Aktar.
+      Loop Until Eof(Cnv)
+        Next(Cnv); If ErrorCode() Then Message(Error()&' '&ErrorCode()&' '&FileError()) ;Break.
+        Clear(Cnv1:Record); Cnv1:Record :=: Cnv:Record; Add(Cnv1);
+        Count+=1; DISPLAY(?Count)
+      End
+    End
+    Close(Cnv1); Close(Cnv); Close(Ekran)
+    If PrgPath<>'' Then Copy(Clip(FnCnv),Clip(PrgPath)&'\'&Clip(DosyaAdi)&'.Esk')
+                        Copy(Clip(FNCnv1),Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext))
+    Else Copy(Clip(FnCnv),'Dat\'&Clip(DosyaAdi)&'.ESK'); Copy(Clip(FNCnv1),'Dat\'&Clip(DosyaAdi)&Clip(Ext)).
+    Break
+  End
+  If PrgPath<>'' Then FNCnv1=Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext); FNCNV=''
+  Else FNCnv1='Dat\'&Clip(DosyaAdi)&Clip(Ext); FNCNV=''.
+  LocalResponse=1;
+
+
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME Cnv301002To301003
+PROTOTYPE '(*Long)'
+PARAMETERS '(LocalResponse)'
+[COMMON]
+DESCRIPTION 'OTahakkuk     09/05/07'
+FROM ABC Source
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Dosya Adi:'),USE(?DosyaAdi:Prompt)
+! ENTRY(@s8),USE(DosyaAdi)
+[REPORTCONTROLS]
+! STRING(@s8),USE(DosyaAdi)
+DosyaAdi                 STRING(8)
+!!> GUID('c9b06dd6-2856-460b-bb3f-d2cfa8e02cef'),PROMPT('Dosya Adi:'),HEADER('Dosya Adi'),PICTURE(@s8)
+[SCREENCONTROLS]
+! PROMPT('Ext:'),USE(?Ext:Prompt)
+! ENTRY(@s4),USE(Ext)
+[REPORTCONTROLS]
+! STRING(@s4),USE(Ext)
+Ext                      STRING(4)
+!!> GUID('eaf2bcd8-072a-4a43-bd0c-8178e03f57e1'),PROMPT('Ext:'),HEADER('Ext'),PICTURE(@s4)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Cnv             FILE,DRIVER('Btrieve'),NAME(FNCnv),PRE(Cnv),CREATE,BINDABLE,THREAD
+keykod                   KEY(Cnv:DemirbasKodu),NOCASE,OPT,PRIMARY
+Record                   RECORD,PRE()
+DemirbasKodu                STRING(15)
+Miktar                      REAL,DIM(75)
+YDOSabitKiymetDegeri        REAL,DIM(75)
+YDOAmortismanDegeri         REAL,DIM(75)
+YDSSabitKiymetDegeri        REAL,DIM(75)
+YDSAmortismanDegeri         REAL,DIM(75)
+AmortismanFarki             REAL,DIM(75)
+EskiNetDeger                REAL,DIM(75)
+YeniNetDeger                REAL,DIM(75)
+DegerlemeFonu               REAL,DIM(75)
+SabitKiymetNetArtisi        REAL,DIM(75)
+BuYilAyrilanAmortisman      REAL,DIM(75)
+DovizBuYilAyrilanAmortisman REAL,DIM(75)
+BuYilBirikmisAmortisman     REAL,DIM(75)
+DovizBuYilBirikmisAmortisman REAL,DIM(75)
+KalanNetDeger               REAL,DIM(75)
+KalanDovizDeger             REAL,DIM(75)
+KistSonYilGidereAtilan      REAL,DIM(75)
+DuzKistSonYilGidereAtilan   REAL
+BinaDuzDegerlenmemisBirAmort REAL
+DuzeltmeyeEsasTutar         REAL
+DuzeltilmisBirikmisAmortisman REAL
+HesaplananAy                SHORT,DIM(75)
+                         END
+                     END
+
+
+Cnv1             FILE,DRIVER('Btrieve'),NAME(FNCnv1),PRE(Cnv1),CREATE,BINDABLE,THREAD
+keykod                   KEY(Cnv1:DemirbasKodu),NOCASE,OPT,PRIMARY
+Record                   RECORD,PRE()
+DemirbasKodu                STRING(15)
+Miktar                      REAL,DIM(75)
+YDOSabitKiymetDegeri        REAL,DIM(75)
+YDOAmortismanDegeri         REAL,DIM(75)
+YDSSabitKiymetDegeri        REAL,DIM(75)
+YDSAmortismanDegeri         REAL,DIM(75)
+AmortismanFarki             REAL,DIM(75)
+EskiNetDeger                REAL,DIM(75)
+YeniNetDeger                REAL,DIM(75)
+DegerlemeFonu               REAL,DIM(75)
+SabitKiymetNetArtisi        REAL,DIM(75)
+BuYilAyrilanAmortisman      REAL,DIM(75)
+DovizBuYilAyrilanAmortisman REAL,DIM(75)
+BuYilBirikmisAmortisman     REAL,DIM(75)
+DovizBuYilBirikmisAmortisman REAL,DIM(75)
+KalanNetDeger               REAL,DIM(75)
+KalanDovizDeger             REAL,DIM(75)
+KistSonYilGidereAtilan      REAL,DIM(75)
+DuzKistSonYilGidereAtilan   REAL
+BinaDuzDegerlenmemisBirAmort REAL
+DuzeltmeyeEsasTutar         REAL
+DuzeltilmisBirikmisAmortisman REAL
+HesaplananAy                SHORT,DIM(75)
+BuYilGidereAtilmayanAmortisman REAL,DIM(75)
+                         END
+                     END
+
+
+Baslik            String(50)
+Count             ULONG
+TopKayit          ULOng
+Ekran WINDOW('Dosya Aktarýmý'),AT(,,230,33),FONT('MS Sans Serif',8,,),CENTER,GRAY,DOUBLE
+       STRING(@s50),AT(8,7,213,10),USE(Baslik),CENTER
+       STRING('Aktarýlan Kayýt :'),AT(39,20)
+       STRING(@n8),AT(101,20,34,9),USE(Count)
+       STRING('/'),AT(139,20),USE(?String4)
+       STRING(@n10),AT(151,20),USE(TopKayit)
+     END
+
+
+
+
+
+
+
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  DosyaAdi='ONTahak';  Ext='.db';
+
+  Baslik=Clip(DosyaAdi)&' Dosyasý Aktarýlýyor. Bekleyiniz !'; Display
+  If PrgPath<>'' Then FNCnv1=Clip(PrgPath)&'\'&Clip(DosyaAdi)&'.Tmp'; FNCNV=Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext)
+  Else FNCnv1='Dat\'&Clip(DosyaAdi)&'.Tmp' ;FNCNV='Dat\'&Clip(DosyaAdi)&Clip(Ext).
+  Loop
+    Open(Cnv,18); If ErrorCode() Then Break.
+    Create(Cnv1); Close(Cnv1); Open(Cnv1,18); If ErrorCode() Then Message(Error()); Break.
+    Clear(Cnv:Record);Set(Cnv); Open(Ekran); Count=1; TopKayit=Records(Cnv); Display
+    If Records(Cnv)<>0 ! Kayýt Varsa Aktar.
+      Loop Until Eof(Cnv)
+        Next(Cnv); If ErrorCode() Then Break.
+        Clear(Cnv1:Record); Cnv1:Record :=: Cnv:Record; Add(Cnv1); Count+=1; DISPLAY(?Count)
+      End
+    End
+    Close(Cnv1); Close(Cnv); Close(Ekran)
+    If PrgPath<>'' Then Copy(Clip(FnCnv),Clip(PrgPath)&'\'&Clip(DosyaAdi)&'.Esk')
+                        Copy(Clip(FNCnv1),Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext))
+    Else Copy(Clip(FnCnv),'Dat\'&Clip(DosyaAdi)&'.ESK'); Copy(Clip(FNCnv1),'Dat\'&Clip(DosyaAdi)&Clip(Ext)).
+    Break
+  End
+  If PrgPath<>'' Then FNCnv1=Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext); FNCNV=''
+  Else FNCnv1='Dat\'&Clip(DosyaAdi)&Clip(Ext); FNCNV=''.
+  LocalResponse=1;
+
+
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME Cnv301003To301004
+PROTOTYPE '(*Long)'
+PARAMETERS '(LocalResponse)'
+[COMMON]
+DESCRIPTION 'SatDemir    09/05/07'
+FROM ABC Source
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Dosya Adi:'),USE(?DosyaAdi:Prompt)
+! ENTRY(@s8),USE(DosyaAdi)
+[REPORTCONTROLS]
+! STRING(@s8),USE(DosyaAdi)
+DosyaAdi                 STRING(8)
+!!> GUID('cac5aba3-a734-4bb6-85ad-c865714c1e63'),PROMPT('Dosya Adi:'),HEADER('Dosya Adi'),PICTURE(@s8)
+[SCREENCONTROLS]
+! PROMPT('Ext:'),USE(?Ext:Prompt)
+! ENTRY(@s4),USE(Ext)
+[REPORTCONTROLS]
+! STRING(@s4),USE(Ext)
+Ext                      STRING(4)
+!!> GUID('dd3b76b4-361d-4712-b0a0-b6bee1c18bc5'),PROMPT('Ext:'),HEADER('Ext'),PICTURE(@s4)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Cnv             FILE,DRIVER('Btrieve'),NAME(FNCnv),PRE(Cnv),CREATE,BINDABLE,THREAD
+keykod                   KEY(Cnv:DemirbasKodu,Cnv:SatisYil),DUP,NOCASE,OPT
+Record                   RECORD,PRE()
+DemirbasKodu                STRING(15)
+SatisTarih                  DATE
+SatisYil                    STRING(4)
+SatisMiktar                 REAL
+BirimTutar                  REAL
+Tutar                       REAL
+SonNetDeger                 REAL
+SonBrutDeger                REAL
+IlkAlimBedeli               REAL
+BirikmisAmortismanFarki     REAL
+BirikmisDegerlemeFonu       REAL
+Toplam                      REAL
+FaturaNo                    STRING(20)
+SatilanFirmaAdi             STRING(40)
+CikisSebebi                 STRING(1)
+                         END
+                     END
+
+
+Cnv1             FILE,DRIVER('Btrieve'),NAME(FNCnv1),PRE(Cnv1),CREATE,BINDABLE,THREAD
+keykod                   KEY(Cnv1:DemirbasKodu,Cnv1:SatisYil),DUP,NOCASE,OPT
+Record                   RECORD,PRE()
+DemirbasKodu                STRING(15)
+SatisTarih                  DATE
+SatisYil                    STRING(4)
+SatisMiktar                 REAL
+BirimTutar                  REAL
+Tutar                       REAL
+SonNetDeger                 REAL
+SonBrutDeger                REAL
+IlkAlimBedeli               REAL
+BirikmisAmortismanFarki     REAL
+BirikmisDegerlemeFonu       REAL
+Toplam                      REAL
+FaturaNo                    STRING(20)
+SatilanFirmaAdi             STRING(40)
+CikisSebebi                 STRING(1)
+GidereAtilmayanAmortisman   Real
+                         END
+                     END
+
+
+Baslik            String(50)
+Count             ULONG
+TopKayit          ULOng
+Ekran WINDOW('Dosya Aktarýmý'),AT(,,230,33),FONT('MS Sans Serif',8,,),CENTER,GRAY,DOUBLE
+       STRING(@s50),AT(8,7,213,10),USE(Baslik),CENTER
+       STRING('Aktarýlan Kayýt :'),AT(39,20)
+       STRING(@n8),AT(101,20,34,9),USE(Count)
+       STRING('/'),AT(139,20),USE(?String4)
+       STRING(@n10),AT(151,20),USE(TopKayit)
+     END
+
+
+
+
+
+
+
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  DosyaAdi='SatDemir';  Ext='.db';
+
+  Baslik=Clip(DosyaAdi)&' Dosyasý Aktarýlýyor. Bekleyiniz !'; Display
+  If PrgPath<>'' Then FNCnv1=Clip(PrgPath)&'\'&Clip(DosyaAdi)&'.Tmp'; FNCNV=Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext)
+  Else FNCnv1='Dat\'&Clip(DosyaAdi)&'.Tmp' ;FNCNV='Dat\'&Clip(DosyaAdi)&Clip(Ext).
+  Loop
+    Open(Cnv,18); If ErrorCode() Then Break.
+    Create(Cnv1); Close(Cnv1); Open(Cnv1,18); If ErrorCode() Then Message(Error()); Break.
+    Clear(Cnv:Record);Set(Cnv); Open(Ekran); Count=1; TopKayit=Records(Cnv); Display
+    If Records(Cnv)<>0 ! Kayýt Varsa Aktar.
+      Loop Until Eof(Cnv)
+        Next(Cnv); If ErrorCode() Then Break.
+        Clear(Cnv1:Record); Cnv1:Record :=: Cnv:Record; Add(Cnv1); Count+=1; DISPLAY(?Count)
+      End
+    End
+    Close(Cnv1); Close(Cnv); Close(Ekran)
+    If PrgPath<>'' Then Copy(Clip(FnCnv),Clip(PrgPath)&'\'&Clip(DosyaAdi)&'.Esk')
+                        Copy(Clip(FNCnv1),Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext))
+    Else Copy(Clip(FnCnv),'Dat\'&Clip(DosyaAdi)&'.ESK'); Copy(Clip(FNCnv1),'Dat\'&Clip(DosyaAdi)&Clip(Ext)).
+    Break
+  End
+  If PrgPath<>'' Then FNCnv1=Clip(PrgPath)&'\'&Clip(DosyaAdi)&Clip(Ext); FNCNV=''
+  Else FNCnv1='Dat\'&Clip(DosyaAdi)&Clip(Ext); FNCNV=''.
+  LocalResponse=1;
+
+
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[END]

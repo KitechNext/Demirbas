@@ -1,0 +1,3322 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+[PROCEDURE]
+NAME DataKontrol
+[COMMON]
+FROM ABC Source
+[FILES]
+[OTHERS]
+Yasal
+Degerleme
+KulMenuList
+[PROMPTS]
+%GenerateOpenClose LONG  (1)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+    CreateDataList()
+
+   ! Yasal Dosyasý Yok Ýse Yarat
+    If Records(Yasal)=0
+        Yas:SirketUnvani='DENEME'; Yas:DonemBasiAy='1'; Yas:DonemSonuAy='12'; Yas:CalisilanYil='2000';
+        Add(Yasal)
+    End
+
+    If Records(Degerleme)=0 And Yas:DonemBasiAy<>1
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1970'    ;DEG:KatsayiOrani[1]=418870.53809    ;DEG:KatsayiOrani[2]=414017.90416    ;DEG:KatsayiOrani[3]=417535.84705    ;DEG:KatsayiOrani[4]=418424.69399    ;DEG:KatsayiOrani[5]=420663.45639    ;DEG:KatsayiOrani[6]=427293.47826    ;DEG:KatsayiOrani[7]=436788.88889    ;DEG:KatsayiOrani[8]=427525.82926    ;DEG:KatsayiOrani[9]=420663.45639    ;DEG:KatsayiOrani[10]=415769.43416    ;DEG:KatsayiOrani[11]=410773.24974    ;DEG:KatsayiOrani[12]=402983.08560; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1971'    ;DEG:KatsayiOrani[1]=386538.83972    ;DEG:KatsayiOrani[2]=379083.89585    ;DEG:KatsayiOrani[3]=376001.91296    ;DEG:KatsayiOrani[4]=372792.79279    ;DEG:KatsayiOrani[5]=367564.28237    ;DEG:KatsayiOrani[6]=369811.85325    ;DEG:KatsayiOrani[7]=354472.49775    ;DEG:KatsayiOrani[8]=350991.07143    ;DEG:KatsayiOrani[9]=351461.77917    ;DEG:KatsayiOrani[10]=342132.28895    ;DEG:KatsayiOrani[11]=333002.96485    ;DEG:KatsayiOrani[12]=327591.66667; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1972'    ;DEG:KatsayiOrani[1]=320513.65675    ;DEG:KatsayiOrani[2]=310390.84090    ;DEG:KatsayiOrani[3]=311497.62282    ;DEG:KatsayiOrani[4]=311250.98971    ;DEG:KatsayiOrani[5]=307718.19961    ;DEG:KatsayiOrani[6]=305922.17899    ;DEG:KatsayiOrani[7]=301233.71648    ;DEG:KatsayiOrani[8]=300083.96947    ;DEG:KatsayiOrani[9]=297810.60606    ;DEG:KatsayiOrani[10]=296239.63828    ;DEG:KatsayiOrani[11]=289157.77860    ;DEG:KatsayiOrani[12]=285068.89050; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1973'    ;DEG:KatsayiOrani[1]=283833.93502    ;DEG:KatsayiOrani[2]=270643.71773    ;DEG:KatsayiOrani[3]=268517.75956    ;DEG:KatsayiOrani[4]=266154.36696    ;DEG:KatsayiOrani[5]=262598.53039    ;DEG:KatsayiOrani[6]=261550.23287    ;DEG:KatsayiOrani[7]=257270.94241    ;DEG:KatsayiOrani[8]=251509.91683    ;DEG:KatsayiOrani[9]=240802.45023    ;DEG:KatsayiOrani[10]=234552.50597    ;DEG:KatsayiOrani[11]=231241.17647    ;DEG:KatsayiOrani[12]=220786.29598; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1974'    ;DEG:KatsayiOrani[1]=215579.92871    ;DEG:KatsayiOrani[2]=209101.06383    ;DEG:KatsayiOrani[3]=199852.56736    ;DEG:KatsayiOrani[4]=194272.30047    ;DEG:KatsayiOrani[5]=188904.37290    ;DEG:KatsayiOrani[6]=195188.67925    ;DEG:KatsayiOrani[7]=194898.36391    ;DEG:KatsayiOrani[8]=193984.70269    ;DEG:KatsayiOrani[9]=188406.42224    ;DEG:KatsayiOrani[10]=189131.58528    ;DEG:KatsayiOrani[11]=188271.07280    ;DEG:KatsayiOrani[12]=185429.24528; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1975'    ;DEG:KatsayiOrani[1]=178645.76233    ;DEG:KatsayiOrani[2]=174715.55556    ;DEG:KatsayiOrani[3]=172985.69857    ;DEG:KatsayiOrani[4]=172719.68366    ;DEG:KatsayiOrani[5]=175026.71416    ;DEG:KatsayiOrani[6]=178443.03223    ;DEG:KatsayiOrani[7]=179871.88286    ;DEG:KatsayiOrani[8]=178848.95359    ;DEG:KatsayiOrani[9]=177998.64161    ;DEG:KatsayiOrani[10]=175534.71757    ;DEG:KatsayiOrani[11]=174289.51452    ;DEG:KatsayiOrani[12]=167959.83764; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1976'    ;DEG:KatsayiOrani[1]=164137.78706    ;DEG:KatsayiOrani[2]=160649.77523    ;DEG:KatsayiOrani[3]=158864.41705    ;DEG:KatsayiOrani[4]=153828.99628    ;DEG:KatsayiOrani[5]=149956.13199    ;DEG:KatsayiOrani[6]=148595.72860    ;DEG:KatsayiOrani[7]=153979.63181    ;DEG:KatsayiOrani[8]=151283.43275    ;DEG:KatsayiOrani[9]=148848.92086    ;DEG:KatsayiOrani[10]=145839.36190    ;DEG:KatsayiOrani[11]=142871.16118    ;DEG:KatsayiOrani[12]=140975.43482; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1977'    ;DEG:KatsayiOrani[1]=137451.04895    ;DEG:KatsayiOrani[2]=136189.15642    ;DEG:KatsayiOrani[3]=134880.76857    ;DEG:KatsayiOrani[4]=130147.32660    ;DEG:KatsayiOrani[5]=128530.32532    ;DEG:KatsayiOrani[6]=127055.59147    ;DEG:KatsayiOrani[7]=126259.83620    ;DEG:KatsayiOrani[8]=125634.38798    ;DEG:KatsayiOrani[9]=115603.58771    ;DEG:KatsayiOrani[10]=110424.15730    ;DEG:KatsayiOrani[11]=107187.45740    ;DEG:KatsayiOrani[12]=103586.29776; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1978'    ;DEG:KatsayiOrani[1]=99471.15385     ;DEG:KatsayiOrani[2]=95207.07193     ;DEG:KatsayiOrani[3]=91155.94203    ;DEG:KatsayiOrani[4]=88091.87675    ;DEG:KatsayiOrani[5]=85375.17646    ;DEG:KatsayiOrani[6]=83836.63894    ;DEG:KatsayiOrani[7]=80283.87624    ;DEG:KatsayiOrani[8]=78441.58436    ;DEG:KatsayiOrani[9]=75279.58637    ;DEG:KatsayiOrani[10]=73273.06617    ;DEG:KatsayiOrani[11]=71650.41465    ;DEG:KatsayiOrani[12]=69638.61825; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1979'    ;DEG:KatsayiOrani[1]=66504.82152    ;DEG:KatsayiOrani[2]=63435.53332    ;DEG:KatsayiOrani[3]=60376.28628    ;DEG:KatsayiOrani[4]=55998.57550    ;DEG:KatsayiOrani[5]=53495.27114    ;DEG:KatsayiOrani[6]=49893.38749    ;DEG:KatsayiOrani[7]=48305.48046    ;DEG:KatsayiOrani[8]=46762.62416    ;DEG:KatsayiOrani[9]=45385.90313    ;DEG:KatsayiOrani[10]=43184.66440    ;DEG:KatsayiOrani[11]=40021.37949    ;DEG:KatsayiOrani[12]=38395.27275; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1980'    ;DEG:KatsayiOrani[1]=35161.89624    ;DEG:KatsayiOrani[2]=27196.37483    ;DEG:KatsayiOrani[3]=26038.94814    ;DEG:KatsayiOrani[4]=25149.38264    ;DEG:KatsayiOrani[5]=24430.42695    ;DEG:KatsayiOrani[6]=23775.85581    ;DEG:KatsayiOrani[7]=23734.22689    ;DEG:KatsayiOrani[8]=23375.05575    ;DEG:KatsayiOrani[9]=22593.82723    ;DEG:KatsayiOrani[10]=21092.42119    ;DEG:KatsayiOrani[11]=20328.89463    ;DEG:KatsayiOrani[12]=19723.54623; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1981'    ;DEG:KatsayiOrani[1]=18865.05423    ;DEG:KatsayiOrani[2]=18450.23819    ;DEG:KatsayiOrani[3]=18602.15308    ;DEG:KatsayiOrani[4]=18750.77510    ;DEG:KatsayiOrani[5]=18351.18923    ;DEG:KatsayiOrani[6]=17247.71850    ;DEG:KatsayiOrani[7]=17221.27305    ;DEG:KatsayiOrani[8]=17032.12669    ;DEG:KatsayiOrani[9]=16545.03367    ;DEG:KatsayiOrani[10]=16279.86913    ;DEG:KatsayiOrani[11]=15963.53374    ;DEG:KatsayiOrani[12]=15698.96767; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1982'    ;DEG:KatsayiOrani[1]=15121.06933    ;DEG:KatsayiOrani[2]=14578.25740    ;DEG:KatsayiOrani[3]=14107.91509    ;DEG:KatsayiOrani[4]=13844.58258    ;DEG:KatsayiOrani[5]=13666.97377    ;DEG:KatsayiOrani[6]=13483.45052    ;DEG:KatsayiOrani[7]=13222.22596    ;DEG:KatsayiOrani[8]=12970.71682    ;DEG:KatsayiOrani[9]=12824.51962    ;DEG:KatsayiOrani[10]=12728.80341    ;DEG:KatsayiOrani[11]=12597.05510    ;DEG:KatsayiOrani[12]=12523.21562; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1983'    ;DEG:KatsayiOrani[1]=11431.93649    ;DEG:KatsayiOrani[2]=11162.66523    ;DEG:KatsayiOrani[3]=10990.08932    ;DEG:KatsayiOrani[4]=10836.49194    ;DEG:KatsayiOrani[5]=10660.32108    ;DEG:KatsayiOrani[6]=10522.21627    ;DEG:KatsayiOrani[7]=10400.28573    ;DEG:KatsayiOrani[8]=10189.08026    ;DEG:KatsayiOrani[9]=9980.45090    ;DEG:KatsayiOrani[10]=9713.25501    ;DEG:KatsayiOrani[11]=9330.65913    ;DEG:KatsayiOrani[12]=8939.49903; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1984'    ;DEG:KatsayiOrani[1]=8605.73555    ;DEG:KatsayiOrani[2]=8324.28083    ;DEG:KatsayiOrani[3]=8060.73593    ;DEG:KatsayiOrani[4]=7444.98314    ;DEG:KatsayiOrani[5]=6964.66378    ;DEG:KatsayiOrani[6]=6652.33909    ;DEG:KatsayiOrani[7]=6699.33025    ;DEG:KatsayiOrani[8]=6492.80293    ;DEG:KatsayiOrani[9]=6345.44765    ;DEG:KatsayiOrani[10]=6144.26383    ;DEG:KatsayiOrani[11]=5924.48025    ;DEG:KatsayiOrani[12]=5823.33422; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1985'    ;DEG:KatsayiOrani[1]=5555.85392    ;DEG:KatsayiOrani[2]=5305.30720    ;DEG:KatsayiOrani[3]=5035.86892    ;DEG:KatsayiOrani[4]=4921.10287    ;DEG:KatsayiOrani[5]=4816.87518    ;DEG:KatsayiOrani[6]=4878.86911    ;DEG:KatsayiOrani[7]=4855.24788    ;DEG:KatsayiOrani[8]=4771.07088    ;DEG:KatsayiOrani[9]=4643.75365    ;DEG:KatsayiOrani[10]=4423.37770    ;DEG:KatsayiOrani[11]=4292.03902    ;DEG:KatsayiOrani[12]=4212.53978; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1986'    ;DEG:KatsayiOrani[1]=4030.36796    ;DEG:KatsayiOrani[2]=3950.09998    ;DEG:KatsayiOrani[3]=3899.53328    ;DEG:KatsayiOrani[4]=3823.46934    ;DEG:KatsayiOrani[5]=3763.58292    ;DEG:KatsayiOrani[6]=3727.38004    ;DEG:KatsayiOrani[7]=3682.32231    ;DEG:KatsayiOrani[8]=3675.96935    ;DEG:KatsayiOrani[9]=3598.42556    ;DEG:KatsayiOrani[10]=3463.24961    ;DEG:KatsayiOrani[11]=3413.36135    ;DEG:KatsayiOrani[12]=3382.21693; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1987'    ;DEG:KatsayiOrani[1]=3264.40962    ;DEG:KatsayiOrani[2]=3146.37768    ;DEG:KatsayiOrani[3]=3043.21236    ;DEG:KatsayiOrani[4]=2921.87111    ;DEG:KatsayiOrani[5]=2767.93195    ;DEG:KatsayiOrani[6]=2894.53726    ;DEG:KatsayiOrani[7]=2885.52868    ;DEG:KatsayiOrani[8]=2798.53349    ;DEG:KatsayiOrani[9]=2692.97693    ;DEG:KatsayiOrani[10]=2602.37789    ;DEG:KatsayiOrani[11]=2501.82971    ;DEG:KatsayiOrani[12]=2231.20255; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1988'    ;DEG:KatsayiOrani[1]=2058.04901    ;DEG:KatsayiOrani[2]=1937.74338    ;DEG:KatsayiOrani[3]=1812.85336    ;DEG:KatsayiOrani[4]=1734.91477    ;DEG:KatsayiOrani[5]=1712.50958    ;DEG:KatsayiOrani[6]=1698.92496    ;DEG:KatsayiOrani[7]=1654.51033    ;DEG:KatsayiOrani[8]=1600.31102    ;DEG:KatsayiOrani[9]=1529.96809    ;DEG:KatsayiOrani[10]=1459.40337    ;DEG:KatsayiOrani[11]=1383.27932    ;DEG:KatsayiOrani[12]=1328.50070; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=0; DEG:DegerlemeYili='1989'    ;DEG:KatsayiOrani[1]=1239.77785    ;DEG:KatsayiOrani[2]=1196.10841    ;DEG:KatsayiOrani[3]=1153.97430    ;DEG:KatsayiOrani[4]=1096.27510    ;DEG:KatsayiOrani[5]=1049.58082    ;DEG:KatsayiOrani[6]=1016.62611    ;DEG:KatsayiOrani[7]=966.85453    ;DEG:KatsayiOrani[8]=942.31438    ;DEG:KatsayiOrani[9]=918.99019    ;DEG:KatsayiOrani[10]=894.20002    ;DEG:KatsayiOrani[11]=858.36657    ;DEG:KatsayiOrani[12]=818.50086; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=55.5; DEG:DegerlemeYili='1990'    ;DEG:KatsayiOrani[1]=783.71525    ;DEG:KatsayiOrani[2]=749.13626    ;DEG:KatsayiOrani[3]=719.14795    ;DEG:KatsayiOrani[4]=702.27998    ;DEG:KatsayiOrani[5]=691.63905    ;DEG:KatsayiOrani[6]=681.65010    ;DEG:KatsayiOrani[7]=670.32714    ;DEG:KatsayiOrani[8]=641.89504    ;DEG:KatsayiOrani[9]=606.91817    ;DEG:KatsayiOrani[10]=580.11243    ;DEG:KatsayiOrani[11]=564.47178    ;DEG:KatsayiOrani[12]=550.73968; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=54.1; DEG:DegerlemeYili='1991'    ;DEG:KatsayiOrani[1]=526.57700    ;DEG:KatsayiOrani[2]=500.27679    ;DEG:KatsayiOrani[3]=477.13141    ;DEG:KatsayiOrani[4]=452.77069    ;DEG:KatsayiOrani[5]=439.96519    ;DEG:KatsayiOrani[6]=434.06705    ;DEG:KatsayiOrani[7]=424.53722    ;DEG:KatsayiOrani[8]=405.37774    ;DEG:KatsayiOrani[9]=388.35978    ;DEG:KatsayiOrani[10]=375.17370    ;DEG:KatsayiOrani[11]=361.25324    ;DEG:KatsayiOrani[12]=345.90549; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=61.5; DEG:DegerlemeYili='1992'    ;DEG:KatsayiOrani[1]=311.53947    ;DEG:KatsayiOrani[2]=296.10163    ;DEG:KatsayiOrani[3]=283.84705    ;DEG:KatsayiOrani[4]=277.75962    ;DEG:KatsayiOrani[5]=275.83357    ;DEG:KatsayiOrani[6]=275.15214    ;DEG:KatsayiOrani[7]=270.18631    ;DEG:KatsayiOrani[8]=257.73226    ;DEG:KatsayiOrani[9]=242.53459    ;DEG:KatsayiOrani[10]=229.78542    ;DEG:KatsayiOrani[11]=222.03489    ;DEG:KatsayiOrani[12]=214.31075; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=58.4; DEG:DegerlemeYili='1993'    ;DEG:KatsayiOrani[1]=204.02550    ;DEG:KatsayiOrani[2]=193.90944    ;DEG:KatsayiOrani[3]=185.10535    ;DEG:KatsayiOrani[4]=180.39259    ;DEG:KatsayiOrani[5]=175.34884    ;DEG:KatsayiOrani[6]=171.33519    ;DEG:KatsayiOrani[7]=163.57514    ;DEG:KatsayiOrani[8]=157.65709    ;DEG:KatsayiOrani[9]=151.57258    ;DEG:KatsayiOrani[10]=146.35444    ;DEG:KatsayiOrani[11]=137.61007    ;DEG:KatsayiOrani[12]=133.73065; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=107.6; DEG:DegerlemeYili='1994'   ;DEG:KatsayiOrani[1]=127.01454    ;DEG:KatsayiOrani[2]=117.87406    ;DEG:KatsayiOrani[3]=110.11485    ;DEG:KatsayiOrani[4]=85.73828    ;DEG:KatsayiOrani[5]=79.01709    ;DEG:KatsayiOrani[6]=76.92955    ;DEG:KatsayiOrani[7]=75.09265    ;DEG:KatsayiOrani[8]=72.79815    ;DEG:KatsayiOrani[9]=69.70035    ;DEG:KatsayiOrani[10]=65.62771    ;DEG:KatsayiOrani[11]=62.10269    ;DEG:KatsayiOrani[12]=58.36823; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=99.5; DEG:DegerlemeYili='1995'    ;DEG:KatsayiOrani[1]=52.94411    ;DEG:KatsayiOrani[2]=49.44780    ;DEG:KatsayiOrani[3]=46.85459    ;DEG:KatsayiOrani[4]=44.57029    ;DEG:KatsayiOrani[5]=43.75181    ;DEG:KatsayiOrani[6]=43.19890    ;DEG:KatsayiOrani[7]=42.24718    ;DEG:KatsayiOrani[8]=41.31477    ;DEG:KatsayiOrani[9]=39.48870    ;DEG:KatsayiOrani[10]=38.07361    ;DEG:KatsayiOrani[11]=36.77362    ;DEG:KatsayiOrani[12]=35.24070; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=72.8; DEG:DegerlemeYili='1996'    ;DEG:KatsayiOrani[1]=32.11683    ;DEG:KatsayiOrani[2]=30.34427    ;DEG:KatsayiOrani[3]=28.35269    ;DEG:KatsayiOrani[4]=26.23357    ;DEG:KatsayiOrani[5]=25.19128    ;DEG:KatsayiOrani[6]=24.52339    ;DEG:KatsayiOrani[7]=23.95551    ;DEG:KatsayiOrani[8]=23.08338    ;DEG:KatsayiOrani[9]=21.96145    ;DEG:KatsayiOrani[10]=20.82150    ;DEG:KatsayiOrani[11]=19.80902    ;DEG:KatsayiOrani[12]=19.05988; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=80.4; DEG:DegerlemeYili='1997'    ;DEG:KatsayiOrani[1]=18.04084    ;DEG:KatsayiOrani[2]=16.98833    ;DEG:KatsayiOrani[3]=16.02242    ;DEG:KatsayiOrani[4]=15.18092    ;DEG:KatsayiOrani[5]=14.43135    ;DEG:KatsayiOrani[6]=13.95492    ;DEG:KatsayiOrani[7]=13.25611    ;DEG:KatsayiOrani[8]=12.58758    ;DEG:KatsayiOrani[9]=11.84601    ;DEG:KatsayiOrani[10]=11.10480    ;DEG:KatsayiOrani[11]=10.51659    ;DEG:KatsayiOrani[12]=9.98121; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=77.8; DEG:DegerlemeYili='1998'    ;DEG:KatsayiOrani[1]=9.36980    ;DEG:KatsayiOrani[2]=8.96079    ;DEG:KatsayiOrani[3]=8.61422    ;DEG:KatsayiOrani[4]=8.28210    ;DEG:KatsayiOrani[5]=8.02102    ;DEG:KatsayiOrani[6]=7.89774    ;DEG:KatsayiOrani[7]=7.70275    ;DEG:KatsayiOrani[8]=7.52148    ;DEG:KatsayiOrani[9]=7.13967    ;DEG:KatsayiOrani[10]=6.85577    ;DEG:KatsayiOrani[11]=6.63085    ;DEG:KatsayiOrani[12]=6.47041; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=52.1; DEG:DegerlemeYili='1999'    ;DEG:KatsayiOrani[1]=6.24678    ;DEG:KatsayiOrani[2]=6.04320    ;DEG:KatsayiOrani[3]=5.81137    ;DEG:KatsayiOrani[4]=5.51966    ;DEG:KatsayiOrani[5]=5.34880    ;DEG:KatsayiOrani[6]=5.25373    ;DEG:KatsayiOrani[7]=5.05283    ;DEG:KatsayiOrani[8]=4.89308    ;DEG:KatsayiOrani[9]=4.62265    ;DEG:KatsayiOrani[10]=4.41672    ;DEG:KatsayiOrani[11]=4.24364    ;DEG:KatsayiOrani[12]=3.97181; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=56; DEG:DegerlemeYili='2000'      ;DEG:KatsayiOrani[1]=3.75463    ;DEG:KatsayiOrani[2]=3.60767    ;DEG:KatsayiOrani[3]=3.49929    ;DEG:KatsayiOrani[4]=3.41760    ;DEG:KatsayiOrani[5]=3.36063    ;DEG:KatsayiOrani[6]=3.35075    ;DEG:KatsayiOrani[7]=3.31668    ;DEG:KatsayiOrani[8]=3.28550    ;DEG:KatsayiOrani[9]=3.21129    ;DEG:KatsayiOrani[10]=3.12401    ;DEG:KatsayiOrani[11]=3.05068    ;DEG:KatsayiOrani[12]=2.99398; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=53.2; DEG:DegerlemeYili='2001'    ;DEG:KatsayiOrani[1]=2.92623    ;DEG:KatsayiOrani[2]=2.85110    ;DEG:KatsayiOrani[3]=2.59051    ;DEG:KatsayiOrani[4]=2.26524    ;DEG:KatsayiOrani[5]=2.13091    ;DEG:KatsayiOrani[6]=2.07140    ;DEG:KatsayiOrani[7]=2.00536    ;DEG:KatsayiOrani[8]=1.93674    ;DEG:KatsayiOrani[9]=1.83838    ;DEG:KatsayiOrani[10]=1.72247    ;DEG:KatsayiOrani[11]=1.65329    ;DEG:KatsayiOrani[12]=1.58778; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=59; DEG:DegerlemeYili='2002'      ;DEG:KatsayiOrani[1]=1.52445    ;DEG:KatsayiOrani[2]=1.48638    ;DEG:KatsayiOrani[3]=1.45923    ;DEG:KatsayiOrani[4]=1.43327    ;DEG:KatsayiOrani[5]=1.42731    ;DEG:KatsayiOrani[6]=1.41102    ;DEG:KatsayiOrani[7]=1.37434    ;DEG:KatsayiOrani[8]=1.34562    ;DEG:KatsayiOrani[9]=1.30502    ;DEG:KatsayiOrani[10]=1.26538    ;DEG:KatsayiOrani[11]=1.24514    ;DEG:KatsayiOrani[12]=1.21353; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=28.5; DEG:DegerlemeYili='2003'    ;DEG:KatsayiOrani[1]=1.14933    ;DEG:KatsayiOrani[2]=1.11430    ;DEG:KatsayiOrani[3]=1.07971    ;DEG:KatsayiOrani[4]=1.06103    ;DEG:KatsayiOrani[5]=1.06765    ;DEG:KatsayiOrani[6]=1.08862    ;DEG:KatsayiOrani[7]=1.09448    ;DEG:KatsayiOrani[8]=1.09663    ;DEG:KatsayiOrani[9]=1.09604    ;DEG:KatsayiOrani[10]=1.08994    ;DEG:KatsayiOrani[11]=1.07170    ;DEG:KatsayiOrani[12]=1.06504; DEG:TefeOrani[12]=7382.1; DEG:HesapSekli='D'; Add(Degerleme)
+        Clear(Degerleme); DEG:DegerlemeOrani=6; DEG:DegerlemeYili='2004'       ;DEG:KatsayiOrani[1]=1.03771    ;DEG:KatsayiOrani[2]=1.02099    ;DEG:KatsayiOrani[3]=1.00000; ; DEG:TefeOrani[1]=7576.5; DEG:TefeOrani[2]=7700.6; DEG:TefeOrani[3]=7862.2; DEG:TefeOrani[4]=8070.5; DEG:TefeOrani[5]=8067.8; DEG:TefeOrani[6]=7982.7; DEG:TefeOrani[7]=7861.6; DEG:TefeOrani[8]=7923.5; DEG:TefeOrani[9]=8069.7; DEG:TefeOrani[10]=8330.1; DEG:TefeOrani[11]=8392.7; DEG:TefeOrani[12]=8403.8; DEG:HesapSekli='E'; Add(Degerleme)
+    End
+
+    If Records(KulMenuList)=0
+      Men:MenuNo=1000; Men:MenuAdi='=Demirbaþ Ýþlemleri======================================================'; Add(KulMenuList)
+      Men:MenuNo=1100; Men:MenuAdi='Demirbaþ Tanýmlarý'; Add(KulMenuList)
+      Men:MenuNo=1101; Men:MenuAdi='Demirbaþ Tanýmlarý/Tanýmlar'; Add(KulMenuList)
+      Men:MenuNo=1102; Men:MenuAdi='Demirbaþ Tanýmlarý/Ayýrma Oran'; Add(KulMenuList)
+      Men:MenuNo=1103; Men:MenuAdi='Demirbaþ Tanýmlarý/Özel Saha'; Add(KulMenuList)
+      Men:MenuNo=1110; Men:MenuAdi='Demirbaþ Tanýmlarý Excel '; Add(KulMenuList)
+      Men:MenuNo=1120; Men:MenuAdi='Demirbaþ Tanýmlarý Amortisman Hesabý'; Add(KulMenuList)
+      Men:MenuNo=1130; Men:MenuAdi='Demirbaþ Tanýmlarý Amortisman Deðerleri'; Add(KulMenuList)
+      Men:MenuNo=1140; Men:MenuAdi='Demirbaþ Tanýmlarý Transfer'; Add(KulMenuList)
+      Men:MenuNo=1150; Men:MenuAdi='Demirbaþ Tanýmlarý Demirbaþ Çýkýþý'; Add(KulMenuList)
+      Men:MenuNo=1160; Men:MenuAdi='Demirbaþ Tanýmlarý Barkod Yaz'; Add(KulMenuList)
+
+      Men:MenuNo=1200; Men:MenuAdi='Satýlan Demirbaþ Listesi'; Add(KulMenuList)
+      Men:MenuNo=1300; Men:MenuAdi='Tanýmlanabilir Demirbaþ Raporlarý'; Add(KulMenuList)
+      Men:MenuNo=1400; Men:MenuAdi='Tanýmlanabilir Demirbaþ Master Raporlarý'; Add(KulMenuList)
+      Men:MenuNo=1500; Men:MenuAdi='Demirbaþ Kontrol Listesi'; Add(KulMenuList)
+
+      Men:MenuNo=2000; Men:MenuAdi='=Hesap Ýþlemleri========================================================='; Add(KulMenuList)
+      Men:MenuNo=2010; Men:MenuAdi='Toplu Demirbaþ Hesaplamalarý'; Add(KulMenuList)
+      Men:MenuNo=2020; Men:MenuAdi='Toplu Demirbaþ Silinmesi'; Add(KulMenuList)
+      Men:MenuNo=2030; Men:MenuAdi='Toplu Enflasyon Düzeltmesi'; Add(KulMenuList)
+      Men:MenuNo=2040; Men:MenuAdi='Enflasyon Düzeltmesine Esas Eritme Yýlý Hesapla'; Add(KulMenuList)
+      Men:MenuNo=2045; Men:MenuAdi='Amortisman Deðerlerini Önceki Dönem Olarak Kopyala'; Add(KulMenuList)
+      Men:MenuNo=2050; Men:MenuAdi='Sermaye Ýþlemleri'; Add(KulMenuList)
+      Men:MenuNo=2060; Men:MenuAdi='Deðer Artýþ Fonu Düzenle'; Add(KulMenuList)
+
+      Men:MenuNo=3000; Men:MenuAdi='=Yasal Tanýmlamalar======================================================'; Add(KulMenuList)
+      Men:MenuNo=3010; Men:MenuAdi='Firma Genel Tanýmlarý'; Add(KulMenuList)
+      Men:MenuNo=3020; Men:MenuAdi='Deðerleme Oran Ve Düzeltme Kaysayýlarý'; Add(KulMenuList)
+      Men:MenuNo=3030; Men:MenuAdi='Kullaným Amaç Tanýmlarý'; Add(KulMenuList)
+      Men:MenuNo=3040; Men:MenuAdi='Grub Tanýmlarý'; Add(KulMenuList)
+      Men:MenuNo=3050; Men:MenuAdi='Demirbaþ Düzenleme Ýþlemleri'; Add(KulMenuList)
+      Men:MenuNo=3060; Men:MenuAdi='Yeni Eritme=Eritme Yýlý yap'; Add(KulMenuList)
+      Men:MenuNo=3070; Men:MenuAdi='Amortisman Ayýrma Oraný Düzenle'; Add(KulMenuList)
+      Men:MenuNo=3080; Men:MenuAdi='Ayrýþtýr'; Add(KulMenuList)
+      Men:MenuNo=3090; Men:MenuAdi='Birleþtir'; Add(KulMenuList)
+      Men:MenuNo=0100; Men:MenuAdi='=Tanýmlanabilir Raporlar================================================='; Add(KulMenuList)
+
+    End
+    DO CloseFiles
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[CALLS]
+CreateDataList
+[PROCEDURE]
+NAME GetMacAddress
+PROTOTYPE '(),String'
+NOEXPORT
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+   NCB.ncb_command = NCBRESET
+   I# = Netbios(NCB)
+
+   NCB.ncb_callname = '*               '
+   NCB.ncb_command = NCBASTAT
+
+   NCB.ncb_lana_num = 0
+   NCB.ncb_length = Size(AST)
+   dwFlags = BOR(HEAP_GENERATE_EXCEPTIONS,HEAP_ZERO_MEMORY)
+
+   pASTAT = HeapAlloc(GetProcessHeap(),dwFlags, NCB.ncb_length)
+
+   If pASTAT = 0 Then Message('Hafýza Ayýrma Hatasý!'); Return ''.
+
+   NCB.ncb_buffer = pASTAT
+   I#=Netbios(NCB)
+
+   Memcpy(Address(AST), NCB.ncb_buffer, Size(AST)); Tmp='DB-'
+   BStr=AST.adapt.adapter_address[1]; Do ByteToHex1; tmp=Clip(Tmp)&Clip(Str)
+   BStr=AST.adapt.adapter_address[2]; Do ByteToHex1; tmp=Clip(Tmp)&Clip(Str)&'-'
+   BStr=AST.adapt.adapter_address[3]; Do ByteToHex1; tmp=Clip(Tmp)&Clip(Str)
+   BStr=AST.adapt.adapter_address[4]; Do ByteToHex1; tmp=Clip(Tmp)&Clip(Str)&'-'
+   BStr=AST.adapt.adapter_address[5]; Do ByteToHex1; tmp=Clip(Tmp)&Clip(Str)
+   BStr=AST.adapt.adapter_address[6]; Do ByteToHex1; tmp=Clip(Tmp)&Clip(Str)
+   HeapFree( GetProcessHeap(), 0, pASTAT)
+
+   Tmp=Clip(Tmp)&'-'&NumtoHex(Volume())
+   Return tmp
+
+ByteToHex1 Routine
+  Str = '00'
+  EXECUTE BStr/16
+    Str[1]='1'; Str[1]='2'; Str[1]='3'; Str[1]='4'; Str[1]='5'; Str[1]='6'; Str[1]='7'; Str[1]='8'
+    Str[1]='9'; Str[1]='A'; Str[1]='B'; Str[1]='C'; Str[1]='D'; Str[1]='E'; Str[1]='F'
+  END
+  EXECUTE BStr % 16
+    Str[2]='1'; Str[2]='2'; Str[2]='3'; Str[2]='4'; Str[2]='5'; Str[2]='6'; Str[2]='7'; Str[2]='8'
+    Str[2]='9'; Str[2]='A'; Str[2]='B'; Str[2]='C'; Str[2]='D'; Str[2]='E'; Str[2]='F'
+  END
+
+
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+tmp  String(64)
+pASTAT  Long
+NCB Like(NET_CONTROL_BLOCK)
+AST Like(ASTAT)
+dwFlags LONG
+Str  String(2)
+BStr Short
+
+
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 2
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[ADDITION]
+NAME Volume Volume
+[INSTANCE]
+INSTANCE 1
+[PROMPTS]
+%Globaldrive DEFAULT  ('C')
+[PROCEDURE]
+NAME LisansKontrol
+PROTOTYPE '(*Long)'
+PARAMETERS '(LocalRequest)'
+[COMMON]
+FROM ABC Source
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Dump:'),USE(?Dump:Prompt)
+! ENTRY(@s60),USE(Dump)
+[REPORTCONTROLS]
+! STRING(@s60),USE(Dump)
+Dump                     STRING(60)
+!!> GUID('01ce88bb-d013-4c8d-8bfa-86c9d78e8dfe'),PROMPT('Dump:'),HEADER('Dump'),PICTURE(@s60)
+[SCREENCONTROLS]
+! PROMPT('My Key:'),USE(?MyKey:Prompt)
+! ENTRY(@s59),USE(MyKey)
+[REPORTCONTROLS]
+! STRING(@s59),USE(MyKey)
+MyKey                    CSTRING(60)
+!!> GUID('83423303-a766-454d-8346-8f2116d791aa'),PROMPT('My Key:'),HEADER('My Key'),PICTURE(@s59)
+[SCREENCONTROLS]
+! PROMPT('Program Key:'),USE(?ProgramKey:Prompt)
+! ENTRY(@n-14),USE(ProgramKey),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(ProgramKey),RIGHT(1)
+ProgramKey               LONG
+!!> GUID('09adbfdb-900e-4398-adb7-205e0b1610a6'),PROMPT('Program Key:'),HEADER('Program Key'),PICTURE(@n-14),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('User Key:'),USE(?UserKey:Prompt)
+! ENTRY(@n-14),USE(UserKey),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(UserKey),RIGHT(1)
+UserKey                  LONG
+!!> GUID('9d85f947-77c9-4c6e-b105-a9e125450a61'),PROMPT('User Key:'),HEADER('User Key'),PICTURE(@n-14),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Giris Adet:'),USE(?GirisAdet:Prompt)
+! ENTRY(@n-7),USE(GirisAdet),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(GirisAdet),RIGHT(1)
+GirisAdet                SHORT
+!!> GUID('92d51d32-d7db-4430-ba2a-0f197f6c7081'),PROMPT('Giris Adet:'),HEADER('Giris Adet'),PICTURE(@n-7),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Adet:'),USE(?Adet:Prompt)
+! ENTRY(@n-7),USE(Adet),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(Adet),RIGHT(1)
+Adet                     SHORT
+!!> GUID('68a4657c-bb71-4f92-b485-7afa3452255f'),PROMPT('Adet:'),HEADER('Adet'),PICTURE(@n-7),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('I:'),USE(?I:Prompt)
+! ENTRY(@n-7),USE(I),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(I),RIGHT(1)
+I                        SHORT
+!!> GUID('92380992-fe2c-49b6-81e6-9356c0fa18cb'),PROMPT('I:'),HEADER('I'),PICTURE(@n-7),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('J:'),USE(?J:Prompt)
+! ENTRY(@n-7),USE(J),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(J),RIGHT(1)
+J                        SHORT
+!!> GUID('71e8c300-da3a-4225-b61e-bf81fac87382'),PROMPT('J:'),HEADER('J'),PICTURE(@n-7),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Temp:'),USE(?Temp:Prompt)
+! ENTRY(@n10.2),USE(Temp),DECIMAL(14)
+[REPORTCONTROLS]
+! STRING(@n10.2),USE(Temp),DECIMAL(14)
+Temp                     REAL
+!!> GUID('3f89a3b1-3115-45b6-9265-7b1ad99e4c81'),PROMPT('Temp:'),HEADER('Temp'),PICTURE(@n10.2),JUSTIFY(DECIMAL,14)
+[SCREENCONTROLS]
+! PROMPT('MACA ddress:'),USE(?MACAddress:Prompt)
+! ENTRY(@s40),USE(MACAddress)
+[REPORTCONTROLS]
+! STRING(@s40),USE(MACAddress)
+MACAddress               STRING(40)
+!!> GUID('8405fd49-2823-46ec-b21c-4908413c58d6'),PROMPT('MACA ddress:'),HEADER('MACA ddress'),PICTURE(@s40)
+[SCREENCONTROLS]
+! PROMPT('Serial No:'),USE(?SerialNo:Prompt)
+! ENTRY(@s30),USE(SerialNo)
+[REPORTCONTROLS]
+! STRING(@s30),USE(SerialNo)
+SerialNo                 STRING(30)
+!!> GUID('0faaf61c-b660-4e9d-a031-39ef42d5fc30'),PROMPT('Serial No:'),HEADER('Serial No'),PICTURE(@s30)
+[SCREENCONTROLS]
+! PROMPT('Sifre Key:'),USE(?SifreKey:Prompt)
+! ENTRY(@s30),USE(SifreKey)
+[REPORTCONTROLS]
+! STRING(@s30),USE(SifreKey)
+SifreKey                 STRING(30)
+!!> GUID('6119434e-6359-4621-a8e6-bbac6e510b5f'),PROMPT('Sifre Key:'),HEADER('Sifre Key'),PICTURE(@s30)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  MACAddress=GetMACAddress(); LocalRequest=0; Adet=Len(Clip(MACAddress));Temp=0; j=1
+  SifreKey=MacAddress
+  !Þifreliyor
+  !4 27 6 25-9 22 11 20-14 17 16 15-19 12 21 10-24 7 26 5
+  SifreKey[4]=MACAddress[4]+1;  SifreKey[5]=MACAddress[27]+2;  SifreKey[6]=MACAddress[6]+3;  SifreKey[7]=MACAddress[25]+4
+  SifreKey[9]=MACAddress[9]+5;  SifreKey[10]=MACAddress[22]+6; SifreKey[11]=MACAddress[11]+7;SifreKey[12]=MACAddress[20]+8
+  SifreKey[14]=MACAddress[14]+9;SifreKey[15]=MACAddress[17]+10;SifreKey[16]=MACAddress[16]+1;SifreKey[17]=MACAddress[15]+2
+  SifreKey[19]=MACAddress[19]+3;SifreKey[20]=MACAddress[12]+4; SifreKey[21]=MACAddress[21]+5;SifreKey[22]=MACAddress[10]+6
+  SifreKey[24]=MACAddress[24]+7;SifreKey[25]=MACAddress[7]+8;  SifreKey[26]=MACAddress[26]+9;SifreKey[27]=MACAddress[5]+10
+  MACAddress=SifreKey
+  SifreKey=''; Loop i=210 to 239; SifreKey[i-209]=i.
+  Loop j=1 To 8
+    Loop i=1 To Adet; Temp+=BXor(BXOR(BXOR(Val(MACAddress[i]),Val(SifreKey[Adet-i])),i),j).
+    Dump[j]=Sub(Format(Temp,@n018),18,1)
+  End
+
+  SerialNo=GETREG(REG_CURRENT_USER,'Software\Delta\Demirbas','SeriNo')
+  If Clip(Dump)=Clip(SerialNo) Then LocalRequest=1
+  Else
+      SerialNo=GETREG(REG_LOCAL_MACHINE,'Software\Delta\Demirbas','SeriNo')
+      If Clip(Dump)=Clip(SerialNo)
+        PutREG(REG_CURRENT_USER,'Software\Delta\Demirbas','SeriNo',SerialNo); LocalRequest=1
+      Else
+        Loop 3 Times; LisansEkran(SerialNo,MACAddress); If ~(Clip(Dump)=Clip(SerialNo)) Then Cycle Else Break..
+        If ~(Clip(Dump)=Clip(SerialNo)) Then Halt(0,'Program Lisans Kayýt Hatasý')
+        Else
+          PutREG(REG_CURRENT_USER,'Software\Delta\Demirbas','SeriNo',SerialNo); LocalRequest=1;
+        End
+      End
+  End
+  ! Registry Deðer Yazýlýyor.
+!  MyKey=('Software\Delta'); ProgramKey=OpenKey(HKEY_CURRENT_USER,MyKey)
+!  If ProgramKey=0 Then
+!    MyKey=('Software'); ProgramKey=OpenKey(HKEY_CURRENT_USER,MyKey); ProgramKey=CreateKey(ProgramKey,'Delta').
+!  UserKey=OpenKey(ProgramKey,'Demirbas')
+!  If UserKey=0 Then ProgramKey=CreateKey(ProgramKey,'Demirbas') Else ProgramKey=UserKey.
+!  SerialNo=GetValue(ProgramKey,'SeriNo')
+
+!  !Þifre Ayný Ýse GeriGon
+!  If Clip(Dump)=Clip(SerialNo) Then LocalRequest=1
+!  Else
+!    ! HKEY_LOCAL_MACHINE Varsa Oku
+!    MyKey=('Software\Delta\Demirbas'); ProgramKey=OpenKey(HKEY_LOCAL_MACHINE,MyKey); SerialNo=GetValue(ProgramKey,'SeriNo')
+!    If (Clip(Dump)=Clip(SerialNo))
+!      MyKey=('Software\Delta\Demirbas'); ProgramKey=OpenKey(HKEY_CURRENT_USER,MyKey);
+!      LocalRequest=1; PutValue(ProgramKey,SerialNo,'SeriNo');  FlushKey(ProgramKey); CloseKey(ProgramKey)
+!    Else
+!      Loop 3 Times; LisansEkran(SerialNo,MACAddress); If ~(Clip(Dump)=Clip(SerialNo)) Then Cycle Else Break..
+!      If ~(Clip(Dump)=Clip(SerialNo))
+!         FlushKey(ProgramKey); CloseKey(ProgramKey); Halt(0,'Program Lisans Kayýt Hatasý')
+!      Else
+!        MyKey=('Software\Delta\Demirbas'); ProgramKey=OpenKey(HKEY_CURRENT_USER,MyKey);
+!        LocalRequest=1; PutValue(ProgramKey,SerialNo,'SeriNo');  FlushKey(ProgramKey); CloseKey(ProgramKey)
+!      End
+!    End
+!  End
+  Post(Event:CloseWindow)
+
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[CALLS]
+GetMacAddress
+LisansEkran
+[PROCEDURE]
+NAME LisansEkran
+PROTOTYPE '(*String,String)'
+PARAMETERS '(Cevap,Adres)'
+NOEXPORT
+[COMMON]
+FROM ABC Window
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('083fe444-606a-402b-b0fc-418575e185c0'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+[SCREENCONTROLS]
+! PROMPT('Computer Name:'),USE(?ComputerName:Prompt)
+! ENTRY(@s60),USE(ComputerName)
+[REPORTCONTROLS]
+! STRING(@s60),USE(ComputerName)
+ComputerName             STRING(60)
+!!> GUID('9fb93ae8-5bec-4984-b057-bd5803d94b28'),PROMPT('Computer Name:'),HEADER('Computer Name'),PICTURE(@s60)
+[SCREENCONTROLS]
+! PROMPT('User Name:'),USE(?UserName:Prompt)
+! ENTRY(@s60),USE(UserName)
+[REPORTCONTROLS]
+! STRING(@s60),USE(UserName)
+UserName                 STRING(60)
+!!> GUID('6e8618c5-f628-4258-8e2e-b643b8baf70a'),PROMPT('User Name:'),HEADER('User Name'),PICTURE(@s60)
+[SCREENCONTROLS]
+! PROMPT('MACA ddress:'),USE(?MACAddress:Prompt)
+! ENTRY(@s40),USE(MACAddress)
+[REPORTCONTROLS]
+! STRING(@s40),USE(MACAddress)
+MACAddress               STRING(40)
+!!> GUID('ded4a687-44d9-48ac-b036-3a393a20ee5d'),PROMPT('MACA ddress:'),HEADER('MACA ddress'),PICTURE(@s40)
+[SCREENCONTROLS]
+! PROMPT('Serial No:'),USE(?SerialNo:Prompt)
+! ENTRY(@s30),USE(SerialNo)
+[REPORTCONTROLS]
+! STRING(@s30),USE(SerialNo)
+SerialNo                 STRING(30)
+!!> GUID('d290b15f-5737-4499-a767-556b608cab61'),PROMPT('Serial No:'),HEADER('Serial No'),PICTURE(@s30)
+[SCREENCONTROLS]
+! PROMPT('Sozlesme:'),USE(?Sozlesme:Prompt)
+! TEXT,USE(Sozlesme)
+[REPORTCONTROLS]
+! TEXT,USE(Sozlesme)
+Sozlesme                 STRING(5000)
+!!> GUID('a5726b92-3d04-4461-943d-ab84c4912acd'),PROMPT('Sozlesme:'),HEADER('Sozlesme'),PICTURE(@s255)
+[PROMPTS]
+%ClassItem UNIQUE DEFAULT  ('WindowToolbar', 'Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeSelected {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (0)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('APIPrinterClass')
+WHEN  ('WindowToolbar') ('APIPrinterClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('No Special Action')
+WHEN  ('?Button2') ('No Special Action')
+WHEN  ('?Close') ('No Special Action')
+WHEN  ('?ComputerName') ('No Special Action')
+WHEN  ('?ComputerName:Prompt') ('No Special Action')
+WHEN  ('?MACAddress') ('No Special Action')
+WHEN  ('?SerialNo') ('No Special Action')
+WHEN  ('?SerialNo:Prompt:2') ('No Special Action')
+WHEN  ('?Sozlesme') ('No Special Action')
+WHEN  ('?String1') ('No Special Action')
+WHEN  ('?String2') ('No Special Action')
+WHEN  ('?String3') ('No Special Action')
+WHEN  ('?String4') ('No Special Action')
+WHEN  ('?String5') ('No Special Action')
+WHEN  ('?String6') ('No Special Action')
+WHEN  ('?UserName') ('No Special Action')
+WHEN  ('?UserName:Prompt') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 2
+WHEN  ('?Button2') ('')
+WHEN  ('?Close') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 2
+WHEN  ('?Button2') ('')
+WHEN  ('?Close') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 2
+WHEN  ('?Button2') ()
+WHEN  ('?Close') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 2
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('25000')
+WHEN  ('?Button2') ('25000')
+WHEN  ('?Close') ('25000')
+WHEN  ('?ComputerName') ('25000')
+WHEN  ('?ComputerName:Prompt') ('25000')
+WHEN  ('?MACAddress') ('25000')
+WHEN  ('?SerialNo') ('25000')
+WHEN  ('?SerialNo:Prompt:2') ('25000')
+WHEN  ('?Sozlesme') ('25000')
+WHEN  ('?String1') ('25000')
+WHEN  ('?String2') ('25000')
+WHEN  ('?String3') ('25000')
+WHEN  ('?String4') ('25000')
+WHEN  ('?String5') ('25000')
+WHEN  ('?String6') ('25000')
+WHEN  ('?UserName') ('25000')
+WHEN  ('?UserName:Prompt') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 2
+WHEN  ('?Button2') ('')
+WHEN  ('?Close') ('')
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 2
+WHEN  ('?Button2') ()
+WHEN  ('?Close') ()
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 2
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('None')
+WHEN  ('?Button2') ('None')
+WHEN  ('?Close') ('None')
+WHEN  ('?ComputerName') ('None')
+WHEN  ('?ComputerName:Prompt') ('None')
+WHEN  ('?MACAddress') ('None')
+WHEN  ('?SerialNo') ('None')
+WHEN  ('?SerialNo:Prompt:2') ('None')
+WHEN  ('?Sozlesme') ('None')
+WHEN  ('?String1') ('None')
+WHEN  ('?String2') ('None')
+WHEN  ('?String3') ('None')
+WHEN  ('?String4') ('None')
+WHEN  ('?String5') ('None')
+WHEN  ('?String6') ('None')
+WHEN  ('?UserName') ('None')
+WHEN  ('?UserName:Prompt') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 2
+WHEN  ('?Button2') ('')
+WHEN  ('?Close') ('')
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 2
+WHEN  ('?Button2') ()
+WHEN  ('?Close') ()
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 4
+WHEN  ('?ComputerName') ()
+WHEN  ('?MACAddress') ()
+WHEN  ('?SerialNo') ()
+WHEN  ('?UserName') ()
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 4
+WHEN  ('?ComputerName') ()
+WHEN  ('?MACAddress') ()
+WHEN  ('?SerialNo') ()
+WHEN  ('?UserName') ()
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 4
+WHEN  ('?ComputerName') ()
+WHEN  ('?MACAddress') ()
+WHEN  ('?SerialNo') ()
+WHEN  ('?UserName') ()
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 4
+WHEN  ('?ComputerName') ()
+WHEN  ('?MACAddress') ()
+WHEN  ('?SerialNo') ()
+WHEN  ('?UserName') ()
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 17
+WHEN  ('') (1)
+WHEN  ('?Button2') (1)
+WHEN  ('?Close') (1)
+WHEN  ('?ComputerName') (1)
+WHEN  ('?ComputerName:Prompt') (1)
+WHEN  ('?MACAddress') (1)
+WHEN  ('?SerialNo') (1)
+WHEN  ('?SerialNo:Prompt:2') (1)
+WHEN  ('?Sozlesme') (1)
+WHEN  ('?String1') (1)
+WHEN  ('?String2') (1)
+WHEN  ('?String3') (1)
+WHEN  ('?String4') (1)
+WHEN  ('?String5') (1)
+WHEN  ('?String6') (1)
+WHEN  ('?UserName') (1)
+WHEN  ('?UserName:Prompt') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Button2')TIMES 0
+WHEN  ('?Close')TIMES 0
+WHEN  ('?ComputerName')TIMES 0
+WHEN  ('?ComputerName:Prompt')TIMES 0
+WHEN  ('?MACAddress')TIMES 0
+WHEN  ('?SerialNo')TIMES 0
+WHEN  ('?SerialNo:Prompt:2')TIMES 0
+WHEN  ('?Sozlesme')TIMES 0
+WHEN  ('?String1')TIMES 0
+WHEN  ('?String2')TIMES 0
+WHEN  ('?String3')TIMES 0
+WHEN  ('?String4')TIMES 0
+WHEN  ('?String5')TIMES 0
+WHEN  ('?String6')TIMES 0
+WHEN  ('?UserName')TIMES 0
+WHEN  ('?UserName:Prompt')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Button2')TIMES 0
+WHEN  ('?Close')TIMES 0
+WHEN  ('?ComputerName')TIMES 0
+WHEN  ('?ComputerName:Prompt')TIMES 0
+WHEN  ('?MACAddress')TIMES 0
+WHEN  ('?SerialNo')TIMES 0
+WHEN  ('?SerialNo:Prompt:2')TIMES 0
+WHEN  ('?Sozlesme')TIMES 0
+WHEN  ('?String1')TIMES 0
+WHEN  ('?String2')TIMES 0
+WHEN  ('?String3')TIMES 0
+WHEN  ('?String4')TIMES 0
+WHEN  ('?String5')TIMES 0
+WHEN  ('?String6')TIMES 0
+WHEN  ('?UserName')TIMES 0
+WHEN  ('?UserName:Prompt')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Button2')TIMES 0
+WHEN  ('?Close')TIMES 0
+WHEN  ('?ComputerName')TIMES 0
+WHEN  ('?ComputerName:Prompt')TIMES 0
+WHEN  ('?MACAddress')TIMES 0
+WHEN  ('?SerialNo')TIMES 0
+WHEN  ('?SerialNo:Prompt:2')TIMES 0
+WHEN  ('?Sozlesme')TIMES 0
+WHEN  ('?String1')TIMES 0
+WHEN  ('?String2')TIMES 0
+WHEN  ('?String3')TIMES 0
+WHEN  ('?String4')TIMES 0
+WHEN  ('?String5')TIMES 0
+WHEN  ('?String6')TIMES 0
+WHEN  ('?UserName')TIMES 0
+WHEN  ('?UserName:Prompt')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Button2')TIMES 0
+WHEN  ('?Close')TIMES 0
+WHEN  ('?ComputerName')TIMES 0
+WHEN  ('?ComputerName:Prompt')TIMES 0
+WHEN  ('?MACAddress')TIMES 0
+WHEN  ('?SerialNo')TIMES 0
+WHEN  ('?SerialNo:Prompt:2')TIMES 0
+WHEN  ('?Sozlesme')TIMES 0
+WHEN  ('?String1')TIMES 0
+WHEN  ('?String2')TIMES 0
+WHEN  ('?String3')TIMES 0
+WHEN  ('?String4')TIMES 0
+WHEN  ('?String5')TIMES 0
+WHEN  ('?String6')TIMES 0
+WHEN  ('?UserName')TIMES 0
+WHEN  ('?UserName:Prompt')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
+
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?String2')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+[EMBED]
+EMBED %WindowManagerMethodCodeSection
+[INSTANCES]
+WHEN 'Init'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 8001
+PROPERTY:END
+MacAddress=Adres
+Sozlesme=|
+'YAZILIM TELÝF HAKLARI ÝLE ÝLGÝLÝ HUKUKÝ BÝLGÝ <13><10>'&|
+'========================================== <13><10>'&|
+'''12.06.1995 tarih ve 22311 sayýlý Resmi Gazete'' de yayýnlanan 4110 sayýlý ''Fikir ve Sanat Eserleri Kanunu''nun Bazý Maddelerinin Deðiþtirilmesine '&|
+'iliþkin Kanun'' ile ''Bilgisayar Yazýmlarý'' Fikir ve Sanat Eselerli Kanunu'' nun (FSEK) korumasý altýna alýnmýþtýr. <13><10>' &|
+'Böylece yazýlým ürünlerinin sahip olduðu hukuki koruma kapsamý çok geniþletilmiþtir. '&|
+'21.02.2001 tarih ve 4630 sayýlý kanunla Fikir ve Sanat Eserleri Kanunun'' da yapýlan deðiþikliklerle koruma kapsamý, yaptýrým sýnýrlarý ' &|
+'daha da geniþletilmiþ ve cezalar artýrýlmýþtýr.<13><10>'&|
+'<13><10>'&|
+'SUÇ TEÞKÝL EDEN FÝÝLLER<13><10>'&|
+'=======================<13><10>'&|
+' 1) Lisansý alýnmamýþ kopya yazýlým kullananlar (FSEK),<13><10>'&|
+' 2) Lisansýz kopya yazýlýmlarý satanlar (FSEK)<13><10>'&|
+' 3) Lisansýz kopya yazýlýmlarý ticari amaçla elinde bulunduranlar, bedelsiz daðýtanlar, kiraya verenler (FSEK)<13><10>'&|
+' 4) Yasal kullaným hakkýna sahip olduðu yazýlýmý Iisansta izin verilenden fazla çoðaltanlar, bu kopyalan kiralayan, satan daðýtan yada bedelli bedelsiz baþkasýna verenler veya sair surette Iisans sôzleþmesine aykýrý davrananlar (FESK)<13><10>'&|
+' 5) Lisans sahibinin izni olmadan bir yazýlýma kendi adýný koyanlar (FSEK)<13><10>'&|
+' 6) Baþkasýnýn yazýlýmýný kendi yazýlýmý gibi gösterenler (FSEK)<13><10>'&|
+' 7) Yazýlýmý sahibinin izni olmadan deðiþtirenler (FSEK)<13><10>'&|
+' 8) Yazýlýmýn Iisansýný devredenin izni olmaksýzýn baþkasýna devredenler yada sair bir tasarrufa konu edenler (FSEK)<13><10>'&|
+' 9) Lisanslý yazýlýmýn koruma sistemini (þifre vs.) ortadan kaldýranlar, geçersiz kýlanlar bu iþe yarayan teknik araçlarý elinde bulunduranlar, daðýtanlar (FSEK)<13><10>'&|
+'10) Bilgisayar sistemindeki programlarý, verileri veya diðer unsurlarý hukuka aykýrý olarak ele geçirenler ( Türk Ceza Kanunu- TCK)<13><10>'&|
+'11) Korsan kopyalama fiili esnasýnda ayný zamanda marka ve ticari ünvan haklarý ve vergi mevzuatý da ihlal edilmiþ olur (Türk Ticaret Kanunu, Markalar Kanunu, Markalarýn Korunmasý Hk. K.H.K, Vergi Kanunlarý)<13><10>'&|
+'<13><10>'&|
+'SUÇUN FAÝLLERÝ<13><10>'&|
+'===============<13><10>'&|
+'1) Yukarýdaki belirtilen suçlarý bilerek veya ihmal ile iþleyenler<13><10>'&|
+'2) Suça herhangi bir þekilde iþtirak edenler<13><10>'&|
+'3) Yönetimi altýnda çalýþan personelin Iisanssýz yazýlým kullanmasý halinde; bunu bilmese bile iþveren ve yöneticiler<13><10>'&|
+'4) iþverenin bilgisi halinde IisanssýZ yazýlým kullanan personel<13><10>'&|
+'5) Þirket bünyesinde iþlenen suçlarda masraf ve para cezasý yönünden þirket tüzel kiþiliðide suç failleriyle birlikte sorumludur<13><10>'
+
+[END]
+[END]
+[END]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?Close'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4499
+PROPERTY:END
+!If SerialNo='' Then Select(?SerialNo); Cycle.
+Cevap=SerialNo
+[END]
+[END]
+WHEN '?Button2'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+Hide(?String3);Hide(?String4);Hide(?String5);Hide(?String6);Hide(?Button2)
+UnHide(?UserName:Prompt);UnHide(?UserName)
+UnHide(?ComputerName:Prompt);UnHide(?ComputerName)
+UnHide(?string1);UnHide(?MACAddress)
+UnHide(?SerialNo:Prompt:2);UnHide(?SerialNo)
+UnHide(?Close)
+Display
+[END]
+[END]
+WHEN '?Sozlesme'
+[INSTANCES]
+WHEN 'Selected'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4999
+PROPERTY:END
+Select(?Button2); Cycle
+[END]
+[END]
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 17
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?ComputerName') (0)
+WHEN  ('?ComputerName:Prompt') (0)
+WHEN  ('?MACAddress') (0)
+WHEN  ('?SerialNo') (0)
+WHEN  ('?SerialNo:Prompt:2') (0)
+WHEN  ('?Sozlesme') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?UserName') (0)
+WHEN  ('?UserName:Prompt') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 17
+WHEN  ('') (1)
+WHEN  ('?Button2') (1)
+WHEN  ('?Close') (1)
+WHEN  ('?ComputerName') (1)
+WHEN  ('?ComputerName:Prompt') (1)
+WHEN  ('?MACAddress') (1)
+WHEN  ('?SerialNo') (1)
+WHEN  ('?SerialNo:Prompt:2') (1)
+WHEN  ('?Sozlesme') (1)
+WHEN  ('?String1') (1)
+WHEN  ('?String2') (1)
+WHEN  ('?String3') (1)
+WHEN  ('?String4') (1)
+WHEN  ('?String5') (1)
+WHEN  ('?String6') (1)
+WHEN  ('?UserName') (1)
+WHEN  ('?UserName:Prompt') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 17
+WHEN  ('') (1)
+WHEN  ('?Button2') (1)
+WHEN  ('?Close') (1)
+WHEN  ('?ComputerName') (1)
+WHEN  ('?ComputerName:Prompt') (1)
+WHEN  ('?MACAddress') (1)
+WHEN  ('?SerialNo') (1)
+WHEN  ('?SerialNo:Prompt:2') (1)
+WHEN  ('?Sozlesme') (1)
+WHEN  ('?String1') (1)
+WHEN  ('?String2') (1)
+WHEN  ('?String3') (1)
+WHEN  ('?String4') (1)
+WHEN  ('?String5') (1)
+WHEN  ('?String6') (1)
+WHEN  ('?UserName') (1)
+WHEN  ('?UserName:Prompt') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('250000')
+WHEN  ('?Button2') ('250000')
+WHEN  ('?Close') ('250000')
+WHEN  ('?ComputerName') ('250000')
+WHEN  ('?ComputerName:Prompt') ('250000')
+WHEN  ('?MACAddress') ('250000')
+WHEN  ('?SerialNo') ('250000')
+WHEN  ('?SerialNo:Prompt:2') ('250000')
+WHEN  ('?Sozlesme') ('250000')
+WHEN  ('?String1') ('250000')
+WHEN  ('?String2') ('250000')
+WHEN  ('?String3') ('250000')
+WHEN  ('?String4') ('250000')
+WHEN  ('?String5') ('250000')
+WHEN  ('?String6') ('250000')
+WHEN  ('?UserName') ('250000')
+WHEN  ('?UserName:Prompt') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('32000')
+WHEN  ('?Button2') ('32000')
+WHEN  ('?Close') ('32000')
+WHEN  ('?ComputerName') ('32000')
+WHEN  ('?ComputerName:Prompt') ('32000')
+WHEN  ('?MACAddress') ('32000')
+WHEN  ('?SerialNo') ('32000')
+WHEN  ('?SerialNo:Prompt:2') ('32000')
+WHEN  ('?Sozlesme') ('32000')
+WHEN  ('?String1') ('32000')
+WHEN  ('?String2') ('32000')
+WHEN  ('?String3') ('32000')
+WHEN  ('?String4') ('32000')
+WHEN  ('?String5') ('32000')
+WHEN  ('?String6') ('32000')
+WHEN  ('?UserName') ('32000')
+WHEN  ('?UserName:Prompt') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 17
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?ComputerName') (0)
+WHEN  ('?ComputerName:Prompt') (0)
+WHEN  ('?MACAddress') (0)
+WHEN  ('?SerialNo') (0)
+WHEN  ('?SerialNo:Prompt:2') (0)
+WHEN  ('?Sozlesme') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?UserName') (0)
+WHEN  ('?UserName:Prompt') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('')
+WHEN  ('?Button2') ('')
+WHEN  ('?Close') ('')
+WHEN  ('?ComputerName') ('')
+WHEN  ('?ComputerName:Prompt') ('')
+WHEN  ('?MACAddress') ('')
+WHEN  ('?SerialNo') ('')
+WHEN  ('?SerialNo:Prompt:2') ('')
+WHEN  ('?Sozlesme') ('')
+WHEN  ('?String1') ('')
+WHEN  ('?String2') ('')
+WHEN  ('?String3') ('')
+WHEN  ('?String4') ('')
+WHEN  ('?String5') ('')
+WHEN  ('?String6') ('')
+WHEN  ('?UserName') ('')
+WHEN  ('?UserName:Prompt') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 17
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?ComputerName') (0)
+WHEN  ('?ComputerName:Prompt') (0)
+WHEN  ('?MACAddress') (0)
+WHEN  ('?SerialNo') (0)
+WHEN  ('?SerialNo:Prompt:2') (0)
+WHEN  ('?Sozlesme') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?UserName') (0)
+WHEN  ('?UserName:Prompt') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 17
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?ComputerName') (0)
+WHEN  ('?ComputerName:Prompt') (0)
+WHEN  ('?MACAddress') (0)
+WHEN  ('?SerialNo') (0)
+WHEN  ('?SerialNo:Prompt:2') (0)
+WHEN  ('?Sozlesme') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?UserName') (0)
+WHEN  ('?UserName:Prompt') (0)
+
+%cNormal DEPEND %Control LONG TIMES 17
+WHEN  ('') (-1)
+WHEN  ('?Button2') (-1)
+WHEN  ('?Close') (-1)
+WHEN  ('?ComputerName') (-1)
+WHEN  ('?ComputerName:Prompt') (-1)
+WHEN  ('?MACAddress') (-1)
+WHEN  ('?SerialNo') (-1)
+WHEN  ('?SerialNo:Prompt:2') (-1)
+WHEN  ('?Sozlesme') (-1)
+WHEN  ('?String1') (-1)
+WHEN  ('?String2') (-1)
+WHEN  ('?String3') (-1)
+WHEN  ('?String4') (-1)
+WHEN  ('?String5') (-1)
+WHEN  ('?String6') (-1)
+WHEN  ('?UserName') (-1)
+WHEN  ('?UserName:Prompt') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 17
+WHEN  ('') (14342874)
+WHEN  ('?Button2') (14342874)
+WHEN  ('?Close') (14342874)
+WHEN  ('?ComputerName') (14342874)
+WHEN  ('?ComputerName:Prompt') (14342874)
+WHEN  ('?MACAddress') (14342874)
+WHEN  ('?SerialNo') (14342874)
+WHEN  ('?SerialNo:Prompt:2') (14342874)
+WHEN  ('?Sozlesme') (14342874)
+WHEN  ('?String1') (14342874)
+WHEN  ('?String2') (14342874)
+WHEN  ('?String3') (14342874)
+WHEN  ('?String4') (14342874)
+WHEN  ('?String5') (14342874)
+WHEN  ('?String6') (14342874)
+WHEN  ('?UserName') (14342874)
+WHEN  ('?UserName:Prompt') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 17
+WHEN  ('') (14342874)
+WHEN  ('?Button2') (14342874)
+WHEN  ('?Close') (14342874)
+WHEN  ('?ComputerName') (14342874)
+WHEN  ('?ComputerName:Prompt') (14342874)
+WHEN  ('?MACAddress') (14342874)
+WHEN  ('?SerialNo') (14342874)
+WHEN  ('?SerialNo:Prompt:2') (14342874)
+WHEN  ('?Sozlesme') (14342874)
+WHEN  ('?String1') (14342874)
+WHEN  ('?String2') (14342874)
+WHEN  ('?String3') (14342874)
+WHEN  ('?String4') (14342874)
+WHEN  ('?String5') (14342874)
+WHEN  ('?String6') (14342874)
+WHEN  ('?UserName') (14342874)
+WHEN  ('?UserName:Prompt') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 17
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?ComputerName') (0)
+WHEN  ('?ComputerName:Prompt') (0)
+WHEN  ('?MACAddress') (0)
+WHEN  ('?SerialNo') (0)
+WHEN  ('?SerialNo:Prompt:2') (0)
+WHEN  ('?Sozlesme') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?UserName') (0)
+WHEN  ('?UserName:Prompt') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 17
+WHEN  ('') (14342874)
+WHEN  ('?Button2') (14342874)
+WHEN  ('?Close') (14342874)
+WHEN  ('?ComputerName') (14342874)
+WHEN  ('?ComputerName:Prompt') (14342874)
+WHEN  ('?MACAddress') (14342874)
+WHEN  ('?SerialNo') (14342874)
+WHEN  ('?SerialNo:Prompt:2') (14342874)
+WHEN  ('?Sozlesme') (14342874)
+WHEN  ('?String1') (14342874)
+WHEN  ('?String2') (14342874)
+WHEN  ('?String3') (14342874)
+WHEN  ('?String4') (14342874)
+WHEN  ('?String5') (14342874)
+WHEN  ('?String6') (14342874)
+WHEN  ('?UserName') (14342874)
+WHEN  ('?UserName:Prompt') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 17
+WHEN  ('') (0)
+WHEN  ('?Button2') (0)
+WHEN  ('?Close') (0)
+WHEN  ('?ComputerName') (0)
+WHEN  ('?ComputerName:Prompt') (0)
+WHEN  ('?MACAddress') (0)
+WHEN  ('?SerialNo') (0)
+WHEN  ('?SerialNo:Prompt:2') (0)
+WHEN  ('?Sozlesme') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String3') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?UserName') (0)
+WHEN  ('?UserName:Prompt') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 17
+WHEN  ('') (8421504)
+WHEN  ('?Button2') (8421504)
+WHEN  ('?Close') (8421504)
+WHEN  ('?ComputerName') (8421504)
+WHEN  ('?ComputerName:Prompt') (8421504)
+WHEN  ('?MACAddress') (8421504)
+WHEN  ('?SerialNo') (8421504)
+WHEN  ('?SerialNo:Prompt:2') (8421504)
+WHEN  ('?Sozlesme') (8421504)
+WHEN  ('?String1') (8421504)
+WHEN  ('?String2') (8421504)
+WHEN  ('?String3') (8421504)
+WHEN  ('?String4') (8421504)
+WHEN  ('?String5') (8421504)
+WHEN  ('?String6') (8421504)
+WHEN  ('?UserName') (8421504)
+WHEN  ('?UserName:Prompt') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 17
+WHEN  ('') (16777215)
+WHEN  ('?Button2') (16777215)
+WHEN  ('?Close') (16777215)
+WHEN  ('?ComputerName') (16777215)
+WHEN  ('?ComputerName:Prompt') (16777215)
+WHEN  ('?MACAddress') (16777215)
+WHEN  ('?SerialNo') (16777215)
+WHEN  ('?SerialNo:Prompt:2') (16777215)
+WHEN  ('?Sozlesme') (16777215)
+WHEN  ('?String1') (16777215)
+WHEN  ('?String2') (16777215)
+WHEN  ('?String3') (16777215)
+WHEN  ('?String4') (16777215)
+WHEN  ('?String5') (16777215)
+WHEN  ('?String6') (16777215)
+WHEN  ('?UserName') (16777215)
+WHEN  ('?UserName:Prompt') (16777215)
+
+[INSTANCE]
+INSTANCE 4
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[ADDITION]
+NAME ABC CleanCloseDownLocal
+[INSTANCE]
+INSTANCE 3
+OWNER 6
+[ADDITION]
+NAME ABC CloseButton
+[INSTANCE]
+INSTANCE 1
+[ADDITION]
+NAME SmartZoom pSmartZoom
+[INSTANCE]
+INSTANCE 2
+OWNER 5
+[PROMPTS]
+%szDisableProc LONG  (0)
+[WINDOW]
+window  WINDOW('Lisans Ekraný'),AT(,,423,283),FONT('MS Sans Serif',8,,,CHARSET:TURKISH),DOUBLE, |
+          CENTER,ICON('Clarion.ico'),GRAY,MAX,SYSTEM
+          STRING('Demirbaþ Paket Programý Lisans Ekraný'),AT(6,0,413,20),USE(?String2),FONT(, |
+            18,COLOR:Red,FONT:bold),CENTER,#ORIG(?String2)
+          TEXT,AT(3,21,415,184),USE(Sozlesme),VSCROLL,SKIP,#FREEZE,#ORIG(Sozlesme)
+          STRING('Delta Bilgisayar Hizmetleri Ltd.Þti.'),AT(3,207,417,23),USE(?String3),FONT(, |
+            24,COLOR:Red,FONT:bold,CHARSET:ANSI),CENTER,#ORIG(?String3)
+          ENTRY(@s60),AT(143,210,199,10),USE(UserName),DISABLE,HIDE,#LINK(?UserName:Prompt), |
+            #ORIG(UserName)
+          PROMPT('Bilgisayar Adý'),AT(80,222),USE(?ComputerName:Prompt),FONT(,,,FONT:bold), |
+            HIDE,#LINK(?ComputerName),#ORIG(?ComputerName:Prompt)
+          ENTRY(@s60),AT(143,222,199,10),USE(ComputerName),DISABLE,HIDE,#LINK(?ComputerName:Prompt), |
+            #ORIG(ComputerName)
+          STRING('Lisans SeriNo'),AT(80,234),USE(?String1),FONT(,,,FONT:bold),HIDE,#ORIG(?String1)
+          ENTRY(@s40),AT(143,234,199,10),USE(MACAddress),DISABLE,HIDE,#ORIG(MACAddress)
+          STRING('Kalamýþ, Tel: (0216) 349 4435 - (0216) 349 1741 Fax: (0216) 414 4221'),AT(6, |
+            231,415,10),USE(?String4),FONT(,,,FONT:bold),CENTER,#ORIG(?String4)
+          STRING('Moda, Tel: (0216) 349 8974 - (0216) 349 1563 Fax: (0216) 414 4223'),AT(6, |
+            240,415,10),USE(?String5),FONT(,,,FONT:bold),CENTER,#ORIG(?String5)
+          ENTRY(@s30),AT(143,249,199,10),USE(SerialNo),HIDE,#LINK(?SerialNo:Prompt:2),#ORIG(SerialNo)
+          STRING('Web: www.deltabilgisayar.com.tr    Email : destek@deltabilgisayar.com.tr'), |
+            AT(3,249,417,10),USE(?String6),CENTER,#ORIG(?String6)
+          BUTTON('Okudum, Kabul Ediyorum'),AT(152,261,119,20),USE(?Button2),FONT(,,COLOR:Blue, |
+            FONT:bold,CHARSET:ANSI),#ORIG(?Button2)
+          BUTTON('Tamam'),AT(165,264,93,15),USE(?Close),FONT(,,COLOR:Blue,FONT:bold),HIDE, |
+            #ORIG(?Close),#SEQ(1)
+          PROMPT('Lisans Anahtar'),AT(80,249),USE(?SerialNo:Prompt:2),FONT(,,,FONT:bold),HIDE, |
+            #LINK(?SerialNo),#ORIG(?SerialNo:Prompt)
+          PROMPT('Kullanýcý Adý'),AT(80,210),USE(?UserName:Prompt),FONT(,,,FONT:bold),HIDE, |
+            #LINK(?UserName),#ORIG(?UserName:Prompt)
+        END
+
+[PROCEDURE]
+NAME Crc16
+PROTOTYPE '(string),ULong'
+PARAMETERS '(Array)'
+[COMMON]
+FROM ABC Source
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Crc:'),USE(?Crc:Prompt)
+! ENTRY(@n13),USE(Crc)
+[REPORTCONTROLS]
+! STRING(@n13),USE(Crc)
+Crc                      ULONG
+!!> GUID('c4a02154-525d-44c6-ba20-7fc5c06c180a'),PROMPT('Crc:'),HEADER('Crc'),PICTURE(@n13)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  Loop X#=1 to Len(Clip(Array))
+    Crc=Bor(Crc,Array[x#])
+    Loop 8 Times
+      Crc=Bshift(Crc,1)
+      If Band(Crc,1000000h)
+        Crc=Bxor(Crc,102100h)
+      End
+    End
+  End
+  Return(Band(Bshift(Crc,-8),0000ffffh))
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME UserLogin
+PROTOTYPE '(*Long)'
+PARAMETERS '(LocalResponse)'
+[COMMON]
+FROM ABC Window
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('68b04331-ffb0-4180-923a-e20b1acb6d55'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+[SCREENCONTROLS]
+! PROMPT('Loc : User Id:'),USE(?Loc:UserId:Prompt)
+! ENTRY(@s20),USE(Loc:UserId),UPR
+[REPORTCONTROLS]
+! STRING(@s20),USE(Loc:UserId)
+Loc:UserId               STRING(20)
+!!> GUID('8b102c9c-f46b-453a-8e6d-4a50c35e683b'),PROMPT('Loc : User Id:'),HEADER('Loc : User Id'),PICTURE(@s20),CASE(UPPER)
+[SCREENCONTROLS]
+! PROMPT('Loc : Password:'),USE(?Loc:Password:Prompt)
+! ENTRY(@s20),USE(Loc:Password),UPR,PASSWORD
+[REPORTCONTROLS]
+! STRING(@s20),USE(Loc:Password)
+Loc:Password             STRING(20)
+!!> GUID('c5a52263-9c19-4684-ad95-4f2b7468d418'),PROMPT('Loc : Password:'),HEADER('Loc : Password'),PICTURE(@s20),CASE(UPPER),PASSWORD
+[SCREENCONTROLS]
+! PROMPT('Sifre 1:'),USE(?Sifre1:Prompt)
+! ENTRY(@s20),USE(Sifre1),PASSWORD
+[REPORTCONTROLS]
+! STRING(@s20),USE(Sifre1)
+Sifre1                   STRING(20)
+!!> GUID('8f3a74d4-924b-4466-ac71-5df9bb771594'),PROMPT('Sifre 1:'),HEADER('Sifre 1'),PICTURE(@s20),PASSWORD
+[SCREENCONTROLS]
+! PROMPT('Sifre 2:'),USE(?Sifre2:Prompt)
+! ENTRY(@s20),USE(Sifre2),PASSWORD
+[REPORTCONTROLS]
+! STRING(@s20),USE(Sifre2)
+Sifre2                   STRING(20)
+!!> GUID('70a45c06-49ac-430b-a0f2-e674086d0821'),PROMPT('Sifre 2:'),HEADER('Sifre 2'),PICTURE(@s20),PASSWORD
+[SCREENCONTROLS]
+! PROMPT('Attempts:'),USE(?Attempts:Prompt)
+! ENTRY(@n-7),USE(Attempts),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(Attempts),RIGHT(1)
+Attempts                 SHORT
+!!> GUID('06f991fb-cf69-45d6-aee0-3827a200f2cf'),PROMPT('Attempts:'),HEADER('Attempts'),PICTURE(@n-7),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Versiyon Yaz:'),USE(?VersiyonYaz:Prompt)
+! ENTRY(@s40),USE(VersiyonYaz)
+[REPORTCONTROLS]
+! STRING(@s40),USE(VersiyonYaz)
+VersiyonYaz              STRING(40)
+!!> GUID('00f5c11f-d869-45bc-bd4b-53575ad49f80'),PROMPT('Versiyon Yaz:'),HEADER('Versiyon Yaz'),PICTURE(@s40)
+[SCREENCONTROLS]
+! PROMPT('Anahtar Yaz:'),USE(?AnahtarYaz:Prompt)
+! ENTRY(@s50),USE(AnahtarYaz)
+[REPORTCONTROLS]
+! STRING(@s50),USE(AnahtarYaz)
+AnahtarYaz               STRING(50)
+!!> GUID('d9ba8f1d-084b-4c5b-ae0b-a87c4653002b'),PROMPT('Anahtar Yaz:'),HEADER('Anahtar Yaz'),PICTURE(@s50)
+[SCREENCONTROLS]
+! PROMPT('Anahtar:'),USE(?Anahtar:Prompt)
+! ENTRY(@s35),USE(Anahtar)
+[REPORTCONTROLS]
+! STRING(@s35),USE(Anahtar)
+Anahtar                  STRING(35)
+!!> GUID('7ee3eff7-417a-472d-ba9e-f293c8eb598a'),PROMPT('Anahtar:'),HEADER('Anahtar'),PICTURE(@s35)
+[SCREENCONTROLS]
+! PROMPT('Sif Deg:'),USE(?SifDeg:Prompt)
+! ENTRY(@n3),USE(SifDeg)
+[REPORTCONTROLS]
+! STRING(@n3),USE(SifDeg)
+SifDeg                   BYTE
+!!> GUID('b7421a95-b059-423f-a966-ddbea97db3dc'),INITIAL('False'),PROMPT('Sif Deg:'),HEADER('Sif Deg'),PICTURE(@n3)
+[SCREENCONTROLS]
+! PROMPT('Disk Seri No:'),USE(?DiskSeriNo:Prompt)
+! ENTRY(@s20),USE(DiskSeriNo)
+[REPORTCONTROLS]
+! STRING(@s20),USE(DiskSeriNo)
+DiskSeriNo               STRING(20)
+!!> GUID('5cb8439b-546f-4311-b00b-0887badcc22d'),PROMPT('Disk Seri No:'),HEADER('Disk Seri No'),PICTURE(@s20)
+[FILES]
+[OTHERS]
+KulUsers
+PVersion
+[PROMPTS]
+%ClassItem UNIQUE DEFAULT  ('WindowToolbar', 'Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (0)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('AsciiFileClass')
+WHEN  ('WindowToolbar') ('AsciiFileClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 15
+WHEN  ('') ('No Special Action')
+WHEN  ('?AnahtarYaz') ('No Special Action')
+WHEN  ('?CancelButton') ('No Special Action')
+WHEN  ('?Loc:Password') ('No Special Action')
+WHEN  ('?OkButton') ('No Special Action')
+WHEN  ('?Panel1') ('No Special Action')
+WHEN  ('?Sifre1') ('No Special Action')
+WHEN  ('?Sifre2') ('No Special Action')
+WHEN  ('?String1') ('No Special Action')
+WHEN  ('?String2') ('No Special Action')
+WHEN  ('?String4') ('No Special Action')
+WHEN  ('?String5') ('No Special Action')
+WHEN  ('?String6') ('No Special Action')
+WHEN  ('?USR:Id') ('No Special Action')
+WHEN  ('?VersiyonYaz') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?OkButton') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?OkButton') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('?OkButton') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 1
+WHEN  ('?OkButton') (0)
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 15
+WHEN  ('') ('25000')
+WHEN  ('?AnahtarYaz') ('25000')
+WHEN  ('?CancelButton') ('25000')
+WHEN  ('?Loc:Password') ('25000')
+WHEN  ('?OkButton') ('25000')
+WHEN  ('?Panel1') ('25000')
+WHEN  ('?Sifre1') ('25000')
+WHEN  ('?Sifre2') ('25000')
+WHEN  ('?String1') ('25000')
+WHEN  ('?String2') ('25000')
+WHEN  ('?String4') ('25000')
+WHEN  ('?String5') ('25000')
+WHEN  ('?String6') ('25000')
+WHEN  ('?USR:Id') ('25000')
+WHEN  ('?VersiyonYaz') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?OkButton') ('')
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 1
+WHEN  ('?OkButton') ()
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 1
+WHEN  ('?OkButton') (0)
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 15
+WHEN  ('') ('None')
+WHEN  ('?AnahtarYaz') ('None')
+WHEN  ('?CancelButton') ('None')
+WHEN  ('?Loc:Password') ('None')
+WHEN  ('?OkButton') ('None')
+WHEN  ('?Panel1') ('None')
+WHEN  ('?Sifre1') ('None')
+WHEN  ('?Sifre2') ('None')
+WHEN  ('?String1') ('None')
+WHEN  ('?String2') ('None')
+WHEN  ('?String4') ('None')
+WHEN  ('?String5') ('None')
+WHEN  ('?String6') ('None')
+WHEN  ('?USR:Id') ('None')
+WHEN  ('?VersiyonYaz') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?OkButton') ('')
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 1
+WHEN  ('?OkButton') ()
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 4
+WHEN  ('?Loc:Password') ()
+WHEN  ('?Sifre1') ()
+WHEN  ('?Sifre2') ()
+WHEN  ('?USR:Id') ()
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 4
+WHEN  ('?Loc:Password') ()
+WHEN  ('?Sifre1') ()
+WHEN  ('?Sifre2') ()
+WHEN  ('?USR:Id') ()
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 4
+WHEN  ('?Loc:Password') ()
+WHEN  ('?Sifre1') ()
+WHEN  ('?Sifre2') ()
+WHEN  ('?USR:Id') ()
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 4
+WHEN  ('?Loc:Password') ()
+WHEN  ('?Sifre1') ()
+WHEN  ('?Sifre2') ()
+WHEN  ('?USR:Id') ()
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 15
+WHEN  ('') (1)
+WHEN  ('?AnahtarYaz') (1)
+WHEN  ('?CancelButton') (1)
+WHEN  ('?Loc:Password') (1)
+WHEN  ('?OkButton') (1)
+WHEN  ('?Panel1') (1)
+WHEN  ('?Sifre1') (1)
+WHEN  ('?Sifre2') (1)
+WHEN  ('?String1') (1)
+WHEN  ('?String2') (1)
+WHEN  ('?String4') (1)
+WHEN  ('?String5') (1)
+WHEN  ('?String6') (1)
+WHEN  ('?USR:Id') (1)
+WHEN  ('?VersiyonYaz') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 15
+WHEN  ('')TIMES 0
+WHEN  ('?AnahtarYaz')TIMES 0
+WHEN  ('?CancelButton')TIMES 0
+WHEN  ('?Loc:Password')TIMES 0
+WHEN  ('?OkButton')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+WHEN  ('?Sifre1')TIMES 0
+WHEN  ('?Sifre2')TIMES 0
+WHEN  ('?String1')TIMES 0
+WHEN  ('?String2')TIMES 0
+WHEN  ('?String4')TIMES 0
+WHEN  ('?String5')TIMES 0
+WHEN  ('?String6')TIMES 0
+WHEN  ('?USR:Id')TIMES 0
+WHEN  ('?VersiyonYaz')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 15
+WHEN  ('')TIMES 0
+WHEN  ('?AnahtarYaz')TIMES 0
+WHEN  ('?CancelButton')TIMES 0
+WHEN  ('?Loc:Password')TIMES 0
+WHEN  ('?OkButton')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+WHEN  ('?Sifre1')TIMES 0
+WHEN  ('?Sifre2')TIMES 0
+WHEN  ('?String1')TIMES 0
+WHEN  ('?String2')TIMES 0
+WHEN  ('?String4')TIMES 0
+WHEN  ('?String5')TIMES 0
+WHEN  ('?String6')TIMES 0
+WHEN  ('?USR:Id')TIMES 0
+WHEN  ('?VersiyonYaz')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 15
+WHEN  ('')TIMES 0
+WHEN  ('?AnahtarYaz')TIMES 0
+WHEN  ('?CancelButton')TIMES 0
+WHEN  ('?Loc:Password')TIMES 0
+WHEN  ('?OkButton')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+WHEN  ('?Sifre1')TIMES 0
+WHEN  ('?Sifre2')TIMES 0
+WHEN  ('?String1')TIMES 0
+WHEN  ('?String2')TIMES 0
+WHEN  ('?String4')TIMES 0
+WHEN  ('?String5')TIMES 0
+WHEN  ('?String6')TIMES 0
+WHEN  ('?USR:Id')TIMES 0
+WHEN  ('?VersiyonYaz')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 15
+WHEN  ('')TIMES 0
+WHEN  ('?AnahtarYaz')TIMES 0
+WHEN  ('?CancelButton')TIMES 0
+WHEN  ('?Loc:Password')TIMES 0
+WHEN  ('?OkButton')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+WHEN  ('?Sifre1')TIMES 0
+WHEN  ('?Sifre2')TIMES 0
+WHEN  ('?String1')TIMES 0
+WHEN  ('?String2')TIMES 0
+WHEN  ('?String4')TIMES 0
+WHEN  ('?String5')TIMES 0
+WHEN  ('?String6')TIMES 0
+WHEN  ('?USR:Id')TIMES 0
+WHEN  ('?VersiyonYaz')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('Default')
+WHEN  ('?Panel1') ('Default')
+
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('Off')
+WHEN  ('?Panel1') ('Vertical')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('')
+WHEN  ('?Panel1') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 2
+WHEN  ('') (-1)
+WHEN  ('?Panel1') (14737632)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 2
+WHEN  ('') (-1)
+WHEN  ('?Panel1') (12632256)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('AIBtn0')
+WHEN  ('?Panel1') ('AIBtn1')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 2
+WHEN  ('') (1)
+WHEN  ('?Panel1') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('?Panel1')
+WHEN  ('?Panel1') ('?Panel1')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+[EMBED]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?OkButton'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4499
+PROPERTY:END
+  If UserId ='' Then Select(?USR:Id); Cycle.
+  If USR:Id='' Then Select(?USR:Id); Cycle.
+  If SifDeg
+    If Sifre1='' Or Sifre2='' Then Select(?Sifre1); Display; Cycle.
+    If Sifre1=Sifre2 Then Usr:Password=Upper(Sifre1); Put(KulUsers); LocalResponse=1; Break
+    Else !Þifre Yanlýþ Tekrar Edildi.
+      Message('Yeni Girilen Þifre Yanlýþ Tekrar Edildi'); Sifre1='';Sifre2='';Select(?Sifre1); Display.
+  Else
+    If Upper(Loc:Password)=Upper(Usr:Password) Then LocalResponse=1; MasterUser=Usr:MasterUser; Break
+    ElsIf Attempts=3; LocalResponse=0; Break
+    Else Attempts+=1; Message('  Lütfen Þifreyi Yeniden Giriniz.',,ICON:Hand); Select(?Loc:Password);Display.
+  End
+
+[END]
+[END]
+WHEN '?CancelButton'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4499
+PROPERTY:END
+LocalResponse=0
+Break
+[END]
+[END]
+WHEN '?USR:Id'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+If Usr:Id='' Then Select(?Usr:Id); Cycle
+Else Get(KulUsers,Usr:IdKey); If ErrorCode() Then Message('Geçersiz Kullanýcý'); Select(?Usr:Id); Cycle..
+IniMgr.Update('User','Name',Usr:Id); UserId=Usr:Id
+[END]
+[END]
+[END]
+EMBED %AfterWindowOpening
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Alert(F9Key); Set(PVersion); Next(PVersion)
+If PVer:Version=Version Then VersiyonYaz='Version [ '&Format(Version,@P#.##.###P)&' ]'
+Else VersiyonYaz='Version [ '&Format(PVer:Version,@P#.##.###P)&' ] -> [ '&Format(Version,@P#.##.###P)&' ]'.
+Hide(?Sifre1,?Sifre2)
+Usr:Id=Inimgr.Fetch('User','Name'); Get(KulUsers,Usr:IdKey);
+If ErrorCode() Then Usr:Id='DEMIRBAS'; Get(KulUsers,Usr:IdKey).
+UserId=Usr:Id
+
+[END]
+EMBED %WindowEventHandling
+[INSTANCES]
+WHEN 'AlertKey'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 2500
+PROPERTY:END
+!!! ILK Setingler ve Kullanýcý Yetki Seviye Setingleri Yapýlýyor.
+!If MasterUser=False
+!   Dusr:Id=UserId; Dusr:MenuNo=1001; Access:KulDUsers.Fetch(Dusr:IdKey)
+!   If ErrorCode() Then Hide(?Insert:1)
+!                       Hide(?Change:1)
+!                       Hide(?Delete:1)
+!                       BRW1.InsertControl=False
+!                       BRW1.ChangeControl=False
+!                       BRW1.DeleteControl=False
+!                  Else If ~Dusr:YeniGir='E' Then Hide(?Insert:1); BRW1.InsertControl=False.
+!                       If ~Dusr:Degistir='E' Then Hide(?Change:1); BRW1.ChangeControl=False.
+!                       If ~Dusr:Sil='E' Then Hide(?Delete:1); BRW1.DeleteControl=False.
+!   End
+!End
+
+
+!Menu Kýsýtlamalarý
+!USR:Id=UserId; Access:KulUsers.Fetch(USR:IdKey); MasterUser=Usr:MasterUser
+!If MasterUser=False
+!!!Genel Tanýmlar
+!   Dusr:Id=UserId; Dusr:MenuNo=1000; Access:KulDUsers.Fetch(Dusr:IdKey)
+!   If ErrorCode() Then Hide(-1000); Else If ~Dusr:Goster='E' Then Hide(-1000)..
+!   !Dernek
+!    Dusr:Id=UserId; Dusr:MenuNo=1001; Access:KulDUsers.Fetch(Dusr:IdKey)
+!    If ErrorCode() Then Hide(-1001); Else If ~Dusr:Goster='E' Then Hide(-1001)..
+!!!Raporlar Menusu
+!   Dusr:Id=UserId; Dusr:MenuNo=2000; Access:KulDUsers.Fetch(Dusr:IdKey)
+!   If ErrorCode() Then Hide(-2000) Else If ~Dusr:Goster='E' Then Hide(-2000)..
+!   !Dernek Raporu
+!    Dusr:Id=UserId; Dusr:MenuNo=2001; Access:KulDUsers.Fetch(Dusr:IdKey)
+!    If ErrorCode() Then Hide(-2001); Else If ~Dusr:Goster='E' Then Hide(-2001)..
+!!!Sistem Tanýmlarý
+!   Hide(-3000)
+!End
+
+
+Case KeyCode()
+Of F9Key
+  If Upper(Loc:Password)=Upper(Usr:Password) !Or Upper(Loc:Password)=Crc16(Format(ToDay(),@d12))
+    SifDeg=True; UnHide(?Sifre1,?Sifre2);Select(?Sifre1); Display
+  End
+End
+[END]
+[END]
+EMBED %BeforeWindowOpening
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+g#=GetDiskSeriNo('C',DiskSeriNo)
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 19
+WHEN  ('') (0)
+WHEN  ('?AnahtarYaz') (0)
+WHEN  ('?CancelButton') (0)
+WHEN  ('?Loc:Password') (0)
+WHEN  ('?Loc:Password:Prompt') (0)
+WHEN  ('?OkButton') (0)
+WHEN  ('?Panel1') (0)
+WHEN  ('?Sifre1') (0)
+WHEN  ('?Sifre1:Prompt') (0)
+WHEN  ('?Sifre2') (0)
+WHEN  ('?Sifre2:Prompt') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?USR:Id') (0)
+WHEN  ('?USR:Id:Prompt') (0)
+WHEN  ('?VersiyonYaz') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 19
+WHEN  ('') (1)
+WHEN  ('?AnahtarYaz') (1)
+WHEN  ('?CancelButton') (1)
+WHEN  ('?Loc:Password') (1)
+WHEN  ('?Loc:Password:Prompt') (1)
+WHEN  ('?OkButton') (1)
+WHEN  ('?Panel1') (1)
+WHEN  ('?Sifre1') (1)
+WHEN  ('?Sifre1:Prompt') (1)
+WHEN  ('?Sifre2') (1)
+WHEN  ('?Sifre2:Prompt') (1)
+WHEN  ('?String1') (1)
+WHEN  ('?String2') (1)
+WHEN  ('?String4') (1)
+WHEN  ('?String5') (1)
+WHEN  ('?String6') (1)
+WHEN  ('?USR:Id') (1)
+WHEN  ('?USR:Id:Prompt') (1)
+WHEN  ('?VersiyonYaz') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 19
+WHEN  ('') (1)
+WHEN  ('?AnahtarYaz') (1)
+WHEN  ('?CancelButton') (1)
+WHEN  ('?Loc:Password') (1)
+WHEN  ('?Loc:Password:Prompt') (1)
+WHEN  ('?OkButton') (1)
+WHEN  ('?Panel1') (1)
+WHEN  ('?Sifre1') (1)
+WHEN  ('?Sifre1:Prompt') (1)
+WHEN  ('?Sifre2') (1)
+WHEN  ('?Sifre2:Prompt') (1)
+WHEN  ('?String1') (1)
+WHEN  ('?String2') (1)
+WHEN  ('?String4') (1)
+WHEN  ('?String5') (1)
+WHEN  ('?String6') (1)
+WHEN  ('?USR:Id') (1)
+WHEN  ('?USR:Id:Prompt') (1)
+WHEN  ('?VersiyonYaz') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 19
+WHEN  ('') ('250000')
+WHEN  ('?AnahtarYaz') ('250000')
+WHEN  ('?CancelButton') ('250000')
+WHEN  ('?Loc:Password') ('250000')
+WHEN  ('?Loc:Password:Prompt') ('250000')
+WHEN  ('?OkButton') ('250000')
+WHEN  ('?Panel1') ('250000')
+WHEN  ('?Sifre1') ('250000')
+WHEN  ('?Sifre1:Prompt') ('250000')
+WHEN  ('?Sifre2') ('250000')
+WHEN  ('?Sifre2:Prompt') ('250000')
+WHEN  ('?String1') ('250000')
+WHEN  ('?String2') ('250000')
+WHEN  ('?String4') ('250000')
+WHEN  ('?String5') ('250000')
+WHEN  ('?String6') ('250000')
+WHEN  ('?USR:Id') ('250000')
+WHEN  ('?USR:Id:Prompt') ('250000')
+WHEN  ('?VersiyonYaz') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 19
+WHEN  ('') ('32000')
+WHEN  ('?AnahtarYaz') ('32000')
+WHEN  ('?CancelButton') ('32000')
+WHEN  ('?Loc:Password') ('32000')
+WHEN  ('?Loc:Password:Prompt') ('32000')
+WHEN  ('?OkButton') ('32000')
+WHEN  ('?Panel1') ('32000')
+WHEN  ('?Sifre1') ('32000')
+WHEN  ('?Sifre1:Prompt') ('32000')
+WHEN  ('?Sifre2') ('32000')
+WHEN  ('?Sifre2:Prompt') ('32000')
+WHEN  ('?String1') ('32000')
+WHEN  ('?String2') ('32000')
+WHEN  ('?String4') ('32000')
+WHEN  ('?String5') ('32000')
+WHEN  ('?String6') ('32000')
+WHEN  ('?USR:Id') ('32000')
+WHEN  ('?USR:Id:Prompt') ('32000')
+WHEN  ('?VersiyonYaz') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 19
+WHEN  ('') (0)
+WHEN  ('?AnahtarYaz') (0)
+WHEN  ('?CancelButton') (0)
+WHEN  ('?Loc:Password') (0)
+WHEN  ('?Loc:Password:Prompt') (0)
+WHEN  ('?OkButton') (0)
+WHEN  ('?Panel1') (0)
+WHEN  ('?Sifre1') (0)
+WHEN  ('?Sifre1:Prompt') (0)
+WHEN  ('?Sifre2') (0)
+WHEN  ('?Sifre2:Prompt') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?USR:Id') (0)
+WHEN  ('?USR:Id:Prompt') (0)
+WHEN  ('?VersiyonYaz') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 19
+WHEN  ('') ('')
+WHEN  ('?AnahtarYaz') ('')
+WHEN  ('?CancelButton') ('')
+WHEN  ('?Loc:Password') ('')
+WHEN  ('?Loc:Password:Prompt') ('')
+WHEN  ('?OkButton') ('')
+WHEN  ('?Panel1') ('')
+WHEN  ('?Sifre1') ('')
+WHEN  ('?Sifre1:Prompt') ('')
+WHEN  ('?Sifre2') ('')
+WHEN  ('?Sifre2:Prompt') ('')
+WHEN  ('?String1') ('')
+WHEN  ('?String2') ('')
+WHEN  ('?String4') ('')
+WHEN  ('?String5') ('')
+WHEN  ('?String6') ('')
+WHEN  ('?USR:Id') ('')
+WHEN  ('?USR:Id:Prompt') ('')
+WHEN  ('?VersiyonYaz') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 19
+WHEN  ('') (0)
+WHEN  ('?AnahtarYaz') (0)
+WHEN  ('?CancelButton') (0)
+WHEN  ('?Loc:Password') (0)
+WHEN  ('?Loc:Password:Prompt') (0)
+WHEN  ('?OkButton') (0)
+WHEN  ('?Panel1') (0)
+WHEN  ('?Sifre1') (0)
+WHEN  ('?Sifre1:Prompt') (0)
+WHEN  ('?Sifre2') (0)
+WHEN  ('?Sifre2:Prompt') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?USR:Id') (0)
+WHEN  ('?USR:Id:Prompt') (0)
+WHEN  ('?VersiyonYaz') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 19
+WHEN  ('') (0)
+WHEN  ('?AnahtarYaz') (0)
+WHEN  ('?CancelButton') (0)
+WHEN  ('?Loc:Password') (0)
+WHEN  ('?Loc:Password:Prompt') (0)
+WHEN  ('?OkButton') (0)
+WHEN  ('?Panel1') (0)
+WHEN  ('?Sifre1') (0)
+WHEN  ('?Sifre1:Prompt') (0)
+WHEN  ('?Sifre2') (0)
+WHEN  ('?Sifre2:Prompt') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?USR:Id') (0)
+WHEN  ('?USR:Id:Prompt') (0)
+WHEN  ('?VersiyonYaz') (0)
+
+%cNormal DEPEND %Control LONG TIMES 19
+WHEN  ('') (-1)
+WHEN  ('?AnahtarYaz') (-1)
+WHEN  ('?CancelButton') (-1)
+WHEN  ('?Loc:Password') (-1)
+WHEN  ('?Loc:Password:Prompt') (-1)
+WHEN  ('?OkButton') (-1)
+WHEN  ('?Panel1') (-1)
+WHEN  ('?Sifre1') (-1)
+WHEN  ('?Sifre1:Prompt') (-1)
+WHEN  ('?Sifre2') (-1)
+WHEN  ('?Sifre2:Prompt') (-1)
+WHEN  ('?String1') (-1)
+WHEN  ('?String2') (-1)
+WHEN  ('?String4') (-1)
+WHEN  ('?String5') (-1)
+WHEN  ('?String6') (-1)
+WHEN  ('?USR:Id') (-1)
+WHEN  ('?USR:Id:Prompt') (-1)
+WHEN  ('?VersiyonYaz') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 19
+WHEN  ('') (14342874)
+WHEN  ('?AnahtarYaz') (14342874)
+WHEN  ('?CancelButton') (14342874)
+WHEN  ('?Loc:Password') (14342874)
+WHEN  ('?Loc:Password:Prompt') (14342874)
+WHEN  ('?OkButton') (14342874)
+WHEN  ('?Panel1') (14342874)
+WHEN  ('?Sifre1') (14342874)
+WHEN  ('?Sifre1:Prompt') (14342874)
+WHEN  ('?Sifre2') (14342874)
+WHEN  ('?Sifre2:Prompt') (14342874)
+WHEN  ('?String1') (14342874)
+WHEN  ('?String2') (14342874)
+WHEN  ('?String4') (14342874)
+WHEN  ('?String5') (14342874)
+WHEN  ('?String6') (14342874)
+WHEN  ('?USR:Id') (14342874)
+WHEN  ('?USR:Id:Prompt') (14342874)
+WHEN  ('?VersiyonYaz') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 19
+WHEN  ('') (14342874)
+WHEN  ('?AnahtarYaz') (14342874)
+WHEN  ('?CancelButton') (14342874)
+WHEN  ('?Loc:Password') (14342874)
+WHEN  ('?Loc:Password:Prompt') (14342874)
+WHEN  ('?OkButton') (14342874)
+WHEN  ('?Panel1') (14342874)
+WHEN  ('?Sifre1') (14342874)
+WHEN  ('?Sifre1:Prompt') (14342874)
+WHEN  ('?Sifre2') (14342874)
+WHEN  ('?Sifre2:Prompt') (14342874)
+WHEN  ('?String1') (14342874)
+WHEN  ('?String2') (14342874)
+WHEN  ('?String4') (14342874)
+WHEN  ('?String5') (14342874)
+WHEN  ('?String6') (14342874)
+WHEN  ('?USR:Id') (14342874)
+WHEN  ('?USR:Id:Prompt') (14342874)
+WHEN  ('?VersiyonYaz') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 19
+WHEN  ('') (0)
+WHEN  ('?AnahtarYaz') (0)
+WHEN  ('?CancelButton') (0)
+WHEN  ('?Loc:Password') (0)
+WHEN  ('?Loc:Password:Prompt') (0)
+WHEN  ('?OkButton') (0)
+WHEN  ('?Panel1') (0)
+WHEN  ('?Sifre1') (0)
+WHEN  ('?Sifre1:Prompt') (0)
+WHEN  ('?Sifre2') (0)
+WHEN  ('?Sifre2:Prompt') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?USR:Id') (0)
+WHEN  ('?USR:Id:Prompt') (0)
+WHEN  ('?VersiyonYaz') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 19
+WHEN  ('') (14342874)
+WHEN  ('?AnahtarYaz') (14342874)
+WHEN  ('?CancelButton') (14342874)
+WHEN  ('?Loc:Password') (14342874)
+WHEN  ('?Loc:Password:Prompt') (14342874)
+WHEN  ('?OkButton') (14342874)
+WHEN  ('?Panel1') (14342874)
+WHEN  ('?Sifre1') (14342874)
+WHEN  ('?Sifre1:Prompt') (14342874)
+WHEN  ('?Sifre2') (14342874)
+WHEN  ('?Sifre2:Prompt') (14342874)
+WHEN  ('?String1') (14342874)
+WHEN  ('?String2') (14342874)
+WHEN  ('?String4') (14342874)
+WHEN  ('?String5') (14342874)
+WHEN  ('?String6') (14342874)
+WHEN  ('?USR:Id') (14342874)
+WHEN  ('?USR:Id:Prompt') (14342874)
+WHEN  ('?VersiyonYaz') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 19
+WHEN  ('') (0)
+WHEN  ('?AnahtarYaz') (0)
+WHEN  ('?CancelButton') (0)
+WHEN  ('?Loc:Password') (0)
+WHEN  ('?Loc:Password:Prompt') (0)
+WHEN  ('?OkButton') (0)
+WHEN  ('?Panel1') (0)
+WHEN  ('?Sifre1') (0)
+WHEN  ('?Sifre1:Prompt') (0)
+WHEN  ('?Sifre2') (0)
+WHEN  ('?Sifre2:Prompt') (0)
+WHEN  ('?String1') (0)
+WHEN  ('?String2') (0)
+WHEN  ('?String4') (0)
+WHEN  ('?String5') (0)
+WHEN  ('?String6') (0)
+WHEN  ('?USR:Id') (0)
+WHEN  ('?USR:Id:Prompt') (0)
+WHEN  ('?VersiyonYaz') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 19
+WHEN  ('') (8421504)
+WHEN  ('?AnahtarYaz') (8421504)
+WHEN  ('?CancelButton') (8421504)
+WHEN  ('?Loc:Password') (8421504)
+WHEN  ('?Loc:Password:Prompt') (8421504)
+WHEN  ('?OkButton') (8421504)
+WHEN  ('?Panel1') (8421504)
+WHEN  ('?Sifre1') (8421504)
+WHEN  ('?Sifre1:Prompt') (8421504)
+WHEN  ('?Sifre2') (8421504)
+WHEN  ('?Sifre2:Prompt') (8421504)
+WHEN  ('?String1') (8421504)
+WHEN  ('?String2') (8421504)
+WHEN  ('?String4') (8421504)
+WHEN  ('?String5') (8421504)
+WHEN  ('?String6') (8421504)
+WHEN  ('?USR:Id') (8421504)
+WHEN  ('?USR:Id:Prompt') (8421504)
+WHEN  ('?VersiyonYaz') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 19
+WHEN  ('') (16777215)
+WHEN  ('?AnahtarYaz') (16777215)
+WHEN  ('?CancelButton') (16777215)
+WHEN  ('?Loc:Password') (16777215)
+WHEN  ('?Loc:Password:Prompt') (16777215)
+WHEN  ('?OkButton') (16777215)
+WHEN  ('?Panel1') (16777215)
+WHEN  ('?Sifre1') (16777215)
+WHEN  ('?Sifre1:Prompt') (16777215)
+WHEN  ('?Sifre2') (16777215)
+WHEN  ('?Sifre2:Prompt') (16777215)
+WHEN  ('?String1') (16777215)
+WHEN  ('?String2') (16777215)
+WHEN  ('?String4') (16777215)
+WHEN  ('?String5') (16777215)
+WHEN  ('?String6') (16777215)
+WHEN  ('?USR:Id') (16777215)
+WHEN  ('?USR:Id:Prompt') (16777215)
+WHEN  ('?VersiyonYaz') (16777215)
+
+[INSTANCE]
+INSTANCE 3
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[ADDITION]
+NAME ABC CleanCloseDownLocal
+[INSTANCE]
+INSTANCE 2
+OWNER 6
+[ADDITION]
+NAME SmartZoom pSmartZoom
+[INSTANCE]
+INSTANCE 1
+OWNER 5
+[PROMPTS]
+%szDisableProc LONG  (0)
+[CALLS]
+Crc16
+GetDiskSeriNo
+[WINDOW]
+Window  WINDOW('Þifre Ekraný'),AT(,,257,176),FONT('Microsoft Sans Serif',9,,FONT:regular,CHARSET:DEFAULT), |
+          DOUBLE,CENTER,ICON('delta-yesil.ico'),GRAY
+          PANEL,AT(15,69,226,70),USE(?Panel1),BEVEL(-2),#ORIG(?Panel1),#ORDINAL(1)
+          STRING('DELTA Yazýlým Hizmetleri'),AT(4,7,250,20),USE(?String2),FONT('Comic Sans MS', |
+            18,COLOR:Blue,,CHARSET:TURKISH),CENTER,#ORIG(?String2),#ORDINAL(2)
+          STRING('Demirbaþ Paket Programý'),AT(4,27,250,17),USE(?String1),FONT(,14),CENTER, |
+            #ORIG(?String1),#ORDINAL(3)
+          STRING(@s40),AT(4,45,250,12),USE(VersiyonYaz),FONT(,10,,FONT:bold),CENTER,#ORIG(?String3), |
+            #ORDINAL(4)
+          STRING(@s50),AT(4,58,249,10),USE(AnahtarYaz),CENTER,#ORIG(?String7),#ORDINAL(5)
+          PROMPT('Þifre'),AT(66,93),USE(?Loc:Password:Prompt),FONT(,10,,FONT:bold),TRN,#LINK(?Loc:Password), |
+            #ORIG(?Loc:Password:Prompt),#ORDINAL(6)
+          ENTRY(@s10),AT(128,80,60,10),USE(USR:Id),UPR,SKIP,#LINK(?USR:Id:Prompt),#ORIG(USR:Id), |
+            #ORDINAL(7)
+          ENTRY(@s20),AT(128,93,60,10),USE(Loc:Password),IMM,PASSWORD,#LINK(?Loc:Password:Prompt), |
+            #ORIG(Loc:Password),#ORDINAL(8)
+          ENTRY(@s20),AT(128,111,60,10),USE(Sifre1),PASSWORD,REQ,#LINK(?Sifre1:Prompt),#ORIG(Sifre1), |
+            #ORDINAL(9)
+          PROMPT('Yeni Þifre'),AT(66,111),USE(?Sifre1:Prompt),TRN,#LINK(?Sifre1),#ORIG(?Sifre1:Prompt), |
+            #ORDINAL(10)
+          PROMPT('Tekrar Giriniz'),AT(66,123),USE(?Sifre2:Prompt),TRN,#LINK(?Sifre2),#ORIG(?Sifre2:Prompt), |
+            #ORDINAL(11)
+          ENTRY(@s20),AT(128,123,60,10),USE(Sifre2),PASSWORD,REQ,#LINK(?Sifre2:Prompt),#ORIG(Sifre2), |
+            #ORDINAL(12)
+          BUTTON('&Tamam'),AT(20,120,36,14),USE(?OkButton),FONT(,,,FONT:bold),DEFAULT,#ORDINAL(13)
+          BUTTON('Çý&kýþ'),AT(197,120,37,14),USE(?CancelButton),FONT(,,,FONT:bold),#ORDINAL(14)
+          PROMPT('Kullanýcý'),AT(66,80),USE(?USR:Id:Prompt),FONT(,10,,FONT:bold),TRN,#LINK(?USR:Id), |
+            #ORIG(?USR:Id:Prompt),#ORDINAL(15)
+          STRING('Cevizli Mah. Baðdat Cad. Ofistanbul No:538/38 Maltepe / ÝSTANBUL'),AT(3, |
+            144,252,10),USE(?String4),CENTER,#ORIG(?String4),#ORDINAL(16)
+          STRING('Tel: (0216) 349 4435 - (0216) 349 1741 Faks: (0216) 414 4221'),AT(3,153, |
+            252,10),USE(?String5),CENTER,#ORIG(?String5),#ORDINAL(17)
+          STRING('e-posta: destek@deltayh.com.tr'),AT(3,162,252,11),USE(?String6),CENTER,#ORIG(?String6), |
+            #ORDINAL(18)
+        END
+
+[PROCEDURE]
+NAME GetDiskSeriNo
+PROTOTYPE '(STRING,*STRING),Byte'
+PARAMETERS '(strDrive, strSerial)'
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+! Ýnside the global Map
+!MODULE('Windows API')
+!  GetVolumeInformationA(*LPCSTR,*LPSTR,DWORD,*DWORD,*DWORD,*DWORD,*LPSTR,DWORD), BOOL,PASCAL,RAW
+!  SysUlong2Hex(
+!END
+
+
+
+
+SerialNumber            STRING(10)
+RootPathName            CSTRING(20)
+VolumeNameBuffer        CSTRING(20)
+VolumeNameSize          ULONG(18)
+VolumeSerialNumber      ULONG
+MaximumComponentLength  ULONG
+FileSystemFlags         ULONG
+FileSystemNameBuffer    CSTRING(20)
+FileSystemNameSize      ULONG(18)
+Ret                     ULONG
+VSN                     &ULONG
+MCL                     &ULONG
+FSF                     &ULONG
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  RootPathName        = UPPER(strDrive) & ':\'
+
+  VSN                &= VolumeSerialNumber
+  MCL                &= MaximumComponentLength
+  FSF                &= FileSystemFlags
+
+  Ret                 = GetVolumeInformationA( |
+                        RootPathName,         |
+                        VolumeNameBuffer,     |
+                        VolumeNameSize,       |
+                        VSN,                  |
+                        MCL,                  |
+                        FSF,                  |
+                        FileSystemNameBuffer, |
+                        FileSystemNameSize)
+
+  !SerialNumber        = sysULong2Hex(VolumeSerialNumber)
+  !SerialNumber        = SUB(SerialNumber,1,4) & '-' & SUB(SerialNumber,5,4)
+  SerialNumber        = VolumeSerialNumber
+  strSerial           = SerialNumber
+  !strLabel            = VolumeNameBuffer
+  !strFileType         = FileSystemNameBuffer
+  RETURN(True)
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME Err
+PROTOTYPE '(String)'
+PARAMETERS '(Capiton)'
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+  If ErrorCode()
+    Message(' {10} '& Error(),Capiton,Icon:Exclamation,Button:ok)
+  End
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME InputBox
+PROTOTYPE '(STRING IBW_PromptField,*STRING IBW_EntryField,STRING IBW_WindowTitle),STRING'
+PARAMETERS '(STRING IBW_PromptField,*STRING IBW_EntryField,STRING IBW_WindowTitle)'
+[COMMON]
+FROM ABC Source
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('IBW Entry Field:'),USE(?IBW_EntryField:Prompt)
+! ENTRY(@s40),USE(IBW_EntryField)
+[REPORTCONTROLS]
+! STRING(@s40),USE(IBW_EntryField)
+IBW_EntryField           CSTRING(41)
+!!> GUID('952fafe6-e3f2-4b14-a6fa-c0384426f1a0'),PROMPT('IBW Entry Field:'),HEADER('IBW Entry Field'),PICTURE(@s40),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('IBW Prompt Field:'),USE(?IBW_PromptField:Prompt)
+! ENTRY(@s50),USE(IBW_PromptField)
+[REPORTCONTROLS]
+! STRING(@s50),USE(IBW_PromptField)
+IBW_PromptField          CSTRING(51)
+!!> GUID('3163fc29-37f8-4bf6-8b04-5454f6bbc360'),PROMPT('IBW Prompt Field:'),HEADER('IBW Prompt Field'),PICTURE(@s50),TYPEMODE(INS)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+WindowOpened         LONG
+WindowInitialized    LONG
+ForceRefresh         LONG,AUTO
+
+InsertBoxW WINDOW(' '),AT(,,182,53),FONT('MS Sans Serif',8,,FONT:regular,CHARSET:TURKISH),CENTER,SYSTEM, |
+         GRAY,DOUBLE,MODAL
+       STRING(@s40),AT(6,6,169,10),USE(IBW_PromptField),CENTER
+       ENTRY(@s40),AT(6,19,169,12),USE(IBW_EntryField),LEFT(1)
+       BUTTON('Ýptal'),AT(38,35,40,14),USE(?IBW_Cancel)
+       BUTTON('Tamam'),AT(97,35,40,14),USE(?IBW_OK),DEFAULT
+     END
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!InsertBox      FUNCTION(IBW_PromptField,IBW_EntryField,IBW_WindowTitle)
+! Prototype:  InsertBox(STRING,*STRING,STRING),STRING
+
+
+!  CODE
+  OPEN(InsertBoxW)
+  InsertBoxW{PROP:Text} = IBW_WindowTitle
+  WindowOpened=True
+
+  ACCEPT
+    CASE EVENT()
+    OF EVENT:OpenWindow
+      IF NOT WindowInitialized
+    DO InitializeWindow
+      END
+      SELECT(?IBW_PromptField)
+    OF EVENT:GainFocus
+      WindowInitialized = True
+      DO InitializeWindow
+    END
+    CASE FIELD()
+    OF ?IBW_OK
+      CASE EVENT()
+      OF EVENT:Accepted
+    POST(Event:CloseWindow)
+    DO RefreshWindow
+      END
+    OF ?IBW_Cancel
+      CASE EVENT()
+      OF EVENT:Accepted
+    IBW_EntryField = ''
+    POST(EVENT:CLOSEWINDOW)
+    DO RefreshWindow
+      END
+    END
+  END
+  IF WindowOpened
+    CLOSE(InsertBoxW)
+  END
+  RETURN(IBW_EntryField)
+
+InitializeWindow ROUTINE
+  ForceRefresh = True
+  DO RefreshWindow
+
+RefreshWindow ROUTINE
+  DISPLAY()
+  ForceRefresh = False
+
+!END OF FUNCTION InsertBox
+
+
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[PROCEDURE]
+NAME PrintDrv::Finalise
+GLOBAL
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!   PROCEDURE   : PRINTDRV::Finalise
+!   DESCRIPTION : Closes the Print Job and Releases the Printer Handle
+!   ------------------------------------------------------------------------------------------------------------------------
+!   PROTOTYPE   : PRINTDRV::Finalise
+!   PARAMETERS  : There are no parameters
+!   RETURNS     : There are no return values
+!   ========================================================================================================================
+!
+    EndPagePrinter ( PRINTDRV::GetPrinterHandle() )     ! Tell the Spooler to End the Page
+    EndDocPrinter  ( PRINTDRV::GetPrinterHandle() )     ! Tell the Spooler to End the Document
+    ClosePrinter   ( PRINTDRV::GetPrinterHandle() )     ! Tell the Printer the Job is Finished
+    PRINTDRV::SetPrinterHandle(0)                       ! Reset the Handle
+    RETURN
+
+[END]
+[END]
+[ADDITION]
+NAME AnyScreen AnyScreenProcedure
+[FIELDPROMPT]
+%HideOnClient DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%SynOnAccept DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%SynOnSelect DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%ThinControlMaxSizeRTF DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('250000')
+
+%ThinControlMaxSize DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('32000')
+
+%ThinControlListboxPipes DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AnyScreenCSSclass DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%EnableWithoutThinet DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%OverrideGlobalListboxHeaderColors DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cNormal DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%cAccentTxt DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderGRBack DEPEND %Control LONG TIMES 1
+WHEN  ('') (14342874)
+
+%cListHeaderGrFore DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%cListHeaderArrow DEPEND %Control LONG TIMES 1
+WHEN  ('') (8421504)
+
+%cListHeaderArrow3D DEPEND %Control LONG TIMES 1
+WHEN  ('') (16777215)
+
+[INSTANCE]
+INSTANCE 1
+OWNER 9
+[PROMPTS]
+%AnyScreenTimerRefresh LONG  (0)
+[END]

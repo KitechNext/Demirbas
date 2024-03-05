@@ -1,0 +1,922 @@
+[PROGRAM]
+[COMMON]
+FROM ABC ABC
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('GLB : Windows Folder:'),USE(?WindowsFolder:Prompt)
+! ENTRY(@s255),USE(WindowsFolder)
+[REPORTCONTROLS]
+! STRING(@s255),USE(WindowsFolder)
+GLB:WindowsFolder        CSTRING(261)
+!!> GUID('87927fea-831e-429b-8d6f-4f402590d6a5'),PROMPT('GLB : Windows Folder:'),HEADER('GLB : Windows Folder'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('GLB : Personel Docs Folder:'),USE(?PersonelDocsFolder:Prompt)
+! ENTRY(@s255),USE(PersonelDocsFolder)
+[REPORTCONTROLS]
+! STRING(@s255),USE(PersonelDocsFolder)
+GLB:PersonelDocsFolder   CSTRING(261)
+!!> GUID('bd47dad4-cec0-470c-a5c2-f5b5fa3bfcdb'),PROMPT('GLB : Personel Docs Folder:'),HEADER('GLB : Personel Docs Folder'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('GLB : Personel Pics Folder:'),USE(?PersonelPicsFolder:Prompt)
+! ENTRY(@s255),USE(PersonelPicsFolder)
+[REPORTCONTROLS]
+! STRING(@s255),USE(PersonelPicsFolder)
+GLB:PersonelPicsFolder   CSTRING(261)
+!!> GUID('940ee060-95bb-4a00-b9c0-f305ee50d59c'),PROMPT('GLB : Personel Pics Folder:'),HEADER('GLB : Personel Pics Folder'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('GLB : Personel Desktop Folder:'),USE(?PersonelDesktopFolder:Prompt)
+! ENTRY(@s255),USE(PersonelDesktopFolder)
+[REPORTCONTROLS]
+! STRING(@s255),USE(PersonelDesktopFolder)
+GLB:PersonelDesktopFolder CSTRING(261)
+!!> GUID('11c163b2-e7df-41c4-81a9-15b83c50a916'),PROMPT('GLB : Personel Desktop Folder:'),HEADER('GLB : Personel Desktop Folder'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('GLB : Line Height:'),USE(?GLB:LineHeight:Prompt)
+! ENTRY(@n3),USE(GLB:LineHeight)
+[REPORTCONTROLS]
+! STRING(@n3),USE(GLB:LineHeight)
+GLB:LineHeight           BYTE
+!!> GUID('a6bf3305-ed72-44a3-8b27-cfbd95e2b508'),PROMPT('GLB : Line Height:'),HEADER('GLB : Line Height'),PICTURE(@n3),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('get CSIDL folder:'),USE(?getCSIDLfolder:Prompt)
+! ENTRY(@s20),USE(getCSIDLfolder)
+[REPORTCONTROLS]
+! STRING(@s20),USE(getCSIDLfolder)
+getCSIDLfolder           CLASS(SpecialFolder)
+!!> GUID('daab2cd0-76e8-4df1-9873-ff13c74ec0ea'),PROMPT('get CSIDL folder:'),HEADER('get CSIDL folder'),PICTURE(@s20),TYPEMODE(INS)
+                         END
+!!> GUID('c912bb88-02e3-4f52-8cbc-8fd3b4571034')
+[SCREENCONTROLS]
+! PROMPT('Version:'),USE(?Version:Prompt)
+! ENTRY(@s20),USE(Version)
+[REPORTCONTROLS]
+! STRING(@s20),USE(Version)
+Version                  STRING(20)
+!!> GUID('8db3cb1e-04d6-41f3-b021-7e381d65681a'),INITIAL('301010 {14}'),PROMPT('Version:'),HEADER('Version'),PICTURE(@s20)
+[SCREENCONTROLS]
+! PROMPT('Lisans:'),USE(?Lisans:Prompt)
+! ENTRY(@n3),USE(Lisans)
+[REPORTCONTROLS]
+! STRING(@n3),USE(Lisans)
+Lisans                   BYTE
+!!> GUID('d243cd76-ff11-412d-a194-401c4b779732'),PROMPT('Lisans:'),HEADER('Lisans'),PICTURE(@n3)
+[SCREENCONTROLS]
+! PROMPT('Barkod Ac:'),USE(?BarkodAc:Prompt)
+! ENTRY(@n3),USE(BarkodAc)
+[REPORTCONTROLS]
+! STRING(@n3),USE(BarkodAc)
+BarkodAc                 BYTE
+!!> GUID('ba4b530c-c2e6-4e73-a887-fa2d1260e7be'),PROMPT('Barkod Ac:'),HEADER('Barkod Ac'),PICTURE(@n3)
+[SCREENCONTROLS]
+! PROMPT('Barkod Tipi:'),USE(?BarkodTipi:Prompt)
+! ENTRY(@s20),USE(BarkodTipi)
+[REPORTCONTROLS]
+! STRING(@s20),USE(BarkodTipi)
+BarkodTipi               STRING(20)
+!!> GUID('3296ac56-9613-4447-8f5b-1b532b5fa856'),PROMPT('Barkod Tipi:'),HEADER('Barkod Tipi'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@n-7),USE(MasterUser)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(MasterUser)
+MasterUser               SHORT
+!!> GUID('ca0e6513-8127-4751-83d1-52b5ee395e36'),PROMPT('Master User:'),HEADER('Master User'),PICTURE(@n-7)
+[SCREENCONTROLS]
+! ENTRY(@s10),USE(UserId)
+[REPORTCONTROLS]
+! STRING(@s10),USE(UserId)
+UserId                   STRING(10)
+!!> GUID('3bff37a4-1b7b-4ba2-a128-2b5a44458079'),PROMPT('User Id:'),HEADER('User Id'),PICTURE(@s10)
+[SCREENCONTROLS]
+! PROMPT('GLB : Mesaj Seviyesi:'),USE(?MesajSeviyesi:Prompt)
+! ENTRY(@n-7),USE(MesajSeviyesi),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(MesajSeviyesi),RIGHT(1)
+GLB:MesajSeviyesi        SHORT
+!!> GUID('555a57c3-848e-45c0-bc30-d5a224a8432c'),INITIAL('10'),PROMPT('GLB : Mesaj Seviyesi:'),HEADER('GLB : Mesaj Seviyesi'),PICTURE(@n-7),TYPEMODE(INS),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('GLB : Debug Seviyesi:'),USE(?DebugSeviyesi:Prompt)
+! ENTRY(@n-7),USE(DebugSeviyesi),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(DebugSeviyesi),RIGHT(1)
+GLB:DebugSeviyesi        SHORT
+!!> GUID('1b772a56-c9c3-44b4-a949-9ead40dd707a'),INITIAL('100'),PROMPT('GLB : Debug Seviyesi:'),HEADER('GLB : Debug Seviyesi'),PICTURE(@n-7),TYPEMODE(INS),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Makina Adi:'),USE(?MakinaAdi:Prompt)
+! ENTRY(@s64),USE(MakinaAdi)
+[REPORTCONTROLS]
+! STRING(@s64),USE(MakinaAdi)
+MakinaAdi                CSTRING(65)
+!!> GUID('a0b29f42-1dd1-40af-964d-8037216d647c'),PROMPT('Makina Adi:'),HEADER('Makina Adi'),PICTURE(@s64),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('User Adi:'),USE(?UserAdi:Prompt)
+! ENTRY(@s64),USE(UserAdi)
+[REPORTCONTROLS]
+! STRING(@s64),USE(UserAdi)
+UserAdi                  CSTRING(65)
+!!> GUID('6936f9eb-4130-4ce4-af98-eece601b7cb6'),PROMPT('User Adi:'),HEADER('User Adi'),PICTURE(@s64),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Prg User:'),USE(?PrgUser:Prompt)
+! ENTRY(@s23),USE(PrgUser)
+[REPORTCONTROLS]
+! STRING(@s23),USE(PrgUser)
+PrgUser                  CSTRING(24)
+!!> GUID('7dae1698-b18c-404c-a3ea-617d9dedee83'),PROMPT('Prg User:'),HEADER('Prg User'),PICTURE(@s23),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Fn Version:'),USE(?FnVersion:Prompt)
+! ENTRY(@s64),USE(FnVersion)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnVersion)
+FnVersion                CSTRING(261)
+!!> GUID('eade4551-cb0d-448f-aa29-dacab1072967'),PROMPT('Fn Version:'),HEADER('Fn Version'),PICTURE(@s64)
+[SCREENCONTROLS]
+! ENTRY(@s255),USE(FNKulUsers)
+[REPORTCONTROLS]
+! STRING(@s255),USE(FNKulUsers)
+FNKulUsers               CSTRING(261)
+!!> GUID('48d06549-f937-4fd6-9438-2ecadbec250f'),PROMPT('FNK ul Users:'),HEADER('FNK ul Users'),PICTURE(@s255)
+[SCREENCONTROLS]
+! ENTRY(@s64),USE(FNKulDUsers)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FNKulDUsers)
+FNKulDUsers              CSTRING(261)
+!!> GUID('6cde97b0-4ded-4df5-b92d-ca48125860ab'),PROMPT('FNK ul DU sers:'),HEADER('FNK ul DU sers'),PICTURE(@s255)
+[SCREENCONTROLS]
+! ENTRY(@s64),USE(FNKulGUsers)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FNKulGUsers)
+FNKulGUsers              CSTRING(261)
+!!> GUID('7a33d8fc-ac28-497d-a055-83fd3500c199'),PROMPT('FNK ul GU sers:'),HEADER('FNK ul GU sers'),PICTURE(@s64)
+[SCREENCONTROLS]
+! ENTRY(@s64),USE(FNKulGrups)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FNKulGrups)
+FNKulGrups               CSTRING(261)
+!!> GUID('be6381cd-44c7-4f0d-b0f7-2319abb6930a'),PROMPT('FNK ul Grups:'),HEADER('FNK ul Grups'),PICTURE(@s64)
+[SCREENCONTROLS]
+! ENTRY(@s64),USE(FNKulDGrups)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FNKulDGrups)
+FNKulDGrups              CSTRING(261)
+!!> GUID('a6a3d9ca-7294-4a97-86bb-9ec3a6dae9fb'),PROMPT('FNK ul DG rups:'),HEADER('FNK ul DG rups'),PICTURE(@s64)
+[SCREENCONTROLS]
+! ENTRY(@s64),USE(FNKulMenuList)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FNKulMenuList)
+FNKulMenuList            CSTRING(261)
+!!> GUID('1a859861-f315-4b4f-aef9-d8fecfc4d7af'),PROMPT('FNK ul Menu List:'),HEADER('FNK ul Menu List'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Cnv:'),USE(?FnCnv:Prompt)
+! ENTRY(@s64),USE(FnCnv)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnCnv)
+FnCnv                    CSTRING(261)
+!!> GUID('671ab72b-07f9-48c7-b96f-ec1748aaceeb'),PROMPT('Fn Cnv:'),HEADER('Fn Cnv'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Cnv 1:'),USE(?FnCnv1:Prompt)
+! ENTRY(@s64),USE(FnCnv1)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnCnv1)
+FnCnv1                   CSTRING(261)
+!!> GUID('1b35fa78-a563-42d0-ab5a-898f44d2ae64'),PROMPT('Fn Cnv 1:'),HEADER('Fn Cnv 1'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('FNY asal:'),USE(?FNYasal:Prompt)
+! ENTRY(@s64),USE(FNYasal)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FNYasal)
+FNYasal                  CSTRING(261)
+!!> GUID('506b95c2-3b82-4dde-9638-67b814526bad'),PROMPT('FNY asal:'),HEADER('FNY asal'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Aktar:'),USE(?FnAktar:Prompt)
+! ENTRY(@s64),USE(FnAktar)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnAktar)
+FnAktar                  CSTRING(261)
+!!> GUID('3425244f-4d8d-4b25-9ad6-3d6760d48288'),PROMPT('Fn Aktar:'),HEADER('Fn Aktar'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Degerleme:'),USE(?FnDegerleme:Prompt)
+! ENTRY(@s64),USE(FnDegerleme)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnDegerleme)
+FnDegerleme              CSTRING(261)
+!!> GUID('aa2c9010-e9cf-4df0-9b19-026a11546869'),PROMPT('Fn Degerleme:'),HEADER('Fn Degerleme'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('FND emirbas:'),USE(?FNDemirbas:Prompt)
+! ENTRY(@s64),USE(FNDemirbas)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FNDemirbas)
+FNDemirbas               CSTRING(261)
+!!> GUID('cf5eb870-a4e4-49ec-9734-3d32226c42ea'),PROMPT('FND emirbas:'),HEADER('FND emirbas'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Grub:'),USE(?FnGrub:Prompt)
+! ENTRY(@s64),USE(FnGrub)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnGrub)
+FnGrub                   CSTRING(261)
+!!> GUID('4df49af2-022b-4892-a31c-68fe26e773d4'),PROMPT('Fn Grub:'),HEADER('Fn Grub'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Tahakkuk:'),USE(?FnTahakkuk:Prompt)
+! ENTRY(@s64),USE(FnTahakkuk)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnTahakkuk)
+FnTahakkuk               CSTRING(261)
+!!> GUID('5b797249-8c55-4793-b716-d81fc9369349'),PROMPT('Fn Tahakkuk:'),HEADER('Fn Tahakkuk'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn OT ahakkuk:'),USE(?FnOTahakkuk:Prompt)
+! ENTRY(@s64),USE(FnOTahakkuk)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnOTahakkuk)
+FnOTahakkuk              CSTRING(261)
+!!> GUID('4661bd85-2910-4877-87b3-5cbd9ecc38aa'),PROMPT('Fn OT ahakkuk:'),HEADER('Fn OT ahakkuk'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn User:'),USE(?FnUser:Prompt)
+! ENTRY(@s64),USE(FnUser)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnUser)
+FnUser                   CSTRING(261)
+!!> GUID('82bd5c22-b6ba-413a-a8a6-845ca9423f6e'),PROMPT('Fn User:'),HEADER('Fn User'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Data List:'),USE(?FnDataList:Prompt)
+! ENTRY(@s64),USE(FnDataList)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnDataList)
+FnDataList               CSTRING(261)
+!!> GUID('e5ff6d6e-ef01-404b-a336-438dca2f0969'),PROMPT('Fn Data List:'),HEADER('Fn Data List'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('FNR apor:'),USE(?FNRapor:Prompt)
+! ENTRY(@s64),USE(FNRapor)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FNRapor)
+FNRapor                  CSTRING(261)
+!!> GUID('56b617f2-1fe1-428c-b5cc-487b6e84bb40'),PROMPT('FNR apor:'),HEADER('FNR apor'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn DR apor:'),USE(?FnDRapor:Prompt)
+! ENTRY(@s64),USE(FnDRapor)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnDRapor)
+FnDRapor                 CSTRING(261)
+!!> GUID('39097b28-6071-4174-8f8b-7410d3211ac1'),PROMPT('Fn DR apor:'),HEADER('Fn DR apor'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Amac:'),USE(?FnAmac:Prompt)
+! ENTRY(@s64),USE(FnAmac)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnAmac)
+FnAmac                   CSTRING(261)
+!!> GUID('ae3e3d7a-adc2-4caa-811f-a8062b18993a'),PROMPT('Fn Amac:'),HEADER('Fn Amac'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Amac:'),USE(?FnDbgTbl:Prompt)
+! ENTRY(@s64),USE(FnDbgTbl)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnDbgTbl)
+FnDbgTbl                 CSTRING(261)
+!!> GUID('6c831089-5fdc-49dd-9299-658884791402'),PROMPT('Fn Amac:'),HEADER('Fn Amac'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Sat Demir:'),USE(?FnSatDemir:Prompt)
+! ENTRY(@s64),USE(FnSatDemir)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FnSatDemir)
+FnSatDemir               CSTRING(261)
+!!> GUID('53dd9a7e-c8e4-4f13-b68b-961aa4001fc5'),PROMPT('Fn Sat Demir:'),HEADER('Fn Sat Demir'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('FNK at Sayi:'),USE(?FNKatSayi:Prompt)
+! ENTRY(@s64),USE(FNKatSayi)
+[REPORTCONTROLS]
+! STRING(@s64),USE(FNKatSayi)
+FNKatSayi                CSTRING(261)
+!!> GUID('49142ecb-2126-438d-9a91-2c59ad43dde2'),PROMPT('FNK at Sayi:'),HEADER('FNK at Sayi'),PICTURE(@s64)
+[SCREENCONTROLS]
+! PROMPT('Fn Ozel Saha 1:'),USE(?FnOzelSaha1:Prompt)
+! ENTRY(@s255),USE(FnOzelSaha1)
+[REPORTCONTROLS]
+! STRING(@s255),USE(FnOzelSaha1)
+FnOzelSaha1              CSTRING(261)
+!!> GUID('98a5186d-50e0-4267-9ecf-8a26a515dd13'),PROMPT('Fn Ozel Saha 1:'),HEADER('Fn Ozel Saha 1'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Fn Ozel Saha 2:'),USE(?FnOzelSaha2:Prompt)
+! ENTRY(@s255),USE(FnOzelSaha2)
+[REPORTCONTROLS]
+! STRING(@s255),USE(FnOzelSaha2)
+FnOzelSaha2              CSTRING(261)
+!!> GUID('1d3bcbdc-35bc-4093-9261-8c68be353e72'),PROMPT('Fn Ozel Saha 2:'),HEADER('Fn Ozel Saha 2'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Fn Ozel Saha 3:'),USE(?FnOzelSaha3:Prompt)
+! ENTRY(@s255),USE(FnOzelSaha3)
+[REPORTCONTROLS]
+! STRING(@s255),USE(FnOzelSaha3)
+FnOzelSaha3              CSTRING(261)
+!!> GUID('1849bd99-5d2b-4189-9a62-fd7892684258'),PROMPT('Fn Ozel Saha 3:'),HEADER('Fn Ozel Saha 3'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Fn Export File:'),USE(?FnExportFile:Prompt)
+! ENTRY(@s255),USE(FnExportFile)
+[REPORTCONTROLS]
+! STRING(@s255),USE(FnExportFile)
+FnExportFile             CSTRING(261)
+!!> GUID('f682c05d-773d-4822-8023-1ebcfba4dc50'),PROMPT('Fn Export File:'),HEADER('Fn Export File'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Prg Path:'),USE(?PrgPath:Prompt)
+! ENTRY(@s255),USE(PrgPath)
+[REPORTCONTROLS]
+! STRING(@s255),USE(PrgPath)
+PrgPath                  CSTRING(261)
+!!> GUID('0eebf2b6-286c-4b2c-b4f1-8d7a66677103'),PROMPT('Prg Path:'),HEADER('Prg Path'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Printer Ad:'),USE(?PrinterAd:Prompt)
+! ENTRY(@s49),USE(PrinterAd)
+[REPORTCONTROLS]
+! STRING(@s49),USE(PrinterAd)
+PrinterAd                CSTRING(50)
+!!> GUID('ceb3eeae-4d8f-4824-ba00-7dd0893ff101'),PROMPT('Printer Ad:'),HEADER('Printer Ad'),PICTURE(@s49)
+[SCREENCONTROLS]
+! PROMPT('Rapor Text:'),USE(?RaporText:Prompt)
+! ENTRY(@s255),USE(RaporText)
+[REPORTCONTROLS]
+! STRING(@s255),USE(RaporText)
+RaporText                STRING(255)
+!!> GUID('403c5cea-db83-4b28-bbc3-f696ba052a04'),PROMPT('Rapor Text:'),HEADER('Rapor Text'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Rap Kod:'),USE(?RapKod:Prompt)
+! ENTRY(@s5),USE(RapKod)
+[REPORTCONTROLS]
+! STRING(@s5),USE(RapKod)
+RapKod                   STRING(5)
+!!> GUID('97f8bf9c-bb4f-45fa-9bfb-e531761363aa'),PROMPT('Rap Kod:'),HEADER('Rap Kod'),PICTURE(@s5),FREEZE,DERIVEDFROM('RAP:RapKod')
+[SCREENCONTROLS]
+! PROMPT('Rap Kod Ad:'),USE(?RapKodAd:Prompt)
+! ENTRY(@s30),USE(RapKodAd)
+[REPORTCONTROLS]
+! STRING(@s30),USE(RapKodAd)
+RapKodAd                 STRING(30)
+!!> GUID('a12fae24-d705-4ea9-9bc7-039d2357924f'),PROMPT('Rap Kod Ad:'),HEADER('Rap Kod Ad'),PICTURE(@s30)
+[SCREENCONTROLS]
+! PROMPT('Rap No:'),USE(?RapNo:Prompt)
+! ENTRY(@s5),USE(RapNo)
+[REPORTCONTROLS]
+! STRING(@s5),USE(RapNo)
+RapNo                    STRING(5)
+!!> GUID('679690c4-65be-4dac-bdfd-33bb531f5cd8'),PROMPT('Rap No:'),HEADER('Rap No'),PICTURE(@s5),FREEZE,DERIVEDFROM('DRP:RapNo')
+[SCREENCONTROLS]
+! PROMPT('Rpq Adet:'),USE(?RpqAdet:Prompt)
+! ENTRY(@n-7),USE(RpqAdet),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(RpqAdet),RIGHT(1)
+RpqAdet                  SHORT,DIM(5)
+!!> GUID('cd86ed4b-c2b5-4b83-a0d5-008aa27adae7'),PROMPT('Rpq Adet:'),HEADER('Rpq Adet'),PICTURE(@n-7),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Rap Q:'),USE(?RapQ:Prompt)
+! ENTRY(@s255),USE(RapQ)
+[REPORTCONTROLS]
+! STRING(@s255),USE(RapQ)
+RapQ                     QUEUE,PRE(Rpq),STATIC
+!!> GUID('e32b39c1-9fcf-4a9b-9883-99c7ef7b6516'),PROMPT('Rap Q:'),HEADER('Rap Q'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Field Kod:'),USE(?Rpq:Fieldkod:Prompt)
+! ENTRY(@s255),USE(Rpq:Fieldkod)
+[REPORTCONTROLS]
+! STRING(@s255),USE(Rpq:Fieldkod)
+Fieldkod                   STRING(255)
+!!> GUID('b74998a1-8a6e-49bb-bf69-c3d3ea243b2e'),PROMPT('Field Kod:'),HEADER('Field Kod'),PICTURE(@s255)
+[SCREENCONTROLS]
+! OPTION('Ntlk'),AT(,,50,48),USE(Rpq:Ntlk),BOXED
+! RADIO('String'),USE(?Rpq:Ntlk:Radio1)
+! RADIO('Deðer'),USE(?Rpq:Ntlk:Radio2)
+! RADIO('Formül'),USE(?Rpq:Ntlk:Radio3)
+! END
+[REPORTCONTROLS]
+! STRING(@s1),USE(Rpq:Ntlk)
+Ntlk                       STRING(1)
+!!> GUID('2c491b9f-9428-44f8-9c74-b2d9c0c56769'),VALID(INLIST('String|Deðer|Formül')),PROMPT('Ntlk:'),HEADER('Ntlk'),PICTURE(@s1),FREEZE,DERIVEDFROM('DRP:Ntlk')
+[SCREENCONTROLS]
+! PROMPT('Sira No:'),USE(?Rpq:SiraNo:Prompt)
+! ENTRY(@n4),USE(Rpq:SiraNo),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n4),USE(Rpq:SiraNo),RIGHT(1)
+SiraNo                     SHORT
+!!> GUID('b7f32a32-14ac-4fba-b857-383a01beee61'),PROMPT('Sira No:'),HEADER('Sira No'),PICTURE(@n4),JUSTIFY(RIGHT,1),FREEZE,DERIVEDFROM('DRP:SiraNo')
+[SCREENCONTROLS]
+! PROMPT('Uzunluk:'),USE(?Rpq:Uzunluk:Prompt)
+! ENTRY(@n2),USE(Rpq:Uzunluk),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n2),USE(Rpq:Uzunluk),RIGHT(1)
+Uzunluk                    SHORT
+!!> GUID('40fbd500-08ba-4ea8-a9d4-a76c92845f84'),PROMPT('Uzunluk:'),HEADER('Uzunluk'),PICTURE(@n2),JUSTIFY(RIGHT,1),FREEZE,DERIVEDFROM('DRP:Uzunluk')
+[SCREENCONTROLS]
+! PROMPT('Frml:'),USE(?Rpq:Ad:Prompt)
+! ENTRY(@s50),USE(Rpq:Ad)
+[REPORTCONTROLS]
+! STRING(@s50),USE(Rpq:Ad)
+Ad                         STRING(50),DIM(3)
+!!> GUID('f098cfd3-4c14-46a8-9661-91a4526eb225'),PROMPT('Frml:'),HEADER('Frml'),PICTURE(@s50)
+[SCREENCONTROLS]
+! PROMPT('Sdeger:'),USE(?Rpq:Sdeger:Prompt)
+! ENTRY(@s255),USE(Rpq:Sdeger)
+[REPORTCONTROLS]
+! STRING(@s255),USE(Rpq:Sdeger)
+Sdeger                     STRING(1000)
+!!> GUID('1848e768-978b-4e6d-a5a4-919bcf6cc692'),PROMPT('Sdeger:'),HEADER('Sdeger'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Deger:'),USE(?Rpq:Deger:Prompt)
+! ENTRY(@n18),USE(Rpq:Deger),DECIMAL(14)
+[REPORTCONTROLS]
+! STRING(@n18),USE(Rpq:Deger),DECIMAL(14)
+Deger                      REAL,DIM(5)
+!!> GUID('f8b7930d-4f45-45fd-ab84-3be8888dd84e'),PROMPT('Deger:'),HEADER('Deger'),PICTURE(@n18),JUSTIFY(DECIMAL,14)
+[SCREENCONTROLS]
+! OPTION('Yaz'),AT(,,50,36),USE(Rpq:Yaz),BOXED
+! RADIO('Yaz'),USE(?Rpq:Yaz:Radio1),VALUE('E')
+! RADIO('YazMa'),USE(?Rpq:Yaz:Radio2),VALUE('H')
+! END
+[REPORTCONTROLS]
+! STRING(@s1),USE(Rpq:Yaz)
+Yaz                        STRING(1)
+!!> GUID('62f290f2-cc63-4f67-89cc-56c6da5cdf09'),VALID(INLIST('Yaz|YazMa')),PROMPT('Yaz:'),HEADER('Yaz'),PICTURE(@s1),VALUES('E|H'),FREEZE,DERIVEDFROM('DRP:Yaz')
+[SCREENCONTROLS]
+! PROMPT('Formul:'),USE(?Rpq:Formul:Prompt)
+! ENTRY(@s254),USE(Rpq:Formul)
+[REPORTCONTROLS]
+! STRING(@s254),USE(Rpq:Formul)
+Formul                     CSTRING(255)
+!!> GUID('6df51780-f072-4e26-b6db-ded76a4a3b51'),PROMPT('Formul:'),HEADER('Formul'),PICTURE(@s254),FREEZE,DERIVEDFROM('DRP:Formul')
+[SCREENCONTROLS]
+! PROMPT('Frml:'),USE(?Rpq:Frml:Prompt)
+! ENTRY(@s19),USE(Rpq:Frml)
+[REPORTCONTROLS]
+! STRING(@s19),USE(Rpq:Frml)
+Frml                       CSTRING(20)
+!!> GUID('d06b4379-6e92-4318-8422-d7ab38893546'),PROMPT('Frml:'),HEADER('Frml'),PICTURE(@s19),FREEZE,DERIVEDFROM('DRP:Frml')
+[SCREENCONTROLS]
+! PROMPT('Baglanti:'),USE(?Rpq:Baglanti:Prompt)
+! ENTRY(@s254),USE(Rpq:Baglanti)
+[REPORTCONTROLS]
+! STRING(@s254),USE(Rpq:Baglanti)
+Baglanti                   CSTRING(255)
+!!> GUID('c09603b1-31ad-4aa2-b51d-b63b61481bf1'),PROMPT('Baglanti:'),HEADER('Baglanti'),PICTURE(@s254)
+[SCREENCONTROLS]
+! PROMPT('Filtre:'),USE(?Rpq:Filtre:Prompt)
+! ENTRY(@s254),USE(Rpq:Filtre)
+[REPORTCONTROLS]
+! STRING(@s254),USE(Rpq:Filtre)
+Filtre                     CSTRING(255)
+!!> GUID('6dff5c14-193f-45f5-95ab-cc73fddbdfb8'),PROMPT('Filtre:'),HEADER('Filtre'),PICTURE(@s254)
+[SCREENCONTROLS]
+! OPTION('Son Yil Yaz'),AT(,,50,36),USE(Rpq:SonYilYaz),BOXED
+! RADIO('Evet'),USE(?Rpq:SonYilYaz:Radio1),VALUE('E')
+! RADIO('Hayýr'),USE(?Rpq:SonYilYaz:Radio2),VALUE('H')
+! END
+[REPORTCONTROLS]
+! STRING(@s20),USE(Rpq:SonYilYaz)
+SonYilYaz                  STRING(20)
+!!> GUID('40ccc619-0373-44be-99d2-b5feb750c9bd'),VALID(INLIST('Evet|Hayýr')),PROMPT('Son Yil Yaz:'),HEADER('Son Yil Yaz'),PICTURE(@s20),VALUES('E|H'),FREEZE,DERIVEDFROM('DRP:SonYilYaz')
+[SCREENCONTROLS]
+! OPTION('Topla'),AT(,,50,36),USE(Rpq:Topla),BOXED
+! RADIO('Evet'),USE(?Rpq:Topla:Radio1),VALUE('E')
+! RADIO('Hayýr'),USE(?Rpq:Topla:Radio2),VALUE('H')
+! END
+[REPORTCONTROLS]
+! STRING(@s1),USE(Rpq:Topla)
+Topla                      STRING(1)
+!!> GUID('a93b488e-db04-406c-8bae-1ad2151aeb0d'),VALID(INLIST('Evet|Hayýr')),PROMPT('Topla:'),HEADER('Topla'),PICTURE(@s1),VALUES('E|H'),FREEZE,DERIVEDFROM('DRP:Topla')
+                         END
+!!> GUID('6ca2af3f-78a8-44e7-9207-340715e8364e')
+GLOBALDRIVE              STRING(1)
+!!> GUID('59b14525-d4bb-41a2-a136-44d6b16643e1')
+[SCREENCONTROLS]
+! PROMPT('Rapor Degiskenleri:'),USE(?RaporDegiskenleri:Prompt)
+! ENTRY(@s20),USE(RaporDegiskenleri)
+[REPORTCONTROLS]
+! STRING(@s20),USE(RaporDegiskenleri)
+RaporDegiskenleri        GROUP,PRE()
+!!> GUID('7317e0bf-701a-4ca0-80e0-7778e7f68347'),PROMPT('Rapor Degiskenleri:'),HEADER('Rapor Degiskenleri'),PICTURE(@s20),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Satir:'),USE(?Satir:Prompt)
+! ENTRY(@s255),USE(Satir)
+[REPORTCONTROLS]
+! STRING(@s255),USE(Satir)
+Satir                      STRING(2000)
+!!> GUID('a96b9434-3e6c-43b6-8ce7-c9d2f49d4100'),PROMPT('Satir:'),HEADER('Satir'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Satir X:'),USE(?SatirX:Prompt)
+! ENTRY(@s255),USE(SatirX)
+[REPORTCONTROLS]
+! STRING(@s255),USE(SatirX)
+SatirX                     STRING(2000)
+!!> GUID('7774e896-fe3f-446a-89e8-6addbef4766c'),PROMPT('Satir X:'),HEADER('Satir X'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Baslik:'),USE(?Baslik:Prompt)
+! ENTRY(@s255),USE(Baslik)
+[REPORTCONTROLS]
+! STRING(@s255),USE(Baslik)
+Baslik                     STRING(1000)
+!!> GUID('fd1b30c8-9865-4964-b126-66a9607e92ab'),PROMPT('Baslik:'),HEADER('Baslik'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Baslik 1:'),USE(?Baslik1:Prompt)
+! ENTRY(@s255),USE(Baslik1)
+[REPORTCONTROLS]
+! STRING(@s255),USE(Baslik1)
+Baslik1                    STRING(1000)
+!!> GUID('7335ead6-dbdb-4a01-944b-eb9d193f660b'),PROMPT('Baslik 1:'),HEADER('Baslik 1'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Baslik 2:'),USE(?Baslik2:Prompt)
+! ENTRY(@s255),USE(Baslik2)
+[REPORTCONTROLS]
+! STRING(@s255),USE(Baslik2)
+Baslik2                    STRING(1000)
+!!> GUID('06e926c2-2f06-42a5-a299-ae9cf02f9ad0'),PROMPT('Baslik 2:'),HEADER('Baslik 2'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Baslik 3:'),USE(?Baslik3:Prompt)
+! ENTRY(@s255),USE(Baslik3)
+[REPORTCONTROLS]
+! STRING(@s255),USE(Baslik3)
+Baslik3                    STRING(1000)
+!!> GUID('96039818-6e24-48d1-a7ac-8c9410bbfd06'),PROMPT('Baslik 3:'),HEADER('Baslik 3'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Dip Satir:'),USE(?DipSatir:Prompt)
+! ENTRY(@s255),USE(DipSatir)
+[REPORTCONTROLS]
+! STRING(@s255),USE(DipSatir)
+DipSatir                   STRING(1000)
+!!> GUID('8ad5b882-2084-4841-b169-97c82697eb25'),PROMPT('Dip Satir:'),HEADER('Dip Satir'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Dip Satir 1:'),USE(?DipSatir1:Prompt)
+! ENTRY(@s255),USE(DipSatir1)
+[REPORTCONTROLS]
+! STRING(@s255),USE(DipSatir1)
+DipSatir1                  STRING(1000)
+!!> GUID('f9315db2-63b0-4fc5-9b5f-bd3b6a875d9d'),PROMPT('Dip Satir 1:'),HEADER('Dip Satir 1'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Dip Satir 2:'),USE(?DipSatir2:Prompt)
+! ENTRY(@s255),USE(DipSatir2)
+[REPORTCONTROLS]
+! STRING(@s255),USE(DipSatir2)
+DipSatir2                  STRING(1000)
+!!> GUID('9e7d7172-13e2-4e67-af50-f68bd14915df'),PROMPT('Dip Satir 2:'),HEADER('Dip Satir 2'),PICTURE(@s255),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Satir No:'),USE(?SatirNo:Prompt)
+! ENTRY(@n-14),USE(SatirNo),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(SatirNo),RIGHT(1)
+SatirNo                    LONG
+!!> GUID('1b125ad6-977a-4fcd-9dbc-ea5d80cf376f'),PROMPT('Satir No:'),HEADER('Satir No'),PICTURE(@n-14),TYPEMODE(INS),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Satir No Son:'),USE(?SatirNoSon:Prompt)
+! ENTRY(@n-14),USE(SatirNoSon),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(SatirNoSon),RIGHT(1)
+SatirNoSon                 LONG
+!!> GUID('7dd2d7c4-fc0a-45b4-9352-0bba28279780'),PROMPT('Satir No Son:'),HEADER('Satir No Son'),PICTURE(@n-14),TYPEMODE(INS),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Glo : Detay Baslangic:'),USE(?DetayBaslangic:Prompt)
+! ENTRY(@n-14),USE(DetayBaslangic),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(DetayBaslangic),RIGHT(1)
+Glo:DetayBaslangic         LONG
+!!> GUID('333cbab2-f88b-4efd-b23d-f0b906a57358'),PROMPT('Glo : Detay Baslangic:'),HEADER('Glo : Detay Baslangic'),PICTURE(@n-14),TYPEMODE(INS),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('Sayfa No:'),USE(?SayfaNo:Prompt)
+! ENTRY(@n-7),USE(SayfaNo),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-7),USE(SayfaNo),RIGHT(1)
+SayfaNo                    SHORT
+!!> GUID('b76246e2-74a4-4198-bf16-3ca793ca9e2e'),PROMPT('Sayfa No:'),HEADER('Sayfa No'),PICTURE(@n-7),TYPEMODE(INS),JUSTIFY(RIGHT,1)
+                         END
+!!> GUID('64fc033e-afe1-41d7-8e27-6fe69ec1013b')
+[SCREENCONTROLS]
+! PROMPT('Excel Q:'),USE(?ExcelQ:Prompt)
+! ENTRY(@s255),USE(ExcelQ)
+[REPORTCONTROLS]
+! STRING(@s255),USE(ExcelQ)
+ExcelQ                   QUEUE,PRE(ExcQ)
+!!> GUID('5f1ea83d-e5ee-4cf7-b4e2-d816ed9536eb'),PROMPT('Excel Q:'),HEADER('Excel Q'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Ntlk:'),USE(?ExcQ:Ntlk:Prompt)
+! ENTRY(@s1),USE(ExcQ:Ntlk)
+[REPORTCONTROLS]
+! STRING(@s1),USE(ExcQ:Ntlk)
+Ntlk                       STRING(1)
+!!> GUID('488666b7-4298-4f48-a07d-fc5eff83b71c'),PROMPT('Ntlk:'),HEADER('Ntlk'),PICTURE(@s1)
+[SCREENCONTROLS]
+! PROMPT('Deger:'),USE(?ExcQ:Deger:Prompt)
+! ENTRY(@n10.2),USE(ExcQ:Deger),DECIMAL(14)
+[REPORTCONTROLS]
+! STRING(@n10.2),USE(ExcQ:Deger),DECIMAL(14)
+Deger                      REAL
+!!> GUID('1daedbce-625f-44cc-b364-a554c070b115'),PROMPT('Deger:'),HEADER('Deger'),PICTURE(@n10.2),JUSTIFY(DECIMAL,14)
+[SCREENCONTROLS]
+! PROMPT('SD eger:'),USE(?ExcQ:SDeger:Prompt)
+! ENTRY(@s255),USE(ExcQ:SDeger)
+[REPORTCONTROLS]
+! STRING(@s255),USE(ExcQ:SDeger)
+SDeger                     STRING(500)
+!!> GUID('0f5c336b-4cb5-4c89-b374-a38419abc457'),PROMPT('SD eger:'),HEADER('SD eger'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('Frml:'),USE(?ExcQ:Frml:Prompt)
+! ENTRY(@s19),USE(ExcQ:Frml)
+[REPORTCONTROLS]
+! STRING(@s19),USE(ExcQ:Frml)
+Frml                       CSTRING(20)
+!!> GUID('9cffcfef-7d55-49fa-a7a4-9bc66e6c865d'),PROMPT('Frml:'),HEADER('Frml'),PICTURE(@s19)
+                         END
+!!> GUID('c8b88a5e-fe5c-45ad-a5d5-f14f5afe5bde')
+[SCREENCONTROLS]
+! PROMPT('Post Box Name:'),USE(?PostBoxName:Prompt)
+! ENTRY(@s253),USE(PostBoxName)
+[REPORTCONTROLS]
+! STRING(@s253),USE(PostBoxName)
+PostBoxName              CSTRING(254)
+!!> GUID('7dacabbb-c7b6-4163-b829-d2da9529e7e0'),PROMPT('Post Box Name:'),HEADER('Post Box Name'),PICTURE(@s253)
+[SCREENCONTROLS]
+! PROMPT('Post Box Password:'),USE(?PostBoxPassword:Prompt)
+! ENTRY(@s253),USE(PostBoxPassword)
+[REPORTCONTROLS]
+! STRING(@s253),USE(PostBoxPassword)
+PostBoxPassword          CSTRING(254)
+!!> GUID('cedb4d67-2985-4f11-b22b-52dc61b064de'),PROMPT('Post Box Password:'),HEADER('Post Box Password'),PICTURE(@s253)
+[SCREENCONTROLS]
+! PROMPT('MM : From:'),USE(?MM:From:Prompt)
+! ENTRY(@s253),USE(MM:From)
+[REPORTCONTROLS]
+! STRING(@s253),USE(MM:From)
+MM:From                  CSTRING(254),THREAD
+!!> GUID('93eb95f6-ad5e-4080-b365-0a76473b67aa'),PROMPT('MM : From:'),HEADER('MM : From'),PICTURE(@s253)
+[SCREENCONTROLS]
+! PROMPT('MM : To Address:'),USE(?MM:ToAddress:Prompt)
+! ENTRY(@s253),USE(MM:ToAddress)
+[REPORTCONTROLS]
+! STRING(@s253),USE(MM:ToAddress)
+MM:ToAddress             CSTRING(254),THREAD
+!!> GUID('ff5ed9e9-93d4-4c86-b6a4-6f10ea115318'),PROMPT('MM : To Address:'),HEADER('MM : To Address'),PICTURE(@s253)
+[SCREENCONTROLS]
+! PROMPT('MM : Subject:'),USE(?MM:Subject:Prompt)
+! ENTRY(@s253),USE(MM:Subject)
+[REPORTCONTROLS]
+! STRING(@s253),USE(MM:Subject)
+MM:Subject               CSTRING(254),THREAD
+!!> GUID('527b1050-e331-4792-8fed-4632c9005dc4'),PROMPT('MM : Subject:'),HEADER('MM : Subject'),PICTURE(@s253)
+[SCREENCONTROLS]
+! PROMPT('MM : Date:'),USE(?MM:Date:Prompt)
+! ENTRY(@s16),USE(MM:Date)
+[REPORTCONTROLS]
+! STRING(@s16),USE(MM:Date)
+MM:Date                  CSTRING(17),THREAD
+!!> GUID('722f9a53-5c4b-45a2-b73f-a97e9fc0c0b7'),PROMPT('MM : Date:'),HEADER('MM : Date'),PICTURE(@s16)
+[SCREENCONTROLS]
+! PROMPT('MM : Message Type:'),USE(?MM:MessageType:Prompt)
+! ENTRY(@s9),USE(MM:MessageType)
+[REPORTCONTROLS]
+! STRING(@s9),USE(MM:MessageType)
+MM:MessageType           CSTRING(10),THREAD
+!!> GUID('53854d02-9a3e-4c99-b8c9-921e7c29f69c'),PROMPT('MM : Message Type:'),HEADER('MM : Message Type'),PICTURE(@s9)
+[SCREENCONTROLS]
+! PROMPT('MM : Message Text:'),USE(?MM:MessageText:Prompt)
+! TEXT,USE(MM:MessageText)
+[REPORTCONTROLS]
+! TEXT,USE(MM:MessageText)
+MM:MessageText           CSTRING(10000),THREAD
+!!> GUID('005d68c4-0d6c-46d1-8dfd-aef73c00726f'),PROMPT('MM : Message Text:'),HEADER('MM : Message Text'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('MM : Path Name:'),USE(?MM:PathName:Prompt)
+! ENTRY(@s255),USE(MM:PathName)
+[REPORTCONTROLS]
+! STRING(@s255),USE(MM:PathName)
+MM:PathName              CSTRING(261),THREAD
+!!> GUID('5f762466-b97e-49b4-b16f-230db75ca10c'),PROMPT('MM : Path Name:'),HEADER('MM : Path Name'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('MM : File Name:'),USE(?MM:FileName:Prompt)
+! ENTRY(@s49),USE(MM:FileName)
+[REPORTCONTROLS]
+! STRING(@s49),USE(MM:FileName)
+MM:FileName              CSTRING(50),THREAD
+!!> GUID('7dc85577-27c6-49aa-b2d0-5251e5fc0708'),PROMPT('MM : File Name:'),HEADER('MM : File Name'),PICTURE(@s49)
+[SCREENCONTROLS]
+! PROMPT('MM : File Type:'),USE(?MM:FileType:Prompt)
+! ENTRY(@s49),USE(MM:FileType)
+[REPORTCONTROLS]
+! STRING(@s49),USE(MM:FileType)
+MM:FileType              CSTRING(50),THREAD
+!!> GUID('a471ae13-9747-40e6-a4b0-595dbd33eef7'),PROMPT('MM : File Type:'),HEADER('MM : File Type'),PICTURE(@s49)
+[SCREENCONTROLS]
+! PROMPT('MM : Message ID:'),USE(?MM:MessageID:Prompt)
+! TEXT,USE(MM:MessageID)
+[REPORTCONTROLS]
+! TEXT,USE(MM:MessageID)
+MM:MessageID             CSTRING(256),THREAD
+!!> GUID('ab3df9ad-e70e-43c3-af38-73002f36783f'),PROMPT('MM : Message ID:'),HEADER('MM : Message ID'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('MAPI AVAILABLE:'),USE(?MAPI_AVAILABLE:Prompt)
+! ENTRY(@n3),USE(MAPI_AVAILABLE)
+[REPORTCONTROLS]
+! STRING(@n3),USE(MAPI_AVAILABLE)
+MAPI_AVAILABLE           BYTE
+!!> GUID('46023cf4-46a0-4c76-a944-1ad703f9e911'),PROMPT('MAPI AVAILABLE:'),HEADER('MAPI AVAILABLE'),PICTURE(@n3)
+[SCREENCONTROLS]
+! PROMPT('Glo : MAPIT emp Directory:'),USE(?Glo:MAPITempDirectory:Prompt)
+! ENTRY(@s80),USE(Glo:MAPITempDirectory)
+[REPORTCONTROLS]
+! STRING(@s80),USE(Glo:MAPITempDirectory)
+Glo:MAPITempDirectory    STRING(80)
+!!> GUID('db58f1a9-664d-408d-a414-3c10f2b9476d'),PROMPT('Glo : MAPIT emp Directory:'),HEADER('Glo : MAPIT emp Directory'),PICTURE(@s80)
+[SCREENCONTROLS]
+! PROMPT('Glo : Detay Baslangic:'),USE(?DetayBaslangic:Prompt)
+! ENTRY(@n-14),USE(DetayBaslangic),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(DetayBaslangic),RIGHT(1)
+Glo:DetayBaslangic       LONG
+!!> GUID('15c8bc26-fc6f-4238-a94d-91c1614a5874'),PROMPT('Glo : Detay Baslangic:'),HEADER('Glo : Detay Baslangic'),PICTURE(@n-14),TYPEMODE(INS),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! PROMPT('MAPIOLE:'),USE(?MAPIOLE:Prompt)
+! ENTRY(@n3),USE(MAPIOLE)
+[REPORTCONTROLS]
+! STRING(@n3),USE(MAPIOLE)
+MAPIOLE                  BYTE
+!!> GUID('bfeea721-83b3-48b2-a448-2d691c2c6436'),PROMPT('MAPIOLE:'),HEADER('MAPIOLE'),PICTURE(@n3)
+[SCREENCONTROLS]
+! CHECK('Glo : Ceyo:'),USE(Glo:Ceyo)
+[REPORTCONTROLS]
+! CHECK('Glo : Ceyo:'),USE(Glo:Ceyo)
+Glo:Ceyo                 BYTE
+!!> GUID('67ddb7b4-ba94-4cf0-8165-b0a19075b6d5'),VALID(BOOLEAN),PROMPT('Glo : Ceyo:'),HEADER('Glo : Ceyo'),PICTURE(@n3),TYPEMODE(INS)
+[EMBED]
+EMBED %GlobalMap
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!Inside The Global Map
+MODULE('Windows API')
+  OpenPrinterA(*LPSTR,*HANDLE,*PRINTER_DEFAULTS),BOOL,PASCAL,RAW
+  StartDocPrinterA(HANDLE,DWORD,*BYTE),DWORD,PASCAL
+  StartPagePrinter(HANDLE),BOOL,PASCAL
+  WritePrinter(HANDLE,LPVOID,DWORD,*DWORD),BOOL,PASCAL,RAW
+  EndPagePrinter(HANDLE),BOOL,PASCAL,PROC
+  EndDocPrinter(HANDLE),BOOL,PASCAL,PROC
+  ClosePrinter(HANDLE),BOOL,PASCAL,PROC
+END
+
+MODULE('c functions')
+  memcpy(LONG,LONG,LONG),NAME('_memcpy'),RAW
+  strcpy(LONG,LONG),CSTRING,NAME('_strcpy'),RAW
+END
+
+MODULE('')
+ GetProcessHeap(),UNSIGNED,PASCAL,RAW
+ HeapAlloc(UNSIGNED,UNSIGNED,UNSIGNED),UNSIGNED,PASCAL,RAW
+ HeapFree(UNSIGNED,UNSIGNED,UNSIGNED),UNSIGNED,PASCAL,RAW
+END
+
+MODULE('netapi')
+ Netbios(*NET_CONTROL_BLOCK),Byte,PASCAL,RAW
+END
+
+MODULE('mapi32.lib')
+!  MapiSendMail(LONG, ULONG, LONG, LONG, LONG),ULONG,PASCAL    ! lhSession ulUIParam lpMapiMessage FLAGS ulReserved
+  fn_split(*CString,*CString,*CString,*CString,*CString),short,raw,name('_fnsplit')
+END
+
+[END]
+EMBED %AfterGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3600
+PROPERTY:END
+INCLUDE('JSON.INC'),ONCE
+INCLUDE('CSIDL.EQU'),ONCE
+INCLUDE('SPECIALFOLDER.INC'),ONCE
+INCLUDE('SystemString.INC'),ONCE
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+HANDLE                  EQUATE(UNSIGNED)
+LPCSTR                  EQUATE(CSTRING)    !Usage:Pass the Label of the LPCSTR
+LPCTSTR                 EQUATE(LPCSTR)
+HDC                     EQUATE(HANDLE)
+LPSTR                   EQUATE(CSTRING)    !Usage:Pass the Label of the LPSTR
+LPVOID                  EQUATE(ULONG)
+DWORD                   EQUATE(ULONG)
+LPHANDLE                EQUATE(HANDLE)
+LPBOOL                  EQUATE(ULONG)
+WORD                    EQUATE(SHORT)       ! Was UNSIGNED (4 Bytes) should be SHORT (2 BYTES)
+HDC                     EQUATE(HANDLE)
+HFONT                   EQUATE(HANDLE)
+HGDIOBJ                 EQUATE(HANDLE)
+HINSTANCE               EQUATE(HANDLE)
+HWND                    EQUATE(HANDLE)
+HGLOBAL                 EQUATE(HANDLE)
+HBITMAP                 EQUATE(HANDLE)
+NULL                    EQUATE('<00h>')
+
+
+
+PRINTER_DEFAULTS        GROUP,TYPE
+pDatatype                   LONG   !*PSTR
+pDevMode                    LONG   !LPDEVMODE
+DesiredAccess               DWORD
+                        END
+
+DOC_INFO_1              GROUP,TYPE
+pDocName                    ULONG
+pOutputFile                 ULONG
+pDataType                   ULONG
+                        END
+Mod:PrinterHandle       Ulong,Static
+Mod:PrinterDc           Ulong,Static
+[END]
+EMBED %BeforeGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!Before Global include
+NCBASTAT                 EQUATE(33H)
+NCBNAMSZ                 EQUATE(16)
+HEAP_ZERO_MEMORY         EQUATE(8H)
+HEAP_GENERATE_EXCEPTIONS EQUATE(4H)
+NCBRESET                 EQUATE(32H)
+
+NET_CONTROL_BLOCK  GROUP,TYPE
+ncb_command    Byte
+ncb_retcode    Byte
+ncb_lsn        Byte
+ncb_num        Byte
+ncb_buffer     Long
+ncb_length     SHORT
+ncb_callname   CString(NCBNAMSZ)
+ncb_name       CString(NCBNAMSZ)
+ncb_rto        Byte
+ncb_sto        Byte
+ncb_post       Long
+ncb_lana_num   Byte
+ncb_cmd_cplt   Byte
+ncb_reserve    Byte,DIM(10) ! Reserved, must be 0
+ncb_event      Long
+ End
+
+ADAPTER_STATUS GROUP,TYPE
+adapter_address   Byte,dim(6)
+rev_major         Byte
+reserved0         Byte
+adapter_type      Byte
+rev_minor         Byte
+duration          SHORT
+frmr_recv         SHORT
+frmr_xmit         SHORT
+iframe_recv_err   SHORT
+xmit_aborts       SHORT
+xmit_success      SHORT
+recv_success      SHORT
+iframe_xmit_err   SHORT
+recv_buff_unavail SHORT
+t1_timeouts       SHORT
+ti_timeouts       SHORT
+Reserved1         Long
+free_ncbs         SHORT
+max_cfg_ncbs      SHORT
+max_ncbs          SHORT
+xmit_buf_unavail  SHORT
+max_dgram_size    SHORT
+pending_sess      SHORT
+max_cfg_sess      SHORT
+max_sess          SHORT
+max_sess_pkt_size SHORT
+name_count        SHORT
+ End
+
+NAME_BUFFER GROUP,TYPE
+name        CString(NCBNAMSZ)
+name_num    SHORT
+name_flags  SHORT
+ End
+
+
+ASTAT  GROUP,TYPE
+adapt          Like(ADAPTER_STATUS)
+NameBuff       Like(NAME_BUFFER),DIM(30)
+ End
+
+!GlobalVariabls  Group,Pre(Glo)
+!MAPI_Session_Number   Ulong(0)
+!MessageId             String(255)
+!End
+
+
+[END]
+EMBED %ProgramSetup
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+SYSTEM{PROP:CharSet}=CHARSET:TURKISH
+Locale('CLACOLSEQ','AaBbCcÇçDdEeFfGgÐðHhIýÝiJjKkLlMmNnOoÖöPpQqRrSsÞþTtUuÜüVvWwXxYyZz')
+Locale('CLACASE','ÇÖIÞÜÐÝ,çöýþüði')
+Locale('CLABUTTON','&Tamam,&Evet,&Hayýr,&Vazgeç,&Yeniden Dene,&Hatayý Geç,&Ýptal,&Yardým')
+
+
+GLB:WindowsFolder=getCSIDLfolder.GetDir(SV:CSIDL_SYSTEM)
+GLB:PersonelDocsFolder=getCSIDLfolder.GetDir(SV:CSIDL_PERSONAL)
+GLB:PersonelPicsFolder=getCSIDLfolder.GetDir(SV:CSIDL_MYPICTURES)
+GLB:PersonelDesktopFolder=getCSIDLfolder.GetDir(SV:CSIDL_DESKTOP)
+[END]
+[END]
+[END]
